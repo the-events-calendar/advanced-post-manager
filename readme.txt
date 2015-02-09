@@ -22,7 +22,7 @@ This is a tool for developers who want to turbo-charge their custom post type li
 
 See docs/documentation.html in the plugin directory for full documentation.
 
-This plugin is actively supported and we will do our best to help you. In return we simply as 2 things:
+This plugin is actively supported and we will do our best to help you. In return we simply ask 2 things:
 
 1. Help Out. If you see a question on the forum you can help with or have a great idea and want to code it up and submit a patch, that would be just plain awesome and we will shower your with praise. Might even be a good way to get to know us and lead to some paid work if you freelance. Also, we are happy to post translations if you provide them.
 2. Donate - if this is generating enough revenue to support our time it makes all the difference in the world http://m.tri.be/4o
