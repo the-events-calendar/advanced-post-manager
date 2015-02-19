@@ -40,6 +40,12 @@ This plugin is for developers. Nothing will happen until you write some code to 
 
 == Changelog ==
 
+= [Unreleased] unreleased =
+
+= [3.10] 2015-04-30 =
+
+* Added some changelog formatting enhancements after seeing keepachangelog.com :)
+
 = 2.0 =
 
 New design plus tons of fixes
