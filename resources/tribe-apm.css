@@ -381,6 +381,11 @@ input.button-secondary.csv {
 	margin-bottom:15px;
 }
 
+#the-filters .select2-search-field .select2-input {
+	line-height:25px;
+	height:25px;
+}
+
 .actions .button-secondary.save{
 	background: none repeat scroll 0 0 #2ea2cc;
 	border-color: #0074a2;
