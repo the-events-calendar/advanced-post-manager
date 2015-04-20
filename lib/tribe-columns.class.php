@@ -410,7 +410,7 @@ class Tribe_Columns {
 				'post_type' => $post->post_type,
 				$taxonomy => $term->slug
 			), admin_url('edit.php') );
-			$ret[] = sprintf('<a href="%s">%s</a>', $url, $term->name);
+			$ret[] = sprintf('<a href="%s">%s</a>', esc_url( $url ), $term->name);
 		}
 		return implode(', ', $ret);
 	}
