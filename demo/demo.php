@@ -27,7 +27,7 @@ class Tribe_Demo_APM {
 			$url = home_url($path) . '/demo_data.xml';
 			$import_url = admin_url('import.php');
 			echo '<div id="messsage" class="updated"><p>';
-			printf( __('It looks like you might not have any demo data. <a href="%s">Download our data</a> and use the <a href="%s">WordPress Importer</a>.', 'tribe-apm'), $url, $import_url );
+			printf( __('It looks like you might not have any demo data. <a href="%s">Download our data</a> and use the <a href="%s">WordPress Importer</a>.', 'tribe-apm'), esc_url( $url ), esc_url( $import_url ) );
 			echo '</p></div>';
 		}
 	}
