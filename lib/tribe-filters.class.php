@@ -517,7 +517,7 @@ class Tribe_Filters {
 		$url = str_replace('balderdash', '', $url);
 
 		$sel  = '<div class="apm-saved-filters"><h2 class="select-saved-filter">' . __('Saved Filter Set', 'tribe-apm') . '<span>s</span></h2>';
-		$sel .= '<span class="apm-select-wrap"><select id="tribe-saved-filters" name="tribe-saved-filters" data:submit_url="' . $url . '">';
+		$sel .= '<span class="apm-select-wrap"><select id="tribe-saved-filters" name="tribe-saved-filters" data:submit_url="' . esc_url( $url ) . '">';
 		$sel .= '<option value="0">'. __('Choose a Saved Filter', 'tribe-apm') .'</option>';
 		foreach ( $filters as $filter ) {
 			$selected = ( $this->saved_active && $this->saved_active->ID == $filter->ID ) ? ' selected="selected" ' : '';

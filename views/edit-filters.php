@@ -6,7 +6,7 @@ do_action('tribe-filters-box');
 <div id="filters-wrap" class="postbox">
 	<div class="handlediv" title="<?php _e('Click to toggle', 'tribe-apm') ?>"></div>
 	<h3 title="<?php _e('Click to toggle', 'tribe-apm') ?>"><?php _e('Filters &amp; Columns', 'tribe-apm' ); ?></h3>
-	<form id="the-filters" action="<?php echo $action_url; ?>" method="post">
+	<form id="the-filters" action="<?php echo esc_url( $action_url ); ?>" method="post">
 		<div class="filters">
 			<?php $this->filters->output_form(); ?>
 		</div>
