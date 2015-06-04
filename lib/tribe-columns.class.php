@@ -137,6 +137,11 @@ class Tribe_Columns {
 					continue;
 				}
 
+				// the comments header is typically an icon. This swaps it out with text
+				if ( 'comments' == $v ) {
+					$headers[ $v ] = __( 'Comments' );
+				}//end if
+
 				echo '<li>';
 				echo '<input type="hidden" name="'.$this->prefix.$i.'" value="'.$v.'" />';
 				echo $headers[$v];
