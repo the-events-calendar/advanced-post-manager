@@ -127,9 +127,11 @@ class Tribe_Columns {
 			$active[$v] = $v;
 		}
 		$inactive = array_diff_key($headers, $active);
-		unset($active); ?>
+		unset($active);
+		?>
 		<div class="apm-selected-cols">
-		<ul id="tribe-cols-active" class="group"><?php
+		<ul id="tribe-cols-active" class="group">
+			<?php
 			$i = 1;
 			foreach( $this->active as $v ) {
 
@@ -143,14 +145,13 @@ class Tribe_Columns {
 				}//end if
 
 				echo '<li>';
-				echo '<input type="hidden" name="'.$this->prefix.$i.'" value="'.$v.'" />';
-				echo $headers[$v];
+				echo '<input type="hidden" name="' . esc_attr( $this->prefix . $i ) . '" value="' . esc_attr( $v ) . '" />';
+				echo esc_html( $headers[ $v ] );
 				echo '<b class="close">×</b>';
 				echo '</li>';
 				$i++;
 			}
-
-		?>
+			?>
 		</ul>
 		</div>
 		<span class="apm-select-wrap"><select name="tribe-cols-drop" id="tribe-cols-drop"><?php
