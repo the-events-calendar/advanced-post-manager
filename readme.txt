@@ -1,6 +1,6 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, mattwiebe, jkudish, nickciske, peterchester, shanepearlman
+Contributors: ModernTribe, mattwiebe, jkudish, nickciske, peterchester, shanepearlman, borkweb
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
