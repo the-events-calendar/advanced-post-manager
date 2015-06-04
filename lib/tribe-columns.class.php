@@ -155,16 +155,16 @@ class Tribe_Columns {
 		</ul>
 		</div>
 		<span class="apm-select-wrap"><select name="tribe-cols-drop" id="tribe-cols-drop"><?php
-			echo '<option value="0">'. __('Add a Column', 'tribe-apm').'</option>';
+			echo '<option value="0">'. esc_html__('Add a Column', 'tribe-apm').'</option>';
 			foreach ( $inactive as $key => $value ) {
 				$name = ( is_string($value) ) ? $value : $value['name'];
 				if ( empty($name) ) {
 					continue;
 				}
-				if ( strstr( $name, 'img alt="Comments"' ) !== false ) {
+				if ( false !== strstr( $name, '="Comments"' ) ) {
 					$name = __( 'Comments' );
 				}
-				echo '<option value="'.$key.'">'.$name.'</option>';
+				echo '<option value="' . esc_attr( $key ) . '">' . esc_html( $name ) . '</option>';
 			}
 			?></select></span>
 <script> var Tribe_Columns = <?php echo json_encode( array(
@@ -323,7 +323,7 @@ class Tribe_Columns {
 				// if value is empty, we've got a problem for, you know, clicking.
 				$value = ( empty($value) ) ? '–Blank–' : $value;
 				$value = sprintf('<strong><a href="%s" title="%s">%s</a>%s</strong>',
-					get_admin_url(null, "post.php?post={$post_id}&action=edit"),
+					esc_url( get_admin_url( null, "post.php?post={$post_id}&action=edit" ) ),
 					'Edit &lsquo;'.strip_tags(esc_attr(get_the_title($post_id))) . '&rsquo;',
 					$value,
 					// Post status, if not published
@@ -416,7 +416,7 @@ class Tribe_Columns {
 				'post_type' => $post->post_type,
 				$taxonomy => $term->slug
 			), admin_url('edit.php') );
-			$ret[] = sprintf('<a href="%s">%s</a>', esc_url( $url ), $term->name);
+			$ret[] = sprintf('<a href="%s">%s</a>', esc_url( $url ), esc_html( $term->name ) );
 		}
 		return implode(', ', $ret);
 	}
