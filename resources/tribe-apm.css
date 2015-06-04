@@ -142,6 +142,12 @@ a.tribe-row-add:hover, a.tribe-row-add:focus {
 {
 	display:none;
 }
+.tribe-filters-active .column-comments {
+	width: 4em;
+}
+.tribe-filters-active .column-comments a {
+	float: left;
+}
 .tribe-filters-active .search-box {
 	position:relative;
 	top:5px;
