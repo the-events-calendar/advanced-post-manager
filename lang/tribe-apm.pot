@@ -19,153 +19,153 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: ../demo/demo.php:30
+#: demo/demo.php:30
 #, php-format
 msgid ""
 "It looks like you might not have any demo data. <a href=\"%s\">Download our "
 "data</a> and use the <a href=\"%s\">WordPress Importer</a>."
 msgstr ""
 
-#: ../lib/tribe-columns.class.php:43
+#: lib/tribe-columns.class.php:43
 msgid "Column Name"
 msgstr ""
 
-#: ../lib/tribe-columns.class.php:144 ../lib/tribe-columns.class.php:165
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
 msgid "Comments"
 msgstr ""
 
-#: ../lib/tribe-columns.class.php:158
+#: lib/tribe-columns.class.php:158
 msgid "Add a Column"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:50 ../lib/tribe-filters.class.php:70
+#: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
 msgid "Is"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:51 ../lib/tribe-filters.class.php:71
+#: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
 msgid "Is Not"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:65
+#: lib/tribe-filters.class.php:65
 msgid "LIKE"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:69
+#: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:80
+#: lib/tribe-filters.class.php:80
 msgid "Member Type"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:84
+#: lib/tribe-filters.class.php:84
 msgid "Cafe"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:85
+#: lib/tribe-filters.class.php:85
 msgid "Private Desk"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:86
+#: lib/tribe-filters.class.php:86
 msgid "Office"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:93
+#: lib/tribe-filters.class.php:93
 msgid "what i’m querying. probably a key in the options array in $filters"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:178
+#: lib/tribe-filters.class.php:178
 msgid "Active Filters"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:519
+#: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:521
+#: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
 msgstr ""
 
-#: ../lib/tribe-filters.class.php:631
+#: lib/tribe-filters.class.php:631
 msgid "Add a Filter"
 msgstr ""
 
-#: ../lib/tribe-meta-box-helper.php:44
+#: lib/tribe-meta-box-helper.php:44
 msgid "Extended Information"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:114 ../lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
 msgid "Delete this image"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:114 ../lib/tribe-meta-box.php:340
-#: ../lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
+#: lib/tribe-meta-box.php:385
 msgid "Delete"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:337
+#: lib/tribe-meta-box.php:337
 msgid "Uploaded files"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:346
+#: lib/tribe-meta-box.php:346
 msgid "Upload new files"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:349
+#: lib/tribe-meta-box.php:349
 msgid "Add another file"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:392
+#: lib/tribe-meta-box.php:392
 msgid "Add more images"
 msgstr ""
 
-#: ../lib/tribe-meta-box.php:400
+#: lib/tribe-meta-box.php:400
 msgid "Select a color"
 msgstr ""
 
-#: ../views/edit-filters.php:7 ../views/edit-filters.php:8
+#: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
 msgstr ""
 
-#: ../views/edit-filters.php:8
+#: views/edit-filters.php:8
 msgid "Filters &amp; Columns"
 msgstr ""
 
-#: ../views/edit-filters.php:14
+#: views/edit-filters.php:14
 msgid "Active Columns"
 msgstr ""
 
-#: ../views/edit-filters.php:15
+#: views/edit-filters.php:15
 msgid ""
 "Drag and drop to order and select which columns are displayed in the entries "
 "table."
 msgstr ""
 
-#: ../views/edit-filters.php:20
+#: views/edit-filters.php:20
 msgid "Apply"
 msgstr ""
 
-#: ../views/edit-filters.php:21
+#: views/edit-filters.php:21
 msgid "Save Filter Set"
 msgstr ""
 
-#: ../views/edit-filters.php:23
+#: views/edit-filters.php:23
 msgid "Export to CSV"
 msgstr ""
 
-#: ../views/edit-filters.php:27
+#: views/edit-filters.php:27
 msgid "Filter Name"
 msgstr ""
 
-#: ../views/edit-filters.php:28
+#: views/edit-filters.php:28
 msgid "Save"
 msgstr ""
 
-#: ../views/edit-filters.php:29
+#: views/edit-filters.php:29
 msgid "Cancel"
 msgstr ""
 
-#: ../views/edit-filters.php:32
+#: views/edit-filters.php:32
 msgid "Reset to Default"
 msgstr ""
 
