@@ -86,7 +86,7 @@ class Tribe_APM {
 	}
 
 	private function load_text_domain() {
-		load_plugin_textdomain( 'tribe-apm', false, 'lang/' );
+		load_plugin_textdomain( 'tribe-apm', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 	}//end load_text_domain
 
 	public function resources_url($resource_url) {
