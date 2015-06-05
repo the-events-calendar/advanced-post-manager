@@ -1,12 +1,12 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, mattwiebe, jkudish, nickciske, peterchester, shanepearlman, borkweb
+Contributors: ModernTribe, mattwiebe, jkudish, nickciske, peterchester, shanepearlman, borkweb, zbtirrell
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
-Tested up to: 4.1
+Tested up to: 4.2.2
 License: GPL v2
-Stable Tag: 2.0
+Stable Tag: 3.10
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
@@ -24,7 +24,7 @@ See docs/documentation.html in the plugin directory for full documentation.
 
 This plugin is actively supported and we will do our best to help you. In return we simply ask 2 things:
 
-1. Help Out. If you see a question on the forum you can help with or have a great idea and want to code it up and submit a patch, that would be just plain awesome and we will shower your with praise. Might even be a good way to get to know us and lead to some paid work if you freelance. Also, we are happy to post translations if you provide them.
+1. Help Out. If you see a question on the forum you can help with or have a great idea and want to code it up and <a href="https://github.com/moderntribe/advanced-post-manager">submit a pull request on GitHub</a>, that would be just plain awesome and we will shower you with praise. Might even be a good way to get to know us and lead to some paid work if you freelance. Also, we are happy to post translations if you provide them.
 2. Donate - if this is generating enough revenue to support our time it makes all the difference in the world http://m.tri.be/4o
 
 == Frequently Asked Questions ==
@@ -42,13 +42,19 @@ This plugin is for developers. Nothing will happen until you write some code to 
 
 = [Unreleased] unreleased =
 
-= [3.10] 2015-04-30 =
+= [3.10] 2015-06-09 =
 
-* Added some changelog formatting enhancements after seeing keepachangelog.com :)
+* Bug - fixed escaping throughout
+* Bug - fixed comments bubbles when they exist in the table
+* Tweak - Brought version in line with other Modern Tribe plugins
+* Tweak - Added some changelog formatting enhancements after seeing keepachangelog.com :)
+* Feature - added translation support
+* Feature - Added Brazilian Portuguese translation files, courtesy of Gustavo Bordoni
+* Feature - Added Spanish translation files, courtesy of robotic translation
 
 = 2.0 =
 
-New design plus tons of fixes
+* New design plus tons of fixes
 
 = 1.0.9 =
 
