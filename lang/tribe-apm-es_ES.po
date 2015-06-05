@@ -1,0 +1,195 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Post Manager\n"
+"POT-Creation-Date: 2015-06-05 10:36-0500\n"
+"PO-Revision-Date: 2015-06-05 10:41-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: tribe-apm.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: demo/demo.php:30
+#, php-format
+msgid ""
+"It looks like you might not have any demo data. <a href=\"%s\">Download our "
+"data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr ""
+"Parece que no tenga los datos de demostración. <a href=“%s”>Descargar "
+"nuestros datos</a> y usar el <a href=“%s”>Importador de WordPress</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Nombre de columna"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Comentarios"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Añadir una columna"
+
+#: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
+msgid "Is"
+msgstr "Es"
+
+#: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
+msgid "Is Not"
+msgstr "No es"
+
+#: lib/tribe-filters.class.php:65
+msgid "LIKE"
+msgstr "ME GUSTA"
+
+#: lib/tribe-filters.class.php:69
+msgid "Search"
+msgstr "Buscar"
+
+#: lib/tribe-filters.class.php:80
+msgid "Member Type"
+msgstr "Tipo de miembro"
+
+#: lib/tribe-filters.class.php:84
+msgid "Cafe"
+msgstr "Café"
+
+#: lib/tribe-filters.class.php:85
+msgid "Private Desk"
+msgstr "Escritorio privado"
+
+#: lib/tribe-filters.class.php:86
+msgid "Office"
+msgstr "Oficina"
+
+#: lib/tribe-filters.class.php:93
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr ""
+"lo que estoy consultando. probablemente una clave en el array de opciones en "
+"$filters"
+
+#: lib/tribe-filters.class.php:178
+msgid "Active Filters"
+msgstr "Filtros activos"
+
+#: lib/tribe-filters.class.php:519
+msgid "Saved Filter Set"
+msgstr "Filtro Guardado"
+
+#: lib/tribe-filters.class.php:521
+msgid "Choose a Saved Filter"
+msgstr "Elija un filtro guardado"
+
+#: lib/tribe-filters.class.php:631
+msgid "Add a Filter"
+msgstr "Agregar un filtro"
+
+#: lib/tribe-meta-box-helper.php:44
+msgid "Extended Information"
+msgstr "Información ampliada"
+
+#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
+msgid "Delete this image"
+msgstr "Borrar esta imagen"
+
+#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
+#: lib/tribe-meta-box.php:385
+msgid "Delete"
+msgstr "Eliminar"
+
+#: lib/tribe-meta-box.php:337
+msgid "Uploaded files"
+msgstr "Archivos subidos"
+
+#: lib/tribe-meta-box.php:346
+msgid "Upload new files"
+msgstr "Subir nuevos archivos"
+
+#: lib/tribe-meta-box.php:349
+msgid "Add another file"
+msgstr "Agregar otro archivo"
+
+#: lib/tribe-meta-box.php:392
+msgid "Add more images"
+msgstr "Añadir más imágenes"
+
+#: lib/tribe-meta-box.php:400
+msgid "Select a color"
+msgstr "Elegir Color"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Haga clic para alternar"
+
+#: views/edit-filters.php:8
+msgid "Filters &amp; Columns"
+msgstr "Filtros y columnas"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr "Columnas de activos"
+
+#: views/edit-filters.php:15
+msgid ""
+"Drag and drop to order and select which columns are displayed in the entries "
+"table."
+msgstr ""
+"Arrastrar y soltar a la orden y seleccione las columnas que se muestran en "
+"la tabla de entradas."
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Aplicar"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr "Guardar conjunto de filtro"
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Nombre del filtro"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Guardar"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr "Restablecer por defecto"
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr "Advanced Post Manager"
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+"Para marcar tipos de post personalizados a 11 con controles avanzados de "
+"filtrado."
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr "Modern Tribe, Inc."
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr "http://m.tri.be/4n"
