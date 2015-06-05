@@ -70,6 +70,8 @@ class Tribe_APM {
 			return;
 		}
 
+		$this->load_text_domain();
+
 		do_action( 'tribe_cpt_filters_init', $this );
 
 		require_once TRIBE_APM_LIB_PATH . 'tribe-filters.class.php';
@@ -82,6 +84,10 @@ class Tribe_APM {
 		add_action( 'admin_notices', array($this, 'maybe_show_filters') );
 		add_action( 'admin_enqueue_scripts', array($this, 'maybe_enqueue') );
 	}
+
+	private function load_text_domain() {
+		load_plugin_textdomain( 'tribe-apm', false, 'lang/' );
+	}//end load_text_domain
 
 	public function resources_url($resource_url) {
 		return trailingslashit( $this->url ) . 'resources/';
