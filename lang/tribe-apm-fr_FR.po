@@ -1,50 +1,50 @@
-# Translation of Advanced Post Manager in Spanish (Spain)
+# Translation of Advanced Post Manager in French (France)
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 15:47:17+0000\n"
+"PO-Revision-Date: 2015-06-08 15:50:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Advanced Post Manager\n"
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
-msgstr "Parece que usted no tiene datos de demostración. <a href=\"%s\">Descargue nuestros datos</a> y use el <a href=\"%s\">WordPress Importer</a>."
+msgstr "On dirait que vous n'avez pas de données démo. <a href=\"%s\">Téléchargez nos données</a> et utilisez l' <a href=\"%s\">importateur de données de WordPress</a>."
 
 #: lib/tribe-columns.class.php:43
 msgid "Column Name"
-msgstr "Nombre de Columna"
+msgstr "Nom de la colonne"
 
 #: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
 msgid "Comments"
-msgstr "Comentarios"
+msgstr "Commentaires"
 
 #: lib/tribe-columns.class.php:158
 msgid "Add a Column"
-msgstr "Agregar una columna"
+msgstr "Ajouter une colonne"
 
 #: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
 msgid "Is"
-msgstr "Es"
+msgstr "Est"
 
 #: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
 msgid "Is Not"
-msgstr "No Es"
+msgstr "N'est pas"
 
 #: lib/tribe-filters.class.php:65
 msgid "LIKE"
-msgstr "PARECIDO"
+msgstr "SIMILAIRE"
 
 #: lib/tribe-filters.class.php:69
 msgid "Search"
-msgstr "Buscar"
+msgstr "Recherche"
 
 #: lib/tribe-filters.class.php:80
 msgid "Member Type"
-msgstr "Tipo de Miembro"
+msgstr "Type de membre"
 
 #: lib/tribe-filters.class.php:84
 msgid "Cafe"
@@ -52,121 +52,121 @@ msgstr "Café"
 
 #: lib/tribe-filters.class.php:85
 msgid "Private Desk"
-msgstr "Escritorio Privado"
+msgstr "Bureau privé"
 
 #: lib/tribe-filters.class.php:86
 msgid "Office"
-msgstr "Oficina"
+msgstr "Bureaux"
 
 #: lib/tribe-filters.class.php:93
 msgid "what i’m querying. probably a key in the options array in $filters"
-msgstr "qué estoy consultando. probablemente una clave en la matriz opciones en $filters"
+msgstr "ce que j'interroge. Probablemement une clé dans les options du rang dans $filters"
 
 #: lib/tribe-filters.class.php:178
 msgid "Active Filters"
-msgstr "Filtros activos"
+msgstr ""
 
 #: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
-msgstr "Filtro Guardado"
+msgstr ""
 
 #: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
-msgstr "Elija un Filtro guardado"
+msgstr "Choisir parmi un filtre sauvegardé"
 
 #: lib/tribe-filters.class.php:631
 msgid "Add a Filter"
-msgstr "Egregar un Filtro"
+msgstr "Ajouter un filtre"
 
 #: lib/tribe-meta-box-helper.php:44
 msgid "Extended Information"
-msgstr "Información extendida"
+msgstr "Information étendue"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
 msgid "Delete this image"
-msgstr "Borrar esta imagen"
+msgstr "Supprimer cette image"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
 #: lib/tribe-meta-box.php:385
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Supprimer"
 
 #: lib/tribe-meta-box.php:337
 msgid "Uploaded files"
-msgstr "Subir archivos"
+msgstr "Fichiers chargés"
 
 #: lib/tribe-meta-box.php:346
 msgid "Upload new files"
-msgstr "Subir nuevos archivos"
+msgstr "Charger de nouveaux fichiers"
 
 #: lib/tribe-meta-box.php:349
 msgid "Add another file"
-msgstr "Agregar otro archivo"
+msgstr "Ajouter un autre ficher"
 
 #: lib/tribe-meta-box.php:392
 msgid "Add more images"
-msgstr "Agregar más imagenes"
+msgstr "Ajouter plus d'images"
 
 #: lib/tribe-meta-box.php:400
 msgid "Select a color"
-msgstr "Escoga un color"
+msgstr "Selectionner une couleur"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
-msgstr "Click para alternar"
+msgstr "Clicker pour alterner"
 
 #: views/edit-filters.php:8
 msgid "Filters &amp; Columns"
-msgstr "Filtros y Columnas"
+msgstr "Filtres &amp; Colonnes"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
-msgstr "Columnas de activos"
+msgstr ""
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
-msgstr "Arrastrar y soltar a la orden y seleccione las columnas que se muestran en la tabla de entradas."
+msgstr ""
 
 #: views/edit-filters.php:20
 msgid "Apply"
-msgstr "Aplicar"
+msgstr "Appliquer"
 
 #: views/edit-filters.php:21
 msgid "Save Filter Set"
-msgstr "Guardar conjunto de filtro"
+msgstr ""
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
-msgstr "Exportar a CSV"
+msgstr "Exporter en CSV"
 
 #: views/edit-filters.php:27
 msgid "Filter Name"
-msgstr "Nombre del Filtro"
+msgstr "Nom du filtre"
 
 #: views/edit-filters.php:28
 msgid "Save"
-msgstr "Guardar"
+msgstr "Enregistrer"
 
 #: views/edit-filters.php:29
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annuler"
 
 #: views/edit-filters.php:32
 msgid "Reset to Default"
-msgstr "Restablecer por defecto"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Advanced Post Manager"
-msgstr "Advanced Post Manager"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid "Dialing custom post types to 11 with advanced filtering controls."
-msgstr "Para marcar tipos de post personalizados a 11 con controles avanzados de filtrado."
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Modern Tribe, Inc."
-msgstr "Modern Tribe, Inc."
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://m.tri.be/4n"
-msgstr "http://m.tri.be/4n"
+msgstr ""
