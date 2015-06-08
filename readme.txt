@@ -34,6 +34,38 @@ If you’ve identified a bug and want to submit a patch, we’d welcome it at ou
 
 This plugin is for developers. Nothing will happen until you write some code to take advantage of the functionality it offers.
 
+= Translators (mostly imported from Events Calendar PRO) =
+
+* Afrikaans from Liza Welsh
+* Brazilian Portuguese from Gustavo Bordoni
+* British English from John Browning
+* Bulgarian from Nedko Ivanov
+* Chinese from Massound Huang
+* Czech from Petr Bastan
+* Danish from Hans Christian Andersen
+* Dutch from Dirk Westenberg
+* Estonian from Andra Saimre
+* Finnish by Elias Okkonen
+* French from Sylvain Delisle
+* German from Oliver Heinrich
+* Greek from Yannis Troullinos
+* Hungarian from Balazs Dobos
+* Icelandic by Baldvin Örn Berndsen
+* Indonesian by Didik Priyanto
+* Italian from Gabriele Taffi
+* Latvian from Raivis Dejus
+* Lithuanian from Gediminas Pankevicius
+* Portuguese from Sérgio Leite
+* Romanian from Cosmin Vaman
+* Russian from Alexander Tinyaev
+* Serbian from Marko Manojlovic
+* Slovak from Emilia Valova
+* Slovenian from Žiga Vajdic
+* Spanish from Juanjo Navarro
+* Swedish from Jonas Reinicke
+* Turkish by Nadin Kokciyan
+* Ukranian by Vasily Vishnyakov
+
 == Screenshots ==
 
 1. The filters and columns in action
@@ -52,6 +84,7 @@ This plugin is for developers. Nothing will happen until you write some code to 
 * Feature - added translation support
 * Feature - Added Brazilian Portuguese translation files, courtesy of Gustavo Bordoni
 * Feature - Added Spanish translation files, courtesy of robotic translation
+* Feature - Partial language support for Afrikaans, Bulgarian, Chinese (Taiwan), Czech, Danish, Dutch, English (UK), Estonian, Finnish, French (France), German, Greek, Hungarian, Icelandic, Indonesian, Italian, Latvian, Lithuanian, Portuguese (Portugal), Romanian, Russian, Serbian, Slovak, Slovenian, Swedish, Turkish, and Ukrainian imported from Events Calendar PRO
 
 = 2.0 =
 
