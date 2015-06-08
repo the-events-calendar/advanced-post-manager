@@ -1,172 +1,172 @@
-# Translation of Advanced Post Manager in Spanish (Spain)
+# Translation of Advanced Post Manager in Serbian
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 15:47:17+0000\n"
+"PO-Revision-Date: 2015-06-08 15:48:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Advanced Post Manager\n"
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
-msgstr "Parece que usted no tiene datos de demostración. <a href=\"%s\">Descargue nuestros datos</a> y use el <a href=\"%s\">WordPress Importer</a>."
+msgstr "Izgleda da nemate demo podataka. <a href=\"%s\">Skinite naše podatke</a> i koristite <a href=\"%s\">WordPress importer</a>."
 
 #: lib/tribe-columns.class.php:43
 msgid "Column Name"
-msgstr "Nombre de Columna"
+msgstr "Naziv kolone"
 
 #: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
 msgid "Comments"
-msgstr "Comentarios"
+msgstr "Komentari"
 
 #: lib/tribe-columns.class.php:158
 msgid "Add a Column"
-msgstr "Agregar una columna"
+msgstr "Dodajte kolonu"
 
 #: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
 msgid "Is"
-msgstr "Es"
+msgstr "Je"
 
 #: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
 msgid "Is Not"
-msgstr "No Es"
+msgstr "Nije"
 
 #: lib/tribe-filters.class.php:65
 msgid "LIKE"
-msgstr "PARECIDO"
+msgstr "Sviđa mi se"
 
 #: lib/tribe-filters.class.php:69
 msgid "Search"
-msgstr "Buscar"
+msgstr "Pretraga"
 
 #: lib/tribe-filters.class.php:80
 msgid "Member Type"
-msgstr "Tipo de Miembro"
+msgstr "Tip člana"
 
 #: lib/tribe-filters.class.php:84
 msgid "Cafe"
-msgstr "Café"
+msgstr "Kafe"
 
 #: lib/tribe-filters.class.php:85
 msgid "Private Desk"
-msgstr "Escritorio Privado"
+msgstr "Privatna firma"
 
 #: lib/tribe-filters.class.php:86
 msgid "Office"
-msgstr "Oficina"
+msgstr "Kancelarija"
 
 #: lib/tribe-filters.class.php:93
 msgid "what i’m querying. probably a key in the options array in $filters"
-msgstr "qué estoy consultando. probablemente una clave en la matriz opciones en $filters"
+msgstr "koji je upit. vjerovatno ključ u nizu opcija u $filters"
 
 #: lib/tribe-filters.class.php:178
 msgid "Active Filters"
-msgstr "Filtros activos"
+msgstr ""
 
 #: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
-msgstr "Filtro Guardado"
+msgstr ""
 
 #: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
-msgstr "Elija un Filtro guardado"
+msgstr "Odaberite sačuvani filter"
 
 #: lib/tribe-filters.class.php:631
 msgid "Add a Filter"
-msgstr "Egregar un Filtro"
+msgstr "Dodajte filter"
 
 #: lib/tribe-meta-box-helper.php:44
 msgid "Extended Information"
-msgstr "Información extendida"
+msgstr "Detaljne informacije"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
 msgid "Delete this image"
-msgstr "Borrar esta imagen"
+msgstr "Obrišite ovu sliku"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
 #: lib/tribe-meta-box.php:385
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Obriši"
 
 #: lib/tribe-meta-box.php:337
 msgid "Uploaded files"
-msgstr "Subir archivos"
+msgstr "Dodati fajlovi"
 
 #: lib/tribe-meta-box.php:346
 msgid "Upload new files"
-msgstr "Subir nuevos archivos"
+msgstr "Dodaj nove fajlove"
 
 #: lib/tribe-meta-box.php:349
 msgid "Add another file"
-msgstr "Agregar otro archivo"
+msgstr "Dodaj još jedan fajl"
 
 #: lib/tribe-meta-box.php:392
 msgid "Add more images"
-msgstr "Agregar más imagenes"
+msgstr "Dodajte još slika"
 
 #: lib/tribe-meta-box.php:400
 msgid "Select a color"
-msgstr "Escoga un color"
+msgstr "Odaberite boju"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
-msgstr "Click para alternar"
+msgstr "Kliknite da bi ste otvorili"
 
 #: views/edit-filters.php:8
 msgid "Filters &amp; Columns"
-msgstr "Filtros y Columnas"
+msgstr "Filteri i kolone"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
-msgstr "Columnas de activos"
+msgstr ""
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
-msgstr "Arrastrar y soltar a la orden y seleccione las columnas que se muestran en la tabla de entradas."
+msgstr ""
 
 #: views/edit-filters.php:20
 msgid "Apply"
-msgstr "Aplicar"
+msgstr "Potvrdi"
 
 #: views/edit-filters.php:21
 msgid "Save Filter Set"
-msgstr "Guardar conjunto de filtro"
+msgstr ""
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
-msgstr "Exportar a CSV"
+msgstr "Izvezi u CSV"
 
 #: views/edit-filters.php:27
 msgid "Filter Name"
-msgstr "Nombre del Filtro"
+msgstr "Naziv filtera"
 
 #: views/edit-filters.php:28
 msgid "Save"
-msgstr "Guardar"
+msgstr "Sačuvaj"
 
 #: views/edit-filters.php:29
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Otkaži"
 
 #: views/edit-filters.php:32
 msgid "Reset to Default"
-msgstr "Restablecer por defecto"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Advanced Post Manager"
-msgstr "Advanced Post Manager"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid "Dialing custom post types to 11 with advanced filtering controls."
-msgstr "Para marcar tipos de post personalizados a 11 con controles avanzados de filtrado."
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Modern Tribe, Inc."
-msgstr "Modern Tribe, Inc."
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://m.tri.be/4n"
-msgstr "http://m.tri.be/4n"
+msgstr ""
