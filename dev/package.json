@@ -1,0 +1,11 @@
+{
+  "name": "advanced-post-manager",
+   "engines": {
+    "node": "0.10.30",
+    "npm": "1.4.23"
+  },
+  "devDependencies": {
+    "grunt-glotpress": "^0.1.1",
+    "grunt-wp-i18n": "^0.4.8"
+  }
+}
