@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         options: {
           url: 'http://translations.tri.be',
           domainPath: '../lang',
-          slug: 'advanced-post-manager',
+          slug: 'tribe-apm',
           textdomain: 'tribe-apm',
         },
       },
