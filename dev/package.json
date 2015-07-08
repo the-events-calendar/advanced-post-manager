@@ -5,7 +5,7 @@
     "npm": "1.4.23"
   },
   "devDependencies": {
-    "grunt-glotpress": "^0.1.1",
+    "grunt-glotpress": "^0.2.1",
     "grunt-wp-i18n": "^0.4.8"
   }
 }
