@@ -34,37 +34,13 @@ If you’ve identified a bug and want to submit a patch, we’d welcome it at ou
 
 This plugin is for developers. Nothing will happen until you write some code to take advantage of the functionality it offers.
 
-= Translators (mostly imported from Events Calendar PRO) =
+= Translations =
 
-* Afrikaans from Liza Welsh
-* Brazilian Portuguese from Gustavo Bordoni
-* British English from John Browning
-* Bulgarian from Nedko Ivanov
-* Chinese from Massound Huang
-* Czech from Petr Bastan
-* Danish from Hans Christian Andersen
-* Dutch from Dirk Westenberg
-* Estonian from Andra Saimre
-* Finnish by Elias Okkonen
-* French from Sylvain Delisle
-* German from Oliver Heinrich
-* Greek from Yannis Troullinos
-* Hungarian from Balazs Dobos
-* Icelandic by Baldvin Örn Berndsen
-* Indonesian by Didik Priyanto
-* Italian from Gabriele Taffi
-* Latvian from Raivis Dejus
-* Lithuanian from Gediminas Pankevicius
-* Portuguese from Sérgio Leite
-* Romanian from Cosmin Vaman
-* Russian from Alexander Tinyaev
-* Serbian from Marko Manojlovic
-* Slovak from Emilia Valova
-* Slovenian from Žiga Vajdic
-* Spanish from Juanjo Navarro
-* Swedish from Jonas Reinicke
-* Turkish by Nadin Kokciyan
-* Ukranian by Vasily Vishnyakov
+* German
+* Portuguese (Brazil)
+* Spanish (Spain)
+
+Many thanks to all our translators!  You can grab the latest translations or contribute at http://translations.theeventscalendar.com
 
 == Screenshots ==
 
