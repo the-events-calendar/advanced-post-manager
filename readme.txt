@@ -49,7 +49,12 @@ Many thanks to all our translators!  You can grab the latest translations or con
 
 == Changelog ==
 
-= [Unreleased] unreleased =
+= [3.11] =
+
+* Security - Added escaping to a number of previously un-escaped values
+* Feature - Added translations
+* Bug - Fixed issue where markup was displaying When rendering APM active columns for comments
+* Bug - Resolved bug that caused comment bubbles in List Tables to visually break
 
 = [3.10] 2015-06-09 =
 
