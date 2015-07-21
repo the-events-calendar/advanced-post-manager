@@ -56,6 +56,11 @@ class Tribe_Columns {
 		$this->add_actions_and_filters();
 
 		$this->url = trailingslashit( plugins_url( '', __FILE__ ) );
+
+		// get the headers for the table
+		$this->load_list_table();
+		$list = new WP_Posts_List_Table();
+		$this->headers = $list->get_columns();
 	}
 
 	// PUBLIC API METHODS
@@ -357,14 +362,7 @@ class Tribe_Columns {
 				$headers = array('cb' => '<input type="checkbox" />');
 			}
 			else {
-				// Cause infinite loops get boring after a while
-				remove_filter( 'manage_'.$this->post_type.'_posts_columns', array($this, 'column_headers'));
-				$this->load_list_table();
-
-				$list = new WP_Posts_List_Table();
-				$headers = $list->get_columns();
-
-				add_filter( 'manage_'.$this->post_type.'_posts_columns', array($this, 'column_headers'));
+				$headers = $this->headers;
 			}
 			foreach ( $this->columns as $key => $value ) {
 				$headers[$key] = $value['name'];
