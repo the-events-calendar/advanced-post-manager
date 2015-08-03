@@ -62,7 +62,7 @@ class Tribe_Filters {
 			'lt' => '<',
 			'gte' => '>=',
 			'lte' => '<=',
-			'like' => __('LIKE','tribe-apm')
+			'like' => 'LIKE',
 		);
 
 		$this->query_search_options = array(
