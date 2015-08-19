@@ -42,6 +42,30 @@ This plugin is for developers. Nothing will happen until you write some code to 
 
 Many thanks to all our translators!  You can grab the latest translations or contribute at http://translations.theeventscalendar.com
 
+== Add-Ons ==
+
+But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over at the <a href="http://m.tri.be/46">Modern Tribe website.</a>
+
+Our Free Plugins:
+
+* <a href="http://wordpress.org/extend/plugins/advanced-post-manager/?ref=tec-readme" target="_blank">Advanced Post Manager</a>
+* <a href="http://wordpress.org/plugins/blog-copier/?ref=tec-readme" target="_blank">Blog Copier</a>
+* <a href="http://wordpress.org/plugins/image-rotation-repair/?ref=tec-readme" target="_blank">Image Rotation Widget</a>
+* <a href="http://wordpress.org/plugins/widget-builder/?ref=tec-readme" target="_blank">Widget Builder</a>
+
+Our Premium Plugins:
+
+* <a href="http://m.tri.be/2c" target="_blank">The Events Calendar PRO</a>
+* <a href="http://m.tri.be/2e" target="_blank">The Events Calendar: Eventbrite Tickets</a>
+* <a href="http://m.tri.be/2g" target="_blank">The Events Calendar: Community Events</a>
+* <a href="http://m.tri.be/2h" target="_blank">The Events Calendar: Facebook Events</a>
+* <a href="http://m.tri.be/2i" target="_blank">The Events Calendar: WooCommerce Tickets</a>
+* <a href="http://m.tri.be/ci" target="_blank">The Events Calendar: EDD Tickets Tickets</a>
+* <a href="http://m.tri.be/cu" target="_blank">The Events Calendar: WPEC Tickets</a>
+* <a href="http://m.tri.be/dp" target="_blank">The Events Calendar: Shopp Tickets</a>
+* <a href="http://m.tri.be/fa" target="_blank">The Events Calendar: Filter Bar</a>
+* <a href="http://m.tri.be/18h9" target="_blank">The Events Calendar: iCal Importer</a>
+
 == Screenshots ==
 
 1. The filters and columns in action
