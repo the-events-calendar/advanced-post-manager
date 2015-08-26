@@ -73,6 +73,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [Unreleased] unreleased =
+
+* Bug - Don't translate SQL "LIKE". That's just silly
+
 = [3.11] =
 
 * Feature - Completed compatibility work with Events Calendar PRO
