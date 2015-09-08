@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 15:57:13+0000\n"
+"PO-Revision-Date: 2015-08-18 11:48:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
-msgstr "Vypadá to, že nemáte žádné demonstrační data. <a href=\"%s\">Stáhněte si naše data</a> a použijte <a href=\"%s\">Nástroje Importu</a>."
+msgstr "Vypadá to, že nemáte žádná ukázková data. <a href=\"%s\">Stáhněte si naše data</a> a použijte nástroj <a href=\"%s\">WordPress Importer</a>."
 
 #: lib/tribe-columns.class.php:43
 msgid "Column Name"
@@ -34,13 +34,9 @@ msgstr "Je"
 msgid "Is Not"
 msgstr "Není"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "LIKE"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
-msgstr "Hledat"
+msgstr "Vyhledávání"
 
 #: lib/tribe-filters.class.php:80
 msgid "Member Type"
@@ -64,11 +60,11 @@ msgstr "na co se dotazuji. pravděpodobně klíč v poli options v proměnné $f
 
 #: lib/tribe-filters.class.php:178
 msgid "Active Filters"
-msgstr ""
+msgstr "Aktivní filtry"
 
 #: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
-msgstr ""
+msgstr "Uložená sada filtrů"
 
 #: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
@@ -121,11 +117,11 @@ msgstr "Filtry a sloupce"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
-msgstr ""
+msgstr "Aktivní sloupce"
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
-msgstr ""
+msgstr "Vyberte sloupce, které se mají zobrazit při výpisu položek a pomocí myši lze sloupce také libovolně seřadit."
 
 #: views/edit-filters.php:20
 msgid "Apply"
@@ -133,7 +129,7 @@ msgstr "Použít"
 
 #: views/edit-filters.php:21
 msgid "Save Filter Set"
-msgstr ""
+msgstr "Uložit sadu filtrů"
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
@@ -153,20 +149,20 @@ msgstr "Zrušit"
 
 #: views/edit-filters.php:32
 msgid "Reset to Default"
-msgstr ""
+msgstr "Obnovit výchozí"
 
 #. Plugin Name of the plugin/theme
 msgid "Advanced Post Manager"
-msgstr ""
+msgstr "Advanced Post Manager"
 
 #. Description of the plugin/theme
 msgid "Dialing custom post types to 11 with advanced filtering controls."
-msgstr ""
+msgstr "Lepší správa vlastních typů obsahu s pokročilými možnostmi filtrování."
 
 #. Author of the plugin/theme
 msgid "Modern Tribe, Inc."
-msgstr ""
+msgstr "Modern Tribe, Inc."
 
 #. Author URI of the plugin/theme
 msgid "http://m.tri.be/4n"
-msgstr ""
+msgstr "http://m.tri.be/4n"

@@ -34,10 +34,6 @@ msgstr "is"
 msgid "Is Not"
 msgstr "is nie"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "HOU VAN"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Soek"

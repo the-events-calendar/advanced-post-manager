@@ -34,10 +34,6 @@ msgstr "Öyle"
 msgid "Is Not"
 msgstr "Öyle değil"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "BENZER"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Ara"

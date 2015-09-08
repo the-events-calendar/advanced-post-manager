@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-08 15:47:17+0000\n"
+"PO-Revision-Date: 2015-08-06 15:28:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
-msgstr "Parece que usted no tiene datos de demostración. <a href=\"%s\">Descargue nuestros datos</a> y use el <a href=\"%s\">WordPress Importer</a>."
+msgstr "Parece que no tienes ningún tipo de datos de prueba. <a href=\"%s\">Descárgate nuestros datos</a> y usa el <a href=\"%s\">importador de WordPress</a>."
 
 #: lib/tribe-columns.class.php:43
 msgid "Column Name"
@@ -24,7 +24,7 @@ msgstr "Comentarios"
 
 #: lib/tribe-columns.class.php:158
 msgid "Add a Column"
-msgstr "Agregar una columna"
+msgstr "Añadir una columna"
 
 #: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
 msgid "Is"
@@ -33,10 +33,6 @@ msgstr "Es"
 #: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
 msgid "Is Not"
 msgstr "No Es"
-
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "PARECIDO"
 
 #: lib/tribe-filters.class.php:69
 msgid "Search"
@@ -60,7 +56,7 @@ msgstr "Oficina"
 
 #: lib/tribe-filters.class.php:93
 msgid "what i’m querying. probably a key in the options array in $filters"
-msgstr "qué estoy consultando. probablemente una clave en la matriz opciones en $filters"
+msgstr "lo que estoy consultando, probablemente una clave en el array de opciones en $filters"
 
 #: lib/tribe-filters.class.php:178
 msgid "Active Filters"
@@ -68,15 +64,15 @@ msgstr "Filtros activos"
 
 #: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
-msgstr "Filtro Guardado"
+msgstr "Colección de filtros guardados"
 
 #: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
-msgstr "Elija un Filtro guardado"
+msgstr "Elige un filtro guardado"
 
 #: lib/tribe-filters.class.php:631
 msgid "Add a Filter"
-msgstr "Egregar un Filtro"
+msgstr "Añadir un filtro"
 
 #: lib/tribe-meta-box-helper.php:44
 msgid "Extended Information"
@@ -101,19 +97,19 @@ msgstr "Subir nuevos archivos"
 
 #: lib/tribe-meta-box.php:349
 msgid "Add another file"
-msgstr "Agregar otro archivo"
+msgstr "Añadir otro archivo"
 
 #: lib/tribe-meta-box.php:392
 msgid "Add more images"
-msgstr "Agregar más imagenes"
+msgstr "Añadir más imágenes"
 
 #: lib/tribe-meta-box.php:400
 msgid "Select a color"
-msgstr "Escoga un color"
+msgstr "Elige un color"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
-msgstr "Click para alternar"
+msgstr "Haz clic para alternar"
 
 #: views/edit-filters.php:8
 msgid "Filters &amp; Columns"
@@ -121,11 +117,11 @@ msgstr "Filtros y Columnas"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
-msgstr "Columnas de activos"
+msgstr "Columnas activas"
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
-msgstr "Arrastrar y soltar a la orden y seleccione las columnas que se muestran en la tabla de entradas."
+msgstr "Arrastra y suelta para ordenar y seleccionar qué columnas se mostrarán en la tabla de entradas."
 
 #: views/edit-filters.php:20
 msgid "Apply"
@@ -133,7 +129,7 @@ msgstr "Aplicar"
 
 #: views/edit-filters.php:21
 msgid "Save Filter Set"
-msgstr "Guardar conjunto de filtro"
+msgstr "Guardar colección de filtros"
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
@@ -161,7 +157,7 @@ msgstr "Advanced Post Manager"
 
 #. Description of the plugin/theme
 msgid "Dialing custom post types to 11 with advanced filtering controls."
-msgstr "Para marcar tipos de post personalizados a 11 con controles avanzados de filtrado."
+msgstr "Una forma de crear filtros avanzados para los tipos de entrada personalizados en WordPress."
 
 #. Author of the plugin/theme
 msgid "Modern Tribe, Inc."
