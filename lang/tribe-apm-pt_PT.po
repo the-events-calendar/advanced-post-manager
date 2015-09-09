@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-06-18 18:11:28+0000\n"
+"PO-Revision-Date: 2015-08-06 15:28:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,11 +12,11 @@ msgstr ""
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
-msgstr "Parece que você não tem todas as informações de demonstração. <a href=\"%s\">Faça o download de nosso arquivo</a> e use o <a href=\"%s\">WordPress Importer</a>."
+msgstr "Parece que não tem nenhuns dados de demonstração. <a href=\"%s\">Descarregue os nossos dados</a> e utilize o <a href=\"%s\">WordPress Importer</a>."
 
 #: lib/tribe-columns.class.php:43
 msgid "Column Name"
-msgstr "Nome da Coluna"
+msgstr "Nome da coluna"
 
 #: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
 msgid "Comments"
@@ -34,17 +34,13 @@ msgstr "é"
 msgid "Is Not"
 msgstr "não é"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "COMO"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Pesquisa"
 
 #: lib/tribe-filters.class.php:80
 msgid "Member Type"
-msgstr "Tipo de Membro"
+msgstr "Tipo de membro"
 
 #: lib/tribe-filters.class.php:84
 msgid "Cafe"
@@ -60,19 +56,19 @@ msgstr "Escritório"
 
 #: lib/tribe-filters.class.php:93
 msgid "what i’m querying. probably a key in the options array in $filters"
-msgstr "o que eu estou a consultar. Provavelmente uma chave na matriz de opções em $filtros"
+msgstr "o que eu estou a consultar. Provavelmente uma chave na matriz de opções em $filters"
 
 #: lib/tribe-filters.class.php:178
 msgid "Active Filters"
-msgstr ""
+msgstr "Filtros activos"
 
 #: lib/tribe-filters.class.php:519
 msgid "Saved Filter Set"
-msgstr ""
+msgstr "Guardar conjunto de filtros"
 
 #: lib/tribe-filters.class.php:521
 msgid "Choose a Saved Filter"
-msgstr "Escolha um filtro gravado"
+msgstr "Escolha um filtro guardado"
 
 #: lib/tribe-filters.class.php:631
 msgid "Add a Filter"
@@ -84,24 +80,24 @@ msgstr "Informação extendida"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
 msgid "Delete this image"
-msgstr "Excluir esta imagem"
+msgstr "Apagar esta imagem"
 
 #: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
 #: lib/tribe-meta-box.php:385
 msgid "Delete"
-msgstr "Excluir"
+msgstr "Apagar"
 
 #: lib/tribe-meta-box.php:337
 msgid "Uploaded files"
-msgstr "Arquivos enviados"
+msgstr "Ficheiros carregados"
 
 #: lib/tribe-meta-box.php:346
 msgid "Upload new files"
-msgstr "Envie novos arquivos"
+msgstr "Carregar novos ficheiros"
 
 #: lib/tribe-meta-box.php:349
 msgid "Add another file"
-msgstr "Adicionar outro arquivo"
+msgstr "Adicionar outro ficheiro"
 
 #: lib/tribe-meta-box.php:392
 msgid "Add more images"
@@ -109,7 +105,7 @@ msgstr "Adicionar mais imagens"
 
 #: lib/tribe-meta-box.php:400
 msgid "Select a color"
-msgstr "Selecione uma cor"
+msgstr "Seleccione uma cor"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
@@ -121,7 +117,7 @@ msgstr "Filtros &amp; colunas"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
-msgstr ""
+msgstr "Colunas activas"
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
@@ -133,7 +129,7 @@ msgstr "Aplicar"
 
 #: views/edit-filters.php:21
 msgid "Save Filter Set"
-msgstr ""
+msgstr "Guardar conjunto de filtros"
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
@@ -157,11 +153,11 @@ msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Advanced Post Manager"
-msgstr ""
+msgstr "Advanced Post Manager"
 
 #. Description of the plugin/theme
 msgid "Dialing custom post types to 11 with advanced filtering controls."
-msgstr ""
+msgstr "A rodar os tipos de artigo personalizados até ao 11 com controlos de filtragem avançados."
 
 #. Author of the plugin/theme
 msgid "Modern Tribe, Inc."
@@ -169,4 +165,4 @@ msgstr "Modern Tribe, Inc."
 
 #. Author URI of the plugin/theme
 msgid "http://m.tri.be/4n"
-msgstr ""
+msgstr "http://m.tri.be/4n"

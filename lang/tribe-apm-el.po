@@ -34,10 +34,6 @@ msgstr "Είναι"
 msgid "Is Not"
 msgstr "Δεν Είναι"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "ΜΟΥ ΑΡΕΣΕΙ"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Αναζήτηση"

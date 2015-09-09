@@ -34,10 +34,6 @@ msgstr "Це"
 msgid "Is Not"
 msgstr "Це не"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "ПОДОБАЄТЬСЯ"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Пошук"

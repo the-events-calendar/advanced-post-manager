@@ -34,10 +34,6 @@ msgstr "Egyezik"
 msgid "Is Not"
 msgstr "Nem egyezik"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "LÁJK"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Keresés"

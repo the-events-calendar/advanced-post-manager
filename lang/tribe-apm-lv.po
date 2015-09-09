@@ -34,10 +34,6 @@ msgstr "Ir"
 msgid "Is Not"
 msgstr "Nav"
 
-#: lib/tribe-filters.class.php:65
-msgid "LIKE"
-msgstr "LIKE"
-
 #: lib/tribe-filters.class.php:69
 msgid "Search"
 msgstr "Meklēt"
