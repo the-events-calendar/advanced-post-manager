@@ -1,7 +1,7 @@
 <?php
 /**
  * Handy function for creating a dropdown field for filters
- * 
+ *
  * @param $name string The HTML name for the <select> field
  * @param $options array An array of $key=>$value pairs, producing <option value="$key">$value</option> in the dropdown
  * @param $active string|array The active state of the field. Values correspond to the $key's in $options
@@ -9,7 +9,7 @@
  * @return string HTML <select> element
  */
 function tribe_select_field( $name, $options = array(), $active = '', $allow_multi = false ) {
-	if ( ! class_exists('Tribe_Filters') ) {
+	if ( ! class_exists( 'Tribe_Filters' ) ) {
 		include_once TRIBE_APM_LIB_PATH . 'tribe-filters.class.php';
 	}
 	return Tribe_Filters::select_field( $name, $options, $active, $allow_multi );
