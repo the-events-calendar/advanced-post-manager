@@ -8,10 +8,6 @@
  Text Domain: tribe-apm
  */
 
-if ( class_exists( 'Tribe_APM' ) ) {
-	return;
-}
-
 define( 'TRIBE_APM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRIBE_APM_LIB_PATH', TRIBE_APM_PATH . 'lib/' );
 
