@@ -1,6 +1,6 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, mattwiebe, jkudish, nickciske, peterchester, shanepearlman, borkweb, zbtirrell
+Contributors: ModernTribe, borkweb, zbtirrell, mattwiebe, jkudish, nickciske, peterchester, shanepearlman
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
@@ -87,8 +87,12 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 
 = Translations =
 
+* Catalan
+* Czech
+* French
 * German
 * Portuguese (Brazil)
+* Portuguese (Portugal)
 * Spanish (Spain)
 
 Many thanks to all our translators!  You can grab the latest translations or contribute at http://translations.theeventscalendar.com
@@ -108,7 +112,7 @@ Our Free Plugins:
 Our Premium Plugins:
 
 * <a href="http://m.tri.be/2c" target="_blank">Events Calendar PRO</a>
-* <a href="http://m.tri.be/18vy" target="_blank">Events Tickets Plus</a>
+* <a href="http://m.tri.be/18vy" target="_blank">Event Tickets Plus</a>
 * <a href="http://m.tri.be/2e" target="_blank">The Events Calendar: Eventbrite Tickets</a>
 * <a href="http://m.tri.be/2g" target="_blank">The Events Calendar: Community Events</a>
 * <a href="http://m.tri.be/18vw" target="_blank">The Events Calendar: Community Tickets</a>
@@ -122,6 +126,11 @@ Our Premium Plugins:
 2. Automatically registered metaboxes for data entry
 
 == Changelog ==
+
+= [4.0 beta] unreleased =
+
+* Fix - improved code standardization to bring this up to Modern Tribe standards
+* Feature - increased language support including Catalan, Czech, French, and Portuguese (Portugal)
 
 = [3.12] 2015-09-08 =
 
