@@ -7,8 +7,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.0-alpha-1000\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
 "Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
@@ -26,94 +30,90 @@ msgstr "Hozzászólások"
 msgid "Add a Column"
 msgstr "Oszlop hozzáadása"
 
-#: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
 msgid "Is"
 msgstr "Egyezik"
 
-#: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
 msgid "Is Not"
 msgstr "Nem egyezik"
 
-#: lib/tribe-filters.class.php:69
+#: lib/tribe-filters.class.php:71
 msgid "Search"
 msgstr "Keresés"
 
-#: lib/tribe-filters.class.php:80
+#: lib/tribe-filters.class.php:82
 msgid "Member Type"
 msgstr "Tagság típusa"
 
-#: lib/tribe-filters.class.php:84
+#: lib/tribe-filters.class.php:86
 msgid "Cafe"
 msgstr "Kávézó"
 
-#: lib/tribe-filters.class.php:85
+#: lib/tribe-filters.class.php:87
 msgid "Private Desk"
 msgstr "Saját asztal"
 
-#: lib/tribe-filters.class.php:86
+#: lib/tribe-filters.class.php:88
 msgid "Office"
 msgstr "Iroda"
 
-#: lib/tribe-filters.class.php:93
+#: lib/tribe-filters.class.php:95
 msgid "what i’m querying. probably a key in the options array in $filters"
 msgstr "amit próbálok lekérdezni. valószínűleg a $filters (szűrők) sor egyik bejegyzése"
 
-#: lib/tribe-filters.class.php:178
+#: lib/tribe-filters.class.php:181
 msgid "Active Filters"
 msgstr ""
 
-#: lib/tribe-filters.class.php:519
+#: lib/tribe-filters.class.php:533
 msgid "Saved Filter Set"
 msgstr ""
 
-#: lib/tribe-filters.class.php:521
+#: lib/tribe-filters.class.php:535
 msgid "Choose a Saved Filter"
 msgstr "Válassz egy mentett szűrőt"
 
-#: lib/tribe-filters.class.php:631
+#: lib/tribe-filters.class.php:650
 msgid "Add a Filter"
 msgstr "Szűrő hozzáadása"
 
-#: lib/tribe-meta-box-helper.php:44
+#: lib/tribe-meta-box-helper.php:45
 msgid "Extended Information"
 msgstr "Kibővített információk"
 
-#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
 msgid "Delete this image"
 msgstr "Kép törlése"
 
-#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
-#: lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
+#: lib/tribe-meta-box.php:413
 msgid "Delete"
 msgstr "Törlés"
 
-#: lib/tribe-meta-box.php:337
+#: lib/tribe-meta-box.php:363
 msgid "Uploaded files"
 msgstr "Feltöltött fájlok"
 
-#: lib/tribe-meta-box.php:346
+#: lib/tribe-meta-box.php:372
 msgid "Upload new files"
 msgstr "Új fájl feltöltése"
 
-#: lib/tribe-meta-box.php:349
+#: lib/tribe-meta-box.php:375
 msgid "Add another file"
 msgstr "További fájl hozzáadása"
 
-#: lib/tribe-meta-box.php:392
+#: lib/tribe-meta-box.php:420
 msgid "Add more images"
 msgstr "Több kép hozzáadása"
 
-#: lib/tribe-meta-box.php:400
+#: lib/tribe-meta-box.php:431
 msgid "Select a color"
 msgstr "Válassz színt"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
 msgstr "Kattints a lenyitáshoz"
-
-#: views/edit-filters.php:8
-msgid "Filters &amp; Columns"
-msgstr "Szűrők &amp; Oszlopok"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"

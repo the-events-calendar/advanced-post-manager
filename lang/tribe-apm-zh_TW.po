@@ -7,8 +7,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/1.0-alpha-1000\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
 "Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
@@ -26,94 +30,90 @@ msgstr "評論"
 msgid "Add a Column"
 msgstr "新增欄"
 
-#: lib/tribe-filters.class.php:50 lib/tribe-filters.class.php:70
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
 msgid "Is"
 msgstr "是"
 
-#: lib/tribe-filters.class.php:51 lib/tribe-filters.class.php:71
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
 msgid "Is Not"
 msgstr "不是"
 
-#: lib/tribe-filters.class.php:69
+#: lib/tribe-filters.class.php:71
 msgid "Search"
 msgstr "搜尋"
 
-#: lib/tribe-filters.class.php:80
+#: lib/tribe-filters.class.php:82
 msgid "Member Type"
 msgstr "會員類型"
 
-#: lib/tribe-filters.class.php:84
+#: lib/tribe-filters.class.php:86
 msgid "Cafe"
 msgstr "咖啡館"
 
-#: lib/tribe-filters.class.php:85
+#: lib/tribe-filters.class.php:87
 msgid "Private Desk"
 msgstr "私人辦公桌"
 
-#: lib/tribe-filters.class.php:86
+#: lib/tribe-filters.class.php:88
 msgid "Office"
 msgstr "辦公室"
 
-#: lib/tribe-filters.class.php:93
+#: lib/tribe-filters.class.php:95
 msgid "what i’m querying. probably a key in the options array in $filters"
 msgstr "我所要查詢的，大概是 a key in the options array in $filters。"
 
-#: lib/tribe-filters.class.php:178
+#: lib/tribe-filters.class.php:181
 msgid "Active Filters"
 msgstr ""
 
-#: lib/tribe-filters.class.php:519
+#: lib/tribe-filters.class.php:533
 msgid "Saved Filter Set"
 msgstr ""
 
-#: lib/tribe-filters.class.php:521
+#: lib/tribe-filters.class.php:535
 msgid "Choose a Saved Filter"
 msgstr "選擇現有的篩選"
 
-#: lib/tribe-filters.class.php:631
+#: lib/tribe-filters.class.php:650
 msgid "Add a Filter"
 msgstr "新增篩選"
 
-#: lib/tribe-meta-box-helper.php:44
+#: lib/tribe-meta-box-helper.php:45
 msgid "Extended Information"
 msgstr "延伸訊息："
 
-#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
 msgid "Delete this image"
 msgstr "刪除此圖片"
 
-#: lib/tribe-meta-box.php:114 lib/tribe-meta-box.php:340
-#: lib/tribe-meta-box.php:385
+#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
+#: lib/tribe-meta-box.php:413
 msgid "Delete"
 msgstr "刪除"
 
-#: lib/tribe-meta-box.php:337
+#: lib/tribe-meta-box.php:363
 msgid "Uploaded files"
 msgstr "上傳檔案"
 
-#: lib/tribe-meta-box.php:346
+#: lib/tribe-meta-box.php:372
 msgid "Upload new files"
 msgstr "上傳新檔案"
 
-#: lib/tribe-meta-box.php:349
+#: lib/tribe-meta-box.php:375
 msgid "Add another file"
 msgstr "新增另一檔案"
 
-#: lib/tribe-meta-box.php:392
+#: lib/tribe-meta-box.php:420
 msgid "Add more images"
 msgstr "新增更多圖片"
 
-#: lib/tribe-meta-box.php:400
+#: lib/tribe-meta-box.php:431
 msgid "Select a color"
 msgstr "選擇顏色"
 
 #: views/edit-filters.php:7 views/edit-filters.php:8
 msgid "Click to toggle"
 msgstr "點擊以切換"
-
-#: views/edit-filters.php:8
-msgid "Filters &amp; Columns"
-msgstr "篩選 &amp; 欄"
 
 #: views/edit-filters.php:14
 msgid "Active Columns"
