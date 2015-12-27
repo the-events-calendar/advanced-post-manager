@@ -80,6 +80,7 @@ class Tribe_Demo_APM {
 			'show_ui' => true,
 			'labels' => $labels,
 			'supports' => array( 'title' ),
+			'public' => true,
 		) );
 		register_taxonomy( 'tribe_studio', $this->post_type, array(
 			'show_ui' => true,

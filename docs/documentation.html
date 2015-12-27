@@ -482,5 +482,26 @@ tribe_setup_apm('my_post_type', $filter_array, $metaboxes );
 </ul>
 
 <p>These types will likely be extensible at some future point. A text field with a good <code>desc</code> goes a long way.</p>
+
+<h2 id="metaboxdatatypes">Template</h2>
+
+<p>Templates won't work unless <b>public</b> argument is present, as per Wordpress documentation:</p>
+
+<blockquote>
+<p>The second one is public which is a predefined flag to show the post type on the administration screens and to make it show up in the site content itself, if it's queried for.</p>
+<footer>— <a href="https://codex.wordpress.org/Post_Types#Custom_Post_Types" target = "_blank">WP Post Type Templates</a></footer>
+</blockquote>
+
+<p>Example:</p>
+<pre><code>register_post_type( $this->post_type, array(
+	'show_ui'	=> true,
+	'labels		=> $labels,
+	'supports'	=> array( 'title' ),
+	'public'	=> true,		// argument
+) );
+</code></pre>
+
+<p>You can then use default wp structure of <a href="https://codex.wordpress.org/Post_Type_Templates" target = "_blank">Post Type Templates</a>, e.g., single-{post_type}.php</p>
+
 </body>
 </html>
