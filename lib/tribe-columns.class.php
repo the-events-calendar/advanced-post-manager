@@ -371,7 +371,8 @@ class Tribe_Columns {
 		if ( $omit_checkbox && isset( $headers['cb'] ) ) {
 			unset( $headers['cb'] );
 		}
-		return $headers;
+
+		return apply_filters('tribe_apm_column_headers',$headers);
 	}
 
 	private function load_list_table() {
