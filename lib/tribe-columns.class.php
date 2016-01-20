@@ -372,7 +372,7 @@ class Tribe_Columns {
 			unset( $headers['cb'] );
 		}
 
-		return apply_filters('tribe_apm_column_headers',$headers);
+		return apply_filters( 'tribe_apm_column_headers', $headers );
 	}
 
 	private function load_list_table() {
