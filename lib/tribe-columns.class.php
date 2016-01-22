@@ -372,6 +372,13 @@ class Tribe_Columns {
 			unset( $headers['cb'] );
 		}
 
+		/**
+		 * Filters the column headers markup to be shown in the "Active Columns" section.
+		 *
+		 * @since 4.1
+		 *
+		 * @param array $headers An associative array of filter keys to column headers.
+		 */
 		return apply_filters( 'tribe_apm_column_headers', $headers );
 	}
 
