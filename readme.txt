@@ -127,6 +127,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.1] unreleased =
+
+* Tweak - Improve the documentation files to make sure it's clear on how to use Templates with Custom Post Types
+
 = [4.0] 2015-12-02 =
 
 * Fix - improved code standardization to bring this up to Modern Tribe standards
