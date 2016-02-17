@@ -548,7 +548,7 @@ class Tribe_Filters {
 		// Delete/Update Saved Query if one is active
 		if ( ! empty( $this->saved_active ) && isset( $this->saved_active ) ) {
 			?>
-			<span class="hide-if-no-js saved-filter-actions">';
+			<span class="hide-if-no-js saved-filter-actions">
 				<input type="hidden" name="tribe-saved-filter-active" value="<?php echo esc_attr( $this->saved_active->ID ); ?>" />
 				<input type="submit" name="tribe-update-saved-filter" value="Update Filter" class="button-secondary" />
 				<input type="submit" name="tribe-delete-saved-filter" value="Delete Filter" class="button-secondary" />
