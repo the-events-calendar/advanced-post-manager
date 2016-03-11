@@ -1,0 +1,11 @@
+[
+  "tribe-apm.php",
+  "scratch.php",
+  "docs/**/*",
+  "lang/**/*",
+  "lib/**/*",
+  "resources/**/*",
+  "views/**/*",
+  "readme.txt",
+  "screenshot*.png"
+]
