@@ -129,7 +129,7 @@ Our Premium Plugins:
 
 = [4.1] unreleased =
 
-* Tweak - Improve the documentation files to make sure it's clear on how to use Templates with Custom Post Types
+* Tweak - Improve the documentation files to make sure it's clear on how to use templates with Custom Post Types
 * Fix - Removed stray characters that were hanging around for no reason
 
 = [4.0] 2015-12-02 =
