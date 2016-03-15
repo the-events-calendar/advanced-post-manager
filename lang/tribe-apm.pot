@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Advanced Post Manager\n"
-"POT-Creation-Date: 2015-12-02 12:43-0500\n"
-"PO-Revision-Date: 2015-12-02 12:41-0500\n"
+"POT-Creation-Date: 2016-03-15 15:36-0400\n"
+"PO-Revision-Date: 2016-03-15 15:36-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: tribe-apm.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -25,6 +25,21 @@ msgstr ""
 msgid ""
 "It looks like you might not have any demo data. <a href=\"%s\">Download our "
 "data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr ""
+
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/basic-theme/exclude/file.php:3
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/plugin-include/plugin-include.php:6
+msgid "Exclude"
+msgstr ""
+
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/plugin-include/include/file.php:2
+msgid "Include"
+msgstr ""
+
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/add-domain.php:2
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:2
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:3
+msgid "String"
 msgstr ""
 
 #: lib/tribe-columns.class.php:43

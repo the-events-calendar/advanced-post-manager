@@ -10,6 +10,21 @@ msgstr ""
 "X-Generator: GlotPress/1.0-alpha-1100\n"
 "Project-Id-Version: Advanced Post Manager\n"
 
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/basic-theme/exclude/file.php:3
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/plugin-include/plugin-include.php:6
+msgid "Exclude"
+msgstr ""
+
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/plugin-include/include/file.php:2
+msgid "Include"
+msgstr ""
+
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/add-domain.php:2
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:2
+#: dev/node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:3
+msgid "String"
+msgstr ""
+
 #: views/edit-filters.php:8
 msgid "Filters & Columns"
 msgstr "Filters & Kolommen"
