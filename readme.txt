@@ -127,7 +127,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.1] unreleased =
+= [4.1] 2016-03-15 =
 
 * Tweak - Improve the documentation files to make sure it's clear on how to use templates with Custom Post Types
 * Fix - Removed stray characters that were hanging around for no reason
