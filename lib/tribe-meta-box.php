@@ -157,7 +157,15 @@ class Tribe_Meta_Box {
 			die( '1' );
 		}
 
-		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post ) {
+			die( '1' );
+		}
+
+		$cap = 'edit_' . $post->post_type;
+
+		// Check if the user can edit the post by ID
+		if ( ! current_user_can( $cap, $post->ID ) ) {
 			die( '1' );
 		}
 
@@ -178,7 +186,15 @@ class Tribe_Meta_Box {
 			die( '1' );
 		}
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post ) {
+			die( '1' );
+		}
+
+		$cap = 'edit_' . $post->post_type;
+
+		// Check if the user can edit the post by ID
+		if ( ! current_user_can( $cap, $post->ID ) ) {
 			die( '1' );
 		}
 
