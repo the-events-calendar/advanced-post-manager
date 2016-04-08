@@ -157,6 +157,18 @@ class Tribe_Meta_Box {
 			die( '1' );
 		}
 
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post ) {
+			die( '1' );
+		}
+
+		$cap = get_post_type_object( $post->post_type )->cap->edit_post;
+
+		// Check if the user can edit the post by ID
+		if ( ! current_user_can( $cap, $post->ID ) ) {
+			die( '1' );
+		}
+
 		delete_post_meta( $post_id, $key, $attach_id );
 
 		die( '0' );
@@ -171,6 +183,18 @@ class Tribe_Meta_Box {
 		list( $order, $post_id, $key, $nonce ) = explode( '|', $_POST['data'] );
 
 		if ( ! wp_verify_nonce( $nonce, 'tribe_ajax_reorder' ) ) {
+			die( '1' );
+		}
+
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post ) {
+			die( '1' );
+		}
+
+		$cap = get_post_type_object( $post->post_type )->cap->edit_posts;
+
+		// Check if the user can edit the post by ID
+		if ( ! current_user_can( $cap ) ) {
 			die( '1' );
 		}
 
