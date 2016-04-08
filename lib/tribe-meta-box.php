@@ -192,9 +192,12 @@ class Tribe_Meta_Box {
 		}
 
 		$cap = 'edit_' . $post->post_type;
+		if ( 'post' === $post->post_type || 'page' === $post->post_type ) {
+			$cap .= 's';
+		}
 
 		// Check if the user can edit the post by ID
-		if ( ! current_user_can( $cap, $post->ID ) ) {
+		if ( ! current_user_can( $cap ) ) {
 			die( '1' );
 		}
 
