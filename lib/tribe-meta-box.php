@@ -157,6 +157,10 @@ class Tribe_Meta_Box {
 			die( '1' );
 		}
 
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			die( '1' );
+		}
+
 		delete_post_meta( $post_id, $key, $attach_id );
 
 		die( '0' );
@@ -171,6 +175,10 @@ class Tribe_Meta_Box {
 		list( $order, $post_id, $key, $nonce ) = explode( '|', $_POST['data'] );
 
 		if ( ! wp_verify_nonce( $nonce, 'tribe_ajax_reorder' ) ) {
+			die( '1' );
+		}
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
 			die( '1' );
 		}
 
