@@ -127,6 +127,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.1.1] unreleased =
+
+* Tweak - Improve security on permissions for AJAX requests
+
 = [4.1] 2016-03-15 =
 
 * Tweak - Improve the documentation files to make sure it's clear on how to use templates with Custom Post Types
