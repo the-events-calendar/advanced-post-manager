@@ -127,7 +127,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.1.1] unreleased =
+= [4.1.1] 2016-04-11 =
 
 * Tweak - Improve security on permissions for AJAX requests
 
