@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Advanced Post Manager package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-06 15:28:36+0000\n"
+"PO-Revision-Date: 2015-12-04 00:24:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 
 #: views/edit-filters.php:8
 msgid "Filters & Columns"
-msgstr ""
+msgstr "Filtros e colunas"
 
 #: demo/demo.php:30
 msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
@@ -28,7 +28,7 @@ msgstr "Comentários"
 
 #: lib/tribe-columns.class.php:158
 msgid "Add a Column"
-msgstr "Adicionar coluna"
+msgstr "Adicionar uma coluna"
 
 #: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
 msgid "Is"
@@ -80,16 +80,16 @@ msgstr "Adicionar um filtro"
 
 #: lib/tribe-meta-box-helper.php:45
 msgid "Extended Information"
-msgstr "Informação extendida"
+msgstr "Informação estendida"
 
 #: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
 msgid "Delete this image"
-msgstr "Apagar esta imagem"
+msgstr "Eliminar esta imagem"
 
 #: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
 #: lib/tribe-meta-box.php:413
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Eliminar"
 
 #: lib/tribe-meta-box.php:363
 msgid "Uploaded files"
@@ -121,7 +121,7 @@ msgstr "Colunas activas"
 
 #: views/edit-filters.php:15
 msgid "Drag and drop to order and select which columns are displayed in the entries table."
-msgstr ""
+msgstr "Arraste e largue para ordenar e seleccionar que colunas são apresentadas na tabela."
 
 #: views/edit-filters.php:20
 msgid "Apply"
@@ -133,7 +133,7 @@ msgstr "Guardar conjunto de filtros"
 
 #: views/edit-filters.php:23
 msgid "Export to CSV"
-msgstr "Exportar em CSV"
+msgstr "Exportar para CSV"
 
 #: views/edit-filters.php:27
 msgid "Filter Name"
@@ -141,7 +141,7 @@ msgstr "Nome do filtro"
 
 #: views/edit-filters.php:28
 msgid "Save"
-msgstr "Gravar"
+msgstr "Guardar"
 
 #: views/edit-filters.php:29
 msgid "Cancel"
@@ -149,7 +149,7 @@ msgstr "Cancelar"
 
 #: views/edit-filters.php:32
 msgid "Reset to Default"
-msgstr ""
+msgstr "Repor valores por omissão"
 
 #. Plugin Name of the plugin/theme
 msgid "Advanced Post Manager"
