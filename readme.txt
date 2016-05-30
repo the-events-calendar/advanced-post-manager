@@ -87,15 +87,7 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 
 = Translations =
 
-* Catalan
-* Czech
-* French
-* German
-* Portuguese (Brazil)
-* Portuguese (Portugal)
-* Spanish (Spain)
-
-Many thanks to all our translators!  You can grab the latest translations or contribute at http://translations.theeventscalendar.com
+Many thanks to all our translators!  You can grab the latest translations or contribute at <a href=“http://m.tri.be/194h”>translations.theeventscalendar.com</a>.
 
 == Add-Ons ==
 
