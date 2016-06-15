@@ -1,6 +1,6 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, borkweb, zbtirrell, mattwiebe, jkudish, nickciske, peterchester, shanepearlman
+Contributors: ModernTribe, borkweb, zbtirrell, mattwiebe, jkudish, nickciske, peterchester, shanepearlman, aguseo, tribecari
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
@@ -62,6 +62,8 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 <a href="https://profiles.wordpress.org/shane.pearlman">Shane Pearlman</a>
 <a href="https://profiles.wordpress.org/thatdudebutch">Wayne Stratton</a>
 <a href="https://profiles.wordpress.org/zbtirrell">Zachary Tirrell</a>
+<a href="https://profiles.wordpress.org/aguseo">Andras Guseo</a>
+<a href="https://profiles.wordpress.org/tribecari">Caroline Tucker</a>
 
 = Past Contributors =
 
@@ -118,6 +120,10 @@ Our Premium Plugins:
 2. Automatically registered metaboxes for data entry
 
 == Changelog ==
+
+= [4.2] unreleased =
+
+* Fix - avoid errors and UI cruft when deactivating a plugin that added custom filters that were in use [45634]
 
 = [4.1.1] 2016-04-11 =
 
