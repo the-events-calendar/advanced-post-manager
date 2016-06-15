@@ -129,6 +129,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.2] unreleased =
+
+* Fix - avoid errors and UI cruft when deactivating a plugin that added custom filters that were in use [45634]
+
 = [4.1.1] 2016-04-11 =
 
 * Tweak - Improve security on permissions for AJAX requests

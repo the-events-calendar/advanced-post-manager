@@ -279,6 +279,10 @@ class Tribe_Filters {
 		$meta_query = array();
 
 		foreach ( $this->active as $k => $v ) {
+			if ( ! isset( $this->filters[ $k ] ) ) {
+				continue;
+			}
+
 			$filter = $this->filters[ $k ];
 			if ( isset( $filter['taxonomy'] ) ) {
 				$tax_query[] = $this->tax_query( $k, $v );
@@ -568,6 +572,10 @@ class Tribe_Filters {
 
 	// accepts a $this->active $key => value pair.
 	protected function table_row( $key, $value ) {
+		if ( ! isset( $this->filters[ $key ] ) ) {
+			return;
+		}
+
 		$filter = $this->filters[ $key ];
 		$before = '<tr><th scope="row">'.$filter['name'].'</th><td>';
 		$after = '<b class="close">×</b></td></tr>';
