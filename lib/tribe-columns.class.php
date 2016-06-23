@@ -146,7 +146,7 @@ class Tribe_Columns {
 
 				echo '<li>';
 				echo '<input type="hidden" name="' . esc_attr( $this->prefix . $i ) . '" value="' . esc_attr( $v ) . '" />';
-				echo wp_strip_all_tags( $headers[ $v ] );
+				echo esc_html( wp_strip_all_tags( $headers[ $v ] ) );
 				echo '<b class="close">×</b>';
 				echo '</li>';
 				$i++;
@@ -164,7 +164,7 @@ class Tribe_Columns {
 				if ( false !== strstr( $name, '="Comments"' ) ) {
 					$name = __( 'Comments' );
 				}
-				echo '<option value="' . esc_attr( $key ) . '">' . wp_strip_all_tags( $name ) . '</option>';
+				echo '<option value="' . esc_attr( $key ) . '">' . esc_html( wp_strip_all_tags( $name ) ) . '</option>';
 			}
 			?></select></span>
 <script> var Tribe_Columns = <?php echo json_encode( array(
