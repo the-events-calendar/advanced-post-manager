@@ -146,7 +146,7 @@ class Tribe_Columns {
 
 				echo '<li>';
 				echo '<input type="hidden" name="' . esc_attr( $this->prefix . $i ) . '" value="' . esc_attr( $v ) . '" />';
-				echo esc_html( $headers[ $v ] );
+				echo wp_strip_all_tags( $headers[ $v ] );
 				echo '<b class="close">×</b>';
 				echo '</li>';
 				$i++;
@@ -164,7 +164,7 @@ class Tribe_Columns {
 				if ( false !== strstr( $name, '="Comments"' ) ) {
 					$name = __( 'Comments' );
 				}
-				echo '<option value="' . esc_attr( $key ) . '">' . esc_html( $name ) . '</option>';
+				echo '<option value="' . esc_attr( $key ) . '">' . wp_strip_all_tags( $name ) . '</option>';
 			}
 			?></select></span>
 <script> var Tribe_Columns = <?php echo json_encode( array(
@@ -355,13 +355,13 @@ class Tribe_Columns {
 			}
 			else {
 				// Cause infinite loops get boring after a while
-				remove_filter( 'manage_' . $this->post_type.'_posts_columns', array( $this, 'column_headers' ) );
+				remove_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'column_headers' ) );
 				$this->load_list_table();
 
 				$list = new WP_Posts_List_Table();
 				$headers = $list->get_columns();
 
-				add_filter( 'manage_' . $this->post_type.'_posts_columns', array( $this, 'column_headers' ) );
+				add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'column_headers' ) );
 			}
 			foreach ( $this->columns as $key => $value ) {
 				$headers[ $key ] = $value['name'];
