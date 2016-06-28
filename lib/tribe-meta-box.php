@@ -40,7 +40,6 @@ class Tribe_Meta_Box {
 		$this->check_field_color();
 		$this->check_field_date();
 		$this->check_field_time();
-		$this->check_field_wysiwyg();
 
 		// load common js, css files
 		// must enqueue for all pages as we need js for the media upload, too
@@ -243,13 +242,6 @@ class Tribe_Meta_Box {
 		}
 	}
 
-	// Check field WYSIWYG
-	public function check_field_wysiwyg() {
-		if ( $this->has_field( 'wysiwyg' ) && self::is_edit_page() ) {
-			add_action( 'admin_print_footer_scripts', 'wp_tiny_mce', 25 );
-		}
-	}
-
 	/******************** END OTHER FIELDS **********************/
 
 	/******************** BEGIN META BOX PAGE **********************/
@@ -366,7 +358,12 @@ class Tribe_Meta_Box {
 
 	public function show_field_wysiwyg( $field, $meta ) {
 		$this->show_field_begin( $field, $meta );
-		echo "<textarea class='tribe-wysiwyg theEditor large-text' name='{$field['meta']}' id='{$field['meta']}' cols='60' rows='10'>$meta</textarea>";
+		$content  = get_post_meta( get_the_ID(), $field['meta'], true );
+		$content  = empty( $content ) || ! is_string( $content ) ? '' : $content;
+		$settings = array(
+			'media_buttons' => isset( $field['media_buttons'] ) ? (bool) $field['meta_buttons'] : false,
+		);
+		wp_editor( $content, $field['meta'], $settings );
 		$this->show_field_end( $field, $meta );
 	}
 
