@@ -121,7 +121,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.2.2] unreleased =
+= [4.2.2] 2016-07-06 =
 
 * Fix - `wysiwyg` field type in meta box will now render a TinyMCE editor and not a text area [15185]
 
