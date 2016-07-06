@@ -123,6 +123,7 @@ Our Premium Plugins:
 
 = [4.2.2] 2016-07-06 =
 
+* Fix - Html code in column list is now stripped in place of being escaped
 * Fix - `wysiwyg` field type in meta box will now render a TinyMCE editor and not a text area [15185]
 
 = [4.2] 2016-06-22 =
