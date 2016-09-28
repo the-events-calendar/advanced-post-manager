@@ -66,15 +66,15 @@ msgstr "was ich abfrage. Vermutlich ein Schlüssel im Optionsarray in $filters"
 msgid "Active Filters"
 msgstr "Aktive Filter"
 
-#: lib/tribe-filters.class.php:533
+#: lib/tribe-filters.class.php:537
 msgid "Saved Filter Set"
 msgstr "Gespeicherte Filter"
 
-#: lib/tribe-filters.class.php:535
+#: lib/tribe-filters.class.php:539
 msgid "Choose a Saved Filter"
 msgstr "Einen gespeicherten Filter wählen"
 
-#: lib/tribe-filters.class.php:650
+#: lib/tribe-filters.class.php:658
 msgid "Add a Filter"
 msgstr "Einen Filter hinzufügen"
 
@@ -82,32 +82,32 @@ msgstr "Einen Filter hinzufügen"
 msgid "Extended Information"
 msgstr "Erweiterte Information"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
 msgid "Delete this image"
 msgstr "Dieses Bild löschen"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
-#: lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
 msgid "Delete"
 msgstr "Löschen"
 
-#: lib/tribe-meta-box.php:363
+#: lib/tribe-meta-box.php:384
 msgid "Uploaded files"
 msgstr "Hochgeladene Dateien"
 
-#: lib/tribe-meta-box.php:372
+#: lib/tribe-meta-box.php:393
 msgid "Upload new files"
 msgstr "Neue Dateien hochladen"
 
-#: lib/tribe-meta-box.php:375
+#: lib/tribe-meta-box.php:396
 msgid "Add another file"
 msgstr "Eine weitere Datei anhängen"
 
-#: lib/tribe-meta-box.php:420
+#: lib/tribe-meta-box.php:441
 msgid "Add more images"
 msgstr "Weitere Bilder hinzufügen"
 
-#: lib/tribe-meta-box.php:431
+#: lib/tribe-meta-box.php:452
 msgid "Select a color"
 msgstr "Eine Farbe auswählen"
 

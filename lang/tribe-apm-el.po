@@ -66,15 +66,15 @@ msgstr "τι επεξεργάζομαι. πιθανώς το κλειδί στη
 msgid "Active Filters"
 msgstr ""
 
-#: lib/tribe-filters.class.php:533
+#: lib/tribe-filters.class.php:537
 msgid "Saved Filter Set"
 msgstr ""
 
-#: lib/tribe-filters.class.php:535
+#: lib/tribe-filters.class.php:539
 msgid "Choose a Saved Filter"
 msgstr "Επιλέξτε ένα αποθηκευμένο Φίλτρο"
 
-#: lib/tribe-filters.class.php:650
+#: lib/tribe-filters.class.php:658
 msgid "Add a Filter"
 msgstr "Προσθήκη Φίλτρου"
 
@@ -82,32 +82,32 @@ msgstr "Προσθήκη Φίλτρου"
 msgid "Extended Information"
 msgstr "Εκτεταμένες πληροφορίες"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
 msgid "Delete this image"
 msgstr "Διαγράψτε αυτή την εικόνα"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
-#: lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: lib/tribe-meta-box.php:363
+#: lib/tribe-meta-box.php:384
 msgid "Uploaded files"
 msgstr "Ανεβασμένα αρχεία"
 
-#: lib/tribe-meta-box.php:372
+#: lib/tribe-meta-box.php:393
 msgid "Upload new files"
 msgstr "Ανεβάστε νέα αρχεία"
 
-#: lib/tribe-meta-box.php:375
+#: lib/tribe-meta-box.php:396
 msgid "Add another file"
 msgstr "Προσθέστε κι άλλο αρχείο"
 
-#: lib/tribe-meta-box.php:420
+#: lib/tribe-meta-box.php:441
 msgid "Add more images"
 msgstr "Προσθέστε περισσότερες εικόνες"
 
-#: lib/tribe-meta-box.php:431
+#: lib/tribe-meta-box.php:452
 msgid "Select a color"
 msgstr "Επιλέξτε χρώμα"
 

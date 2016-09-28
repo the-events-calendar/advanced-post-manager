@@ -66,15 +66,15 @@ msgstr "el que estic consultant, probablement una clau a l'array d'opcions a $fi
 msgid "Active Filters"
 msgstr "Filtres actius"
 
-#: lib/tribe-filters.class.php:533
+#: lib/tribe-filters.class.php:537
 msgid "Saved Filter Set"
 msgstr "Col·lecció de filtres guardats"
 
-#: lib/tribe-filters.class.php:535
+#: lib/tribe-filters.class.php:539
 msgid "Choose a Saved Filter"
 msgstr "Tria un filtre guardat"
 
-#: lib/tribe-filters.class.php:650
+#: lib/tribe-filters.class.php:658
 msgid "Add a Filter"
 msgstr "Afegir un filtre"
 
@@ -82,32 +82,32 @@ msgstr "Afegir un filtre"
 msgid "Extended Information"
 msgstr "Informació ampliada"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
 msgid "Delete this image"
 msgstr "Eliminar aquesta imatge"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
-#: lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
 msgid "Delete"
 msgstr "Eliminar"
 
-#: lib/tribe-meta-box.php:363
+#: lib/tribe-meta-box.php:384
 msgid "Uploaded files"
 msgstr "Fitxers pujats"
 
-#: lib/tribe-meta-box.php:372
+#: lib/tribe-meta-box.php:393
 msgid "Upload new files"
 msgstr "Pujar nous fitxers"
 
-#: lib/tribe-meta-box.php:375
+#: lib/tribe-meta-box.php:396
 msgid "Add another file"
 msgstr "Afegir un altre fitxer"
 
-#: lib/tribe-meta-box.php:420
+#: lib/tribe-meta-box.php:441
 msgid "Add more images"
 msgstr "Afegir més imatges"
 
-#: lib/tribe-meta-box.php:431
+#: lib/tribe-meta-box.php:452
 msgid "Select a color"
 msgstr "Seleccionar un color"
 

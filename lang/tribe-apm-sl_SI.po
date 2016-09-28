@@ -66,15 +66,15 @@ msgstr "kaj poizvedujem. najbrž ključ med možnostmi izbire v $filtrih."
 msgid "Active Filters"
 msgstr ""
 
-#: lib/tribe-filters.class.php:533
+#: lib/tribe-filters.class.php:537
 msgid "Saved Filter Set"
 msgstr ""
 
-#: lib/tribe-filters.class.php:535
+#: lib/tribe-filters.class.php:539
 msgid "Choose a Saved Filter"
 msgstr "Izberi shranjen filter"
 
-#: lib/tribe-filters.class.php:650
+#: lib/tribe-filters.class.php:658
 msgid "Add a Filter"
 msgstr "Dodaj filter"
 
@@ -82,32 +82,32 @@ msgstr "Dodaj filter"
 msgid "Extended Information"
 msgstr "Razširjene informacije"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
 msgid "Delete this image"
 msgstr "Izbriši to sliko"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
-#: lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
 msgid "Delete"
 msgstr "Izbriši"
 
-#: lib/tribe-meta-box.php:363
+#: lib/tribe-meta-box.php:384
 msgid "Uploaded files"
 msgstr "Naložene datoteke"
 
-#: lib/tribe-meta-box.php:372
+#: lib/tribe-meta-box.php:393
 msgid "Upload new files"
 msgstr "Naloži nove datoteke"
 
-#: lib/tribe-meta-box.php:375
+#: lib/tribe-meta-box.php:396
 msgid "Add another file"
 msgstr "Dodaj novo datoteko"
 
-#: lib/tribe-meta-box.php:420
+#: lib/tribe-meta-box.php:441
 msgid "Add more images"
 msgstr "Dodaj več slik"
 
-#: lib/tribe-meta-box.php:431
+#: lib/tribe-meta-box.php:452
 msgid "Select a color"
 msgstr "Izberi barvo"
 

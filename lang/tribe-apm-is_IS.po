@@ -66,15 +66,15 @@ msgstr "hver er fyrirspurnin? Líklega valmöguleiki í  \"options\" $filters"
 msgid "Active Filters"
 msgstr ""
 
-#: lib/tribe-filters.class.php:533
+#: lib/tribe-filters.class.php:537
 msgid "Saved Filter Set"
 msgstr ""
 
-#: lib/tribe-filters.class.php:535
+#: lib/tribe-filters.class.php:539
 msgid "Choose a Saved Filter"
 msgstr "Veljið geymda síu"
 
-#: lib/tribe-filters.class.php:650
+#: lib/tribe-filters.class.php:658
 msgid "Add a Filter"
 msgstr "Bæta við síu"
 
@@ -82,32 +82,32 @@ msgstr "Bæta við síu"
 msgid "Extended Information"
 msgstr "Viðbótar upplýsingar"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
 msgid "Delete this image"
 msgstr "Eyða þessari mynd"
 
-#: lib/tribe-meta-box.php:125 lib/tribe-meta-box.php:366
-#: lib/tribe-meta-box.php:413
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
 msgid "Delete"
 msgstr "Eyða"
 
-#: lib/tribe-meta-box.php:363
+#: lib/tribe-meta-box.php:384
 msgid "Uploaded files"
 msgstr "Niðurhala gögn"
 
-#: lib/tribe-meta-box.php:372
+#: lib/tribe-meta-box.php:393
 msgid "Upload new files"
 msgstr "Niðurhala ný gögn"
 
-#: lib/tribe-meta-box.php:375
+#: lib/tribe-meta-box.php:396
 msgid "Add another file"
 msgstr "Bæta við gögnum"
 
-#: lib/tribe-meta-box.php:420
+#: lib/tribe-meta-box.php:441
 msgid "Add more images"
 msgstr "Bæta við myndum"
 
-#: lib/tribe-meta-box.php:431
+#: lib/tribe-meta-box.php:452
 msgid "Select a color"
 msgstr "Velja lit"
 
