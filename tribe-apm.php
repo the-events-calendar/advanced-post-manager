@@ -5,7 +5,7 @@
  Version: 4.3rc2
  Author: Modern Tribe, Inc.
  Author URI: http://m.tri.be/4n
- Text Domain: tribe-apm
+ Text Domain: advanced-post-manager
  */
 
 define( 'TRIBE_APM_PATH', plugin_dir_path( __FILE__ ) );
@@ -13,7 +13,7 @@ define( 'TRIBE_APM_LIB_PATH', TRIBE_APM_PATH . 'lib/' );
 
 class Tribe_APM {
 
-	protected $textdomain = 'tribe-apm';
+	protected $textdomain = 'advanced-post-manager';
 	protected $args;
 	protected $metaboxes;
 	protected $url;
@@ -84,7 +84,7 @@ class Tribe_APM {
 	}
 
 	private function load_text_domain() {
-		load_plugin_textdomain( 'tribe-apm', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+		load_plugin_textdomain( 'advanced-post-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 	}//end load_text_domain
 
 	public function resources_url( $unused_resource_url ) {

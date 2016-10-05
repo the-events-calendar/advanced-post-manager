@@ -6,7 +6,7 @@
   "_zipfoldername": "advanced-post-manager",
   "_resourcepath": "src/resources",
   "_domainPath": "lang",
-  "_textDomain": "tribe-apm",
+  "_textDomain": "advanced-post-manager",
   "_glotPressUrl": "http://translations.theeventscalendar.com",
   "_glotPressSlug": "tribe-apm",
   "_glotPressFileFormat": "%textdomain%-%wp_locale%.%format%",

@@ -40,7 +40,7 @@ class Tribe_Columns {
 
 		$this->columns_example = array(
 			'column_id' => array(
-				'name' => __( 'Column Name', 'tribe-apm' ),
+				'name' => __( 'Column Name', 'advanced-post-manager' ),
 				'meta' => '_some_meta', // in most cases, this piece of meta will be queried to provide column contents
 			),
 		);
@@ -155,7 +155,7 @@ class Tribe_Columns {
 		</ul>
 		</div>
 		<span class="apm-select-wrap"><select name="tribe-cols-drop" id="tribe-cols-drop"><?php
-			echo '<option value="0">' . esc_html__( 'Add a Column', 'tribe-apm' ) . '</option>';
+			echo '<option value="0">' . esc_html__( 'Add a Column', 'advanced-post-manager' ) . '</option>';
 			foreach ( $inactive as $key => $value ) {
 				$name = ( is_string( $value ) ) ? $value : $value['name'];
 				if ( empty( $name ) ) {

@@ -121,7 +121,7 @@ class Tribe_Meta_Box {
 
 			$li = "<li id='item_$attachment_id'>";
 			$li .= "<img src='{$attachment['url']}' />";
-			$li .= "<a title='" . __( 'Delete this image', 'tribe-apm' ) . "' class='tribe-delete-file' href='#' rel='$nonce|$post_id|$id|$attachment_id'>" . __( 'Delete', 'tribe-apm' ) . '</a>';
+			$li .= "<a title='" . __( 'Delete this image', 'advanced-post-manager' ) . "' class='tribe-delete-file' href='#' rel='$nonce|$post_id|$id|$attachment_id'>" . __( 'Delete', 'advanced-post-manager' ) . '</a>';
 			$li .= "<input type='hidden' name='{$id}[]' value='$attachment_id' />";
 			$li .= '</li>';
 			$html .= $li;
@@ -381,19 +381,19 @@ class Tribe_Meta_Box {
 
 		if ( ! empty( $meta ) ) {
 			$nonce = wp_create_nonce( 'tribe_ajax_delete' );
-			echo '<div style="margin-bottom: 10px"><strong>' . esc_html__( 'Uploaded files', 'tribe-apm' ) . '</strong></div>';
+			echo '<div style="margin-bottom: 10px"><strong>' . esc_html__( 'Uploaded files', 'advanced-post-manager' ) . '</strong></div>';
 			echo '<ol class="tribe-upload">';
 			foreach ( $meta as $att ) {
-				echo '<li>' . wp_get_attachment_link( $att, '', false, false, ' ' ) . " (<a class='tribe-delete-file' href='#' rel='$nonce|{$post->ID}|{$field['meta']}|$att'>" . esc_html__( 'Delete', 'tribe-apm' ) . '</a>)</li>';
+				echo '<li>' . wp_get_attachment_link( $att, '', false, false, ' ' ) . " (<a class='tribe-delete-file' href='#' rel='$nonce|{$post->ID}|{$field['meta']}|$att'>" . esc_html__( 'Delete', 'advanced-post-manager' ) . '</a>)</li>';
 			}
 			echo '</ol>';
 		}
 
 		// show form upload
-		echo '<div style="clear: both"><strong>' . esc_html__( 'Upload new files', 'tribe-apm' ) . "</strong></div>
+		echo '<div style="clear: both"><strong>' . esc_html__( 'Upload new files', 'advanced-post-manager' ) . "</strong></div>
 			<div class='new-files'>
 				<div class='file-input'><input type='file' name='{$field['meta']}[]' /></div>
-				<a class='tribe-add-file' href='#'>" . esc_html__( 'Add another file', 'tribe-apm' ) . '</a>
+				<a class='tribe-add-file' href='#'>" . esc_html__( 'Add another file', 'advanced-post-manager' ) . '</a>
 			</div>
 		</td>';
 	}
@@ -431,14 +431,14 @@ class Tribe_Meta_Box {
 
 				echo "<li id='item_$image'>
 						<img src='$src' />
-						<a title='" . esc_attr__( 'Delete this image', 'tribe-apm' ) . "' class='tribe-delete-file' href='#' rel='$nonce_delete|{$post->ID}|{$field['meta']}|$image'>" . esc_html__( 'Delete', 'tribe-apm' ) . "</a>
+						<a title='" . esc_attr__( 'Delete this image', 'advanced-post-manager' ) . "' class='tribe-delete-file' href='#' rel='$nonce_delete|{$post->ID}|{$field['meta']}|$image'>" . esc_html__( 'Delete', 'advanced-post-manager' ) . "</a>
 						<input type='hidden' name='{$field['meta']}[]' value='$image' />
 					</li>";
 			}
 		}
 		echo '</ul>';
 
-		echo "<a href='#' class='tribe-upload-button button' rel='{$post->ID}|{$field['meta']}'>" . esc_html__( 'Add more images', 'tribe-apm' ) . '</a>';
+		echo "<a href='#' class='tribe-upload-button button' rel='{$post->ID}|{$field['meta']}'>" . esc_html__( 'Add more images', 'advanced-post-manager' ) . '</a>';
 		echo '</td>';
 	}
 
@@ -449,7 +449,7 @@ class Tribe_Meta_Box {
 
 		$this->show_field_begin( $field, $meta );
 		echo "<input class='tribe-color' type='text' name='{$field['meta']}' id='{$field['meta']}' value='$meta' size='8' />
-				<a href='#' class='tribe-color-select' rel='{$field['meta']}'>" . esc_html__( 'Select a color', 'tribe-apm' ) . "</a>
+				<a href='#' class='tribe-color-select' rel='{$field['meta']}'>" . esc_html__( 'Select a color', 'advanced-post-manager' ) . "</a>
 				<div style='display:none' class='tribe-color-picker' rel='{$field['meta']}'></div>";
 		$this->show_field_end( $field, $meta );
 	}
