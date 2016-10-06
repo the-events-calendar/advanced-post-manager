@@ -121,6 +121,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.3] 2016-10-12 =
+
+* Tweak - 4.3 compatibility updates
+
 = [4.2.2] 2016-07-06 =
 
 * Fix - Html code in column list is now stripped in place of being escaped
