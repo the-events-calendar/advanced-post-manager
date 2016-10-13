@@ -121,7 +121,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.3] 2016-10-12 =
+= [4.3] 2016-10-13 =
 
 * Tweak - 4.3 compatibility updates
 
