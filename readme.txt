@@ -121,7 +121,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.3.1] Unreleased =
+= [4.3.1] 2016-10-19 =
 
 * Tweak - Added VERSION constant and registered plugin as active with Tribe Common.
 
