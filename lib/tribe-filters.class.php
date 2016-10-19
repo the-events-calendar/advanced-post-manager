@@ -49,8 +49,8 @@ class Tribe_Filters {
 	public function __construct( $post_type, $filters = array() ) {
 
 		$this->query_options = array(
-			'is' => __( 'Is', 'tribe-apm' ),
-			'not' => __( 'Is Not', 'tribe-apm' ),
+			'is' => __( 'Is', 'advanced-post-manager' ),
+			'not' => __( 'Is Not', 'advanced-post-manager' ),
 			'gt' => '>',
 			'lt' => '<',
 			'gte' => '>=',
@@ -68,9 +68,9 @@ class Tribe_Filters {
 		);
 
 		$this->query_search_options = array(
-			'like' => __( 'Search', 'tribe-apm' ),
-			'is' => __( 'Is', 'tribe-apm' ),
-			'not' => __( 'Is Not', 'tribe-apm' ),
+			'like' => __( 'Search', 'advanced-post-manager' ),
+			'is' => __( 'Is', 'advanced-post-manager' ),
+			'not' => __( 'Is Not', 'advanced-post-manager' ),
 			'gt' => '>',
 			'lt' => '<',
 			'gte' => '>=',
@@ -79,20 +79,20 @@ class Tribe_Filters {
 
 		$this->filters_example = array(
 			'filter_key' => array(
-				'name' => __( 'Member Type', 'tribe-apm' ), // text label
+				'name' => __( 'Member Type', 'advanced-post-manager' ), // text label
 				'meta' => '_type', // the meta key to query
 				'taxonomy' => 'some_taxonomy',// the taxonomy to query. Would never be set alongside meta above
 				'options' => array( // options for a meta query. Restricts them.
-					'cafe' => __( 'Cafe', 'tribe-apm' ),
-					'desk' => __( 'Private Desk', 'tribe-apm' ),
-					'office' => __( 'Office', 'tribe-apm' ),
+					'cafe' => __( 'Cafe', 'advanced-post-manager' ),
+					'desk' => __( 'Private Desk', 'advanced-post-manager' ),
+					'office' => __( 'Office', 'advanced-post-manager' ),
 				),
 			),
 		);
 
 		$this->active_example = array(
 			'filter_key' => array( // array key corresponds to key in $filters
-				'value' => __( 'what i’m querying. probably a key in the options array in $filters', 'tribe-apm' ),
+				'value' => __( 'what i’m querying. probably a key in the options array in $filters', 'advanced-post-manager' ),
 				'query_option' => 'is/is not,etc.',
 			),
 		);
@@ -178,7 +178,7 @@ class Tribe_Filters {
 		$this->inactive = array_diff_key( $this->filters, $this->active );
 
 		echo '<div class="apm-inactive-filters">';
-		echo '<h4>' . esc_html__( 'Active Filters', 'tribe-apm' ) . '</h4>';
+		echo '<h4>' . esc_html__( 'Active Filters', 'advanced-post-manager' ) . '</h4>';
 		echo '<table id="tribe-filters-active" class="table-form">';
 		foreach ( $this->active as $k => $v ) {
 			echo $this->table_row( $k, $v );
@@ -534,9 +534,9 @@ class Tribe_Filters {
 		// @TODO: this is an inappropriate way to do pluralization
 		?>
 		<div class="apm-saved-filters">
-			<h2 class="select-saved-filter"><?php echo esc_html__( 'Saved Filter Set', 'tribe-apm' ); ?><span>s</span></h2>
+			<h2 class="select-saved-filter"><?php echo esc_html__( 'Saved Filter Set', 'advanced-post-manager' ); ?><span>s</span></h2>
 			<span class="apm-select-wrap"><select id="tribe-saved-filters" name="tribe-saved-filters" data:submit_url="<?php echo esc_url( $url ); ?>">
-				<option value="0"><?php echo esc_html__( 'Choose a Saved Filter', 'tribe-apm' ); ?></option>
+				<option value="0"><?php echo esc_html__( 'Choose a Saved Filter', 'advanced-post-manager' ); ?></option>
 				<?php
 				foreach ( $filters as $filter ) {
 					?>
@@ -655,7 +655,7 @@ class Tribe_Filters {
 	protected function inactive_dropdown() {
 		$inactive = $this->inactive;
 		echo '<span class="apm-select-wrap"><select name="tribe-filters-inactive" id="tribe-filters-inactive">';
-		echo '<option value="0">' . esc_html__( 'Add a Filter', 'tribe-apm' ) . '</option>';
+		echo '<option value="0">' . esc_html__( 'Add a Filter', 'advanced-post-manager' ) . '</option>';
 		foreach ( $inactive as $k => $v ) {
 			echo $this->dropdown_row( $k, $v );
 		}

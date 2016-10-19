@@ -42,7 +42,7 @@ class Tribe_Meta_Box_Helper {
 	protected function map_meta_boxes() {
 		$return_boxes = array();
 		$default_id = self::PREFIX . $this->post_type . '_metabox';
-		$default_box = array( $default_id => __( 'Extended Information', 'tribe-apm' ) );
+		$default_box = array( $default_id => __( 'Extended Information', 'advanced-post-manager' ) );
 		$metaboxes = $this->metaboxes;
 		if ( is_string( $metaboxes ) ) {
 			$default_box[ $default_id ] = $metaboxes;
