@@ -9,9 +9,14 @@
  */
 
 define( 'TRIBE_APM_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TRIBE_APM_FILE', __FILE__ );
 define( 'TRIBE_APM_LIB_PATH', TRIBE_APM_PATH . 'lib/' );
 
 class Tribe_APM {
+	/**
+	 * The current version of iCal Importer
+	 */
+	const VERSION = '4.3.1';
 
 	protected $textdomain = 'advanced-post-manager';
 	protected $args;
@@ -41,6 +46,8 @@ class Tribe_APM {
 		$this->textdomain = apply_filters( 'tribe_apm_textdomain', $this->textdomain );
 		$this->url = apply_filters( 'tribe_apm_url', plugins_url( '', __FILE__ ), __FILE__ );
 
+		$this->register_active_plugin();
+
 		add_action( 'admin_init', array( $this, 'init' ), 0 );
 		add_action( 'admin_init', array( $this, 'init_meta_box' ) );
 		add_action( 'tribe_cpt_filters_init', array( $this, 'maybe_add_taxonomies' ), 10, 1 );
@@ -49,6 +56,18 @@ class Tribe_APM {
 
 	// PUBLIC METHODS
 
+	/**
+	 * Registers this plugin as being active for other tribe plugins and extensions
+	 *
+	 * @return bool Indicates if Tribe Common wants the plugin to run
+	 */
+	public function register_active_plugin() {
+		if ( ! function_exists( 'tribe_register_plugin' ) ) {
+			return true;
+		}
+
+		return tribe_register_plugin( TRIBE_APM_FILE, __CLASS__, self::VERSION );
+	}
 
 	/**
 	 * Add some additional filters/columns
