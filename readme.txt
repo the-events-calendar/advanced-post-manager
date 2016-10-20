@@ -4,7 +4,7 @@ Contributors: ModernTribe, borkweb, zbtirrell, mattwiebe, jkudish, nickciske, pe
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
-Tested up to: 4.5.3
+Tested up to: 4.6.1
 License: GPL v2
 Stable tag: 4.3.1
 
@@ -121,7 +121,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.3.1] 2016-10-19 =
+= [4.3.1] 2016-10-20 =
 
 * Tweak - Added VERSION constant and registered plugin as active with Tribe Common.
 
