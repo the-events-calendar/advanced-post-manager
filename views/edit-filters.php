@@ -1,7 +1,10 @@
 <?php
+/**
+ * @version 4.4
+ */
 $action_url = add_query_arg( 'post_type', $GLOBALS['typenow'], admin_url( 'edit.php' ) );
 do_action( 'tribe-filters-box' );
- ?>
+?>
 <div id="tribe-filters" class="metabox-holder meta-box-sortables">
 <div id="filters-wrap" class="postbox">
 	<div class="handlediv" title="<?php esc_attr_e( 'Click to toggle', 'advanced-post-manager' ); ?>"></div>
