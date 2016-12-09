@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Finnish
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-10-29 20:02:52+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "Näyttää siltä, ettei sinulla ehkä ole testidataa. <a href =\"%s\">Lataa meidän datamme</a> ja käytä <a href =\"%s\">WordPress tuontityökalua</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Sarakkeen nimi"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Kommentit"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Lisää sarake"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "On"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "Ei ole"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "Etsi"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "Jäsentyyppi"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "Kahvila"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "Työpiste"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "Toimisto"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "mitä haen. luultavasti avainta vaihtoehtoryhmässä $filters"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "Valitse tallennettu suodatin"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "Lisää suodatin"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "Laajennetut tiedot"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "Poista tämä kuva"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "Poista"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "Lähetetyt tiedostot"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "Lisää uusia tiedostoja"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "Lisää toinen tiedosto"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "Lisää kuvia"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "Valitse väri"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Klikkaa vaihtaaksesi"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Käytä"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Vie CSV-tiedostoon"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Suodattimen nimi"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Tallenna"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr "Modern Tribe, Inc."
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr ""

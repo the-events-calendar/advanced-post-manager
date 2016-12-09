@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Chinese (Taiwan)
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-06-08 15:54:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "似乎你可能沒有我們任何的樣本資料，<a href=\"%s\">下載我們的資料</a> 並使用 <a href=\"%s\">WordPress Importer</a>。"
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "欄名稱"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "評論"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "新增欄"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "是"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "不是"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "搜尋"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "會員類型"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "咖啡館"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "私人辦公桌"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "辦公室"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "我所要查詢的，大概是 a key in the options array in $filters。"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "選擇現有的篩選"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "新增篩選"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "延伸訊息："
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "刪除此圖片"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "刪除"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "上傳檔案"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "上傳新檔案"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "新增另一檔案"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "新增更多圖片"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "選擇顏色"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "點擊以切換"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "套用"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "匯出至 CSV"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "篩選名稱"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "儲存"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "取消"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr ""

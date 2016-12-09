@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Lithuanian
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-12-11 12:03:16+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "Rodos, kad jūs neturite demonstracinių duomenų. <a href=\"%s\">Atsisiųskite mūsų duomenis</a> ir pasinaudokite <a href=\"%s\">WordPress Importer</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Stulpelio pavadinimas"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Komentarai"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Pridėti stulpelį"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "Yra"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "Nėra"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "Paieška"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "Nario tipas"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "Kavinė"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "Asmeninis darbalaukis"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "Biuras"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "ko aš užklausinėju. turbūt rakto %filters parinkčių masyve"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "Pasirinkite išsaugotą filtrą"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "Pridėti filtrą"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "Išplėstinė informacija"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "Ištrinti šį paveikslėlį"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "Įkelti failai"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "Įkelti naujus failus"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "Pridėti dar vieną failą"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "Pridėti daugiau paveikslėlių"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "Pasirinkite spalvą"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Spauskite, kad perjungtumėte"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Taikyti"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Eksportuoti į CSV"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Filtro pavadinimas"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr "Modern Tribe, Inc."
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr ""

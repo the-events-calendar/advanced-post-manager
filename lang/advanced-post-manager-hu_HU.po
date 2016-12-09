@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Hungarian
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-06-08 15:51:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "Úgy néz ki, hogy még nincs demo adatod. <a href=\"%s\">Töltsd le az adatokat</a> és használd a <a href=\"%s\">WordPress importálót</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Oszlop neve"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Hozzászólások"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Oszlop hozzáadása"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "Egyezik"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "Nem egyezik"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "Keresés"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "Tagság típusa"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "Kávézó"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "Saját asztal"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "Iroda"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "amit próbálok lekérdezni. valószínűleg a $filters (szűrők) sor egyik bejegyzése"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "Válassz egy mentett szűrőt"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "Szűrő hozzáadása"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "Kibővített információk"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "Kép törlése"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "Törlés"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "Feltöltött fájlok"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "Új fájl feltöltése"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "További fájl hozzáadása"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "Több kép hozzáadása"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "Válassz színt"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Kattints a lenyitáshoz"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Alkalmaz"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Exportálás CSV-be"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Szűrő neve"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Mentés"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Mégse"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr ""

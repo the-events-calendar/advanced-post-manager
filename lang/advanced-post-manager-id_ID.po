@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Indonesian
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-06-08 15:51:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "Sepertinya Anda mungkin tidak memiliki data demo. <a href=\"%s\">Download data kami</a>  dan gunakan <a href=\"%s\">WordPress Importer</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Nama Kolom"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Komentar"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Tambah Kolom"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "Adalah"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "Bukan"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "Pencarian"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "Tipe Anggota"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "Kafe"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "Private Desk"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "Kantor"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "apa yang saya query. mungkin kunci dalam pilihan array dalam $filters"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "Pilih Filter Tersimpan"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "Tambahkan Filter"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "Informasi Tambahan"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "Hapus gambar ini"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "Hapus"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "File upload"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "Upload file baru"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "Tambah file lain"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "Tambahkan lebih banyak gambar"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "Pilih warna"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Klik untuk toggle"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Terapkan"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Ekspor ke CSV"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Nama Filter"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Simpan"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Batalkan"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr ""

@@ -1,0 +1,168 @@
+# Translation of Advanced Post Manager in Catalan
+# This file is distributed under the same license as the Advanced Post Manager package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-08-06 15:29:09+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Advanced Post Manager\n"
+
+#: views/edit-filters.php:8
+msgid "Filters & Columns"
+msgstr ""
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr "Sembla que no tens cap tipus de dades de prova. <a href=\"%s\">Descarrega't les nostres dades</a> i utilitza l'<a href=\"%s\">importador de WordPress</a>."
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr "Nom de la columna"
+
+#: lib/tribe-columns.class.php:144 lib/tribe-columns.class.php:165
+msgid "Comments"
+msgstr "Comentaris"
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr "Afegir una columna"
+
+#: lib/tribe-filters.class.php:52 lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr "És"
+
+#: lib/tribe-filters.class.php:53 lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr "No és"
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr "Buscar"
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr "Tipus de membre"
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr "Cafè"
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr "Escriptori"
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr "Oficina"
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr "el que estic consultant, probablement una clau a l'array d'opcions a $filters"
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr "Filtres actius"
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr "Col·lecció de filtres guardats"
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr "Tria un filtre guardat"
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr "Afegir un filtre"
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr "Informació ampliada"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr "Eliminar aquesta imatge"
+
+#: lib/tribe-meta-box.php:124 lib/tribe-meta-box.php:387
+#: lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr "Eliminar"
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr "Fitxers pujats"
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr "Pujar nous fitxers"
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr "Afegir un altre fitxer"
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr "Afegir més imatges"
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr "Seleccionar un color"
+
+#: views/edit-filters.php:7 views/edit-filters.php:8
+msgid "Click to toggle"
+msgstr "Clica per alternar"
+
+#: views/edit-filters.php:14
+msgid "Active Columns"
+msgstr "Columnes actives"
+
+#: views/edit-filters.php:15
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr "Arrossega i deixa anar per ordenar i seleccionar les columnes a mostrar a la taula d'entrades."
+
+#: views/edit-filters.php:20
+msgid "Apply"
+msgstr "Aplicar"
+
+#: views/edit-filters.php:21
+msgid "Save Filter Set"
+msgstr "Guardar col·lecció de filtres"
+
+#: views/edit-filters.php:23
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
+#: views/edit-filters.php:27
+msgid "Filter Name"
+msgstr "Nom del filtre"
+
+#: views/edit-filters.php:28
+msgid "Save"
+msgstr "Guardar"
+
+#: views/edit-filters.php:29
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#: views/edit-filters.php:32
+msgid "Reset to Default"
+msgstr "Restablir al valor predeterminat"
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Post Manager"
+msgstr "Advanced Post Manager"
+
+#. Description of the plugin/theme
+msgid "Dialing custom post types to 11 with advanced filtering controls."
+msgstr "Una manera de crear filtres avançats per als tipus d'entrada personalitzats a WordPress."
+
+#. Author of the plugin/theme
+msgid "Modern Tribe, Inc."
+msgstr "Modern Tribe, Inc."
+
+#. Author URI of the plugin/theme
+msgid "http://m.tri.be/4n"
+msgstr "http://m.tri.be/4n"
