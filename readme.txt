@@ -121,6 +121,10 @@ Our Premium Plugins:
 
 == Changelog ==
 
+= [4.4] TBD =
+
+* Tweak - Text domain modified to "advanced-post-manager" in line with plugin directory standards [42328]
+
 = [4.3.1] 2016-10-20 =
 
 * Tweak - Added VERSION constant and registered plugin as active with Tribe Common.
