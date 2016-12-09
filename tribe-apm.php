@@ -2,7 +2,7 @@
 /*
  Plugin Name:  Advanced Post Manager
  Description:  Dialing custom post types to 11 with advanced filtering controls.
- Version: 4.4dev1
+ Version: 4.4dev3
  Author: Modern Tribe, Inc.
  Author URI: http://m.tri.be/4n
  Text Domain: advanced-post-manager
@@ -16,7 +16,7 @@ class Tribe_APM {
 	/**
 	 * The current version of iCal Importer
 	 */
-	const VERSION = '4.3.1';
+	const VERSION = '4.4dev3';
 
 	protected $textdomain = 'advanced-post-manager';
 	protected $args;
