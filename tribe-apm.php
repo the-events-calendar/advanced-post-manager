@@ -16,7 +16,7 @@ class Tribe_APM {
 	/**
 	 * The current version of iCal Importer
 	 */
-	const VERSION = '4.4dev5';
+	const VERSION = '4.4RC1';
 
 	protected $textdomain = 'advanced-post-manager';
 	protected $args;
