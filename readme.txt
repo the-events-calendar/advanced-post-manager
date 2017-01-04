@@ -6,7 +6,7 @@ Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin,
 Requires at least: 3.2
 Tested up to: 4.6.1
 License: GPL v2
-Stable tag: 4.4RC1
+Stable tag: 4.4
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
@@ -121,7 +121,7 @@ Our Premium Plugins:
 
 == Changelog ==
 
-= [4.4] TBD =
+= [4.4] 2017-01-04 =
 
 * Tweak - Text domain modified to "advanced-post-manager" in line with plugin directory standards [42328]
 
