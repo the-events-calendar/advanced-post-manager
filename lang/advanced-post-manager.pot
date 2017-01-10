@@ -1,0 +1,157 @@
+# Copyright (C) 2017 Advanced Post Manager 4.4.0
+# This file is distributed under the same license as the Advanced Post Manager 4.4.0 package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Post Manager 4.4.0\n"
+"Report-Msgid-Bugs-To: http://m.tri.be/191x\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"X-Generated-Time: 2017-01-05T22:52:46.790Z\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: common\n"
+"X-Poedit-SearchPathExcluded-2: lang\n"
+"X-Poedit-SearchPathExcluded-3: tests\n"
+"X-Poedit-SearchPathExcluded-4: vendor\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: demo/demo.php:30
+msgid "It looks like you might not have any demo data. <a href=\"%s\">Download our data</a> and use the <a href=\"%s\">WordPress Importer</a>."
+msgstr ""
+
+#: lib/tribe-columns.class.php:43
+msgid "Column Name"
+msgstr ""
+
+#: lib/tribe-columns.class.php:158
+msgid "Add a Column"
+msgstr ""
+
+#: lib/tribe-filters.class.php:52, lib/tribe-filters.class.php:72
+msgid "Is"
+msgstr ""
+
+#: lib/tribe-filters.class.php:53, lib/tribe-filters.class.php:73
+msgid "Is Not"
+msgstr ""
+
+#: lib/tribe-filters.class.php:71
+msgid "Search"
+msgstr ""
+
+#: lib/tribe-filters.class.php:82
+msgid "Member Type"
+msgstr ""
+
+#: lib/tribe-filters.class.php:86
+msgid "Cafe"
+msgstr ""
+
+#: lib/tribe-filters.class.php:87
+msgid "Private Desk"
+msgstr ""
+
+#: lib/tribe-filters.class.php:88
+msgid "Office"
+msgstr ""
+
+#: lib/tribe-filters.class.php:95
+msgid "what i’m querying. probably a key in the options array in $filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:181
+msgid "Active Filters"
+msgstr ""
+
+#: lib/tribe-filters.class.php:537
+msgid "Saved Filter Set"
+msgstr ""
+
+#: lib/tribe-filters.class.php:539
+msgid "Choose a Saved Filter"
+msgstr ""
+
+#: lib/tribe-filters.class.php:658
+msgid "Add a Filter"
+msgstr ""
+
+#: lib/tribe-meta-box-helper.php:45
+msgid "Extended Information"
+msgstr ""
+
+#: lib/tribe-meta-box.php:124, lib/tribe-meta-box.php:434
+msgid "Delete this image"
+msgstr ""
+
+#: lib/tribe-meta-box.php:124, lib/tribe-meta-box.php:387, lib/tribe-meta-box.php:434
+msgid "Delete"
+msgstr ""
+
+#: lib/tribe-meta-box.php:384
+msgid "Uploaded files"
+msgstr ""
+
+#: lib/tribe-meta-box.php:393
+msgid "Upload new files"
+msgstr ""
+
+#: lib/tribe-meta-box.php:396
+msgid "Add another file"
+msgstr ""
+
+#: lib/tribe-meta-box.php:441
+msgid "Add more images"
+msgstr ""
+
+#: lib/tribe-meta-box.php:452
+msgid "Select a color"
+msgstr ""
+
+#: views/edit-filters.php:10, views/edit-filters.php:11
+msgid "Click to toggle"
+msgstr ""
+
+#: views/edit-filters.php:11
+msgid "Filters & Columns"
+msgstr ""
+
+#: views/edit-filters.php:17
+msgid "Active Columns"
+msgstr ""
+
+#: views/edit-filters.php:18
+msgid "Drag and drop to order and select which columns are displayed in the entries table."
+msgstr ""
+
+#: views/edit-filters.php:23
+msgid "Apply"
+msgstr ""
+
+#: views/edit-filters.php:24
+msgid "Save Filter Set"
+msgstr ""
+
+#: views/edit-filters.php:26
+msgid "Export to CSV"
+msgstr ""
+
+#: views/edit-filters.php:30
+msgid "Filter Name"
+msgstr ""
+
+#: views/edit-filters.php:31
+msgid "Save"
+msgstr ""
+
+#: views/edit-filters.php:32
+msgid "Cancel"
+msgstr ""
+
+#: views/edit-filters.php:35
+msgid "Reset to Default"
+msgstr ""
