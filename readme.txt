@@ -1,6 +1,6 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, brook-tribe, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jazbek, jbrinley, leahkoerper, lucatume, mastromktg, mat-lipe, mdbitz, MZAWeb, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shelbelliott, shane.pearlman, tribecari, trishasalas, vicskf, zbtirrell
+Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jbrinley, leahkoerper, lucatume, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shane.pearlman, vicskf, zbtirrell
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
@@ -40,40 +40,38 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 
 = Current Contributors =
 
+<a href="https://profiles.wordpress.org/aguseo">Andras Guseo</a>
 <a href="https://profiles.wordpress.org/barryhughes">Barry Hughes</a>
 <a href="https://profiles.wordpress.org/brianjessee">Brian Jessee</a>
-<a href="https://profiles.wordpress.org/brook-tribe">Brook Harding</a>
 <a href="https://profiles.wordpress.org/cliffpaulick">Clifford Paulick</a>
-<a href="https://profiles.wordpress.org/MZAWeb">Daniel Dvorkin</a>
 <a href="https://profiles.wordpress.org/geoffgraham">Geoff Graham</a>
 <a href="https://profiles.wordpress.org/ggwicz">George Gecewicz</a>
 <a href="https://profiles.wordpress.org/bordoni">Gustavo Bordoni</a>
-<a href="https://profiles.wordpress.org/jazbek">Jessica Yazbek</a>
-<a href="https://profiles.wordpress.org/joshlimecuda">Josh Mallard</a>
 <a href="https://profiles.wordpress.org/leahkoerper">Leah Koerper</a>
 <a href="https://profiles.wordpress.org/lucatume">Luca Tumedei</a>
 <a href="https://profiles.wordpress.org/borkweb">Matthew Batchelder</a>
 <a href="https://profiles.wordpress.org/neillmcshea">Neill McShea</a>
-<a href="https://profiles.wordpress.org/mastromktg">Nick Mastromattei</a>
 <a href="https://profiles.wordpress.org/nicosantos">Nico Santo</a>
 <a href="https://profiles.wordpress.org/peterchester">Peter Chester</a>
 <a href="https://profiles.wordpress.org/roblagatta">Rob La Gatta</a>
 <a href="https://profiles.wordpress.org/reid.peifer">Reid Peifer</a>
 <a href="https://profiles.wordpress.org/shane.pearlman">Shane Pearlman</a>
-<a href="https://profiles.wordpress.org/thatdudebutch">Wayne Stratton</a>
 <a href="https://profiles.wordpress.org/zbtirrell">Zachary Tirrell</a>
-<a href="https://profiles.wordpress.org/aguseo">Andras Guseo</a>
-<a href="https://profiles.wordpress.org/tribecari">Caroline Tucker</a>
 
 = Past Contributors =
 
+<a href="https://profiles.wordpress.org/brook-tribe">Brook Harding</a>
 <a href="https://profiles.wordpress.org/caseypatrickdriscoll">Casey Driscoll</a>
 <a href="https://profiles.wordpress.org/ckpicker">Casey Picker</a>
+<a href="https://profiles.wordpress.org/tribecari">Caroline Tucker</a>
 <a href="https://profiles.wordpress.org/dancameron">Dan Cameron</a>
+<a href="https://profiles.wordpress.org/MZAWeb">Daniel Dvorkin</a>
+<a href="https://profiles.wordpress.org/jazbek">Jessica Yazbek</a>
 <a href="https://profiles.wordpress.org/jkudish">Joachim Kudish</a>
 <a href="https://profiles.wordpress.org/jgadbois">John Gadbois</a>
 <a href="https://profiles.wordpress.org/jonahcoyote">Jonah West</a>
 <a href="https://profiles.wordpress.org/jbrinley">Jonathan Brinley</a>
+<a href="https://profiles.wordpress.org/joshlimecuda">Josh Mallard</a>
 <a href="https://profiles.wordpress.org/justinendler/">Justin Endler</a>
 <a href="https://profiles.wordpress.org/kellykathryn">Kelly Groves</a>
 <a href="https://profiles.wordpress.org/kelseydamas">Kelsey Damas</a>
@@ -82,10 +80,12 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 <a href="https://profiles.wordpress.org/mattwiebe">Matt Wiebe</a>
 <a href="https://profiles.wordpress.org/mat-lipe">Mat Lipe</a>
 <a href="https://profiles.wordpress.org/nickciske">Nick Ciske</a>
+<a href="https://profiles.wordpress.org/mastromktg">Nick Mastromattei</a>
 <a href="https://profiles.wordpress.org/paulhughes01">Paul Hughes</a>
 <a href="https://profiles.wordpress.org/ryancurban">Ryan Urban</a>
 <a href="https://profiles.wordpress.org/faction23">Samuel Estok</a>
 <a href="https://profiles.wordpress.org/codearachnid">Timothy Wood</a>
+<a href="https://profiles.wordpress.org/thatdudebutch">Wayne Stratton</a>
 
 = Translations =
 
