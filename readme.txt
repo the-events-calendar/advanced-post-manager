@@ -93,26 +93,24 @@ Many thanks to all our translators!  You can grab the latest translations or con
 
 == Add-Ons ==
 
-But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over at the <a href="http://m.tri.be/2a" target="_blank">Modern Tribe website.</a>
+But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over on [our website](http://m.tri.be/18wn).
 
 Our Free Plugins:
 
-* <a href="https://wordpress.org/plugins/the-events-calendar/" target="_blank">The Events Calendar</a>
-* <a href="http://m.tri.be/18vx" target="_blank">Event Tickets</a>
-* <a href="http://wordpress.org/plugins/blog-copier/?ref=tec-readme" target="_blank">Blog Copier</a>
-* <a href="http://wordpress.org/plugins/image-rotation-repair/?ref=tec-readme" target="_blank">Image Rotation Widget</a>
-* <a href="http://wordpress.org/plugins/widget-builder/?ref=tec-readme" target="_blank">Widget Builder</a>
+* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
+* [Event Tickets](https://wordpress.org/plugins/event-tickets/)
+* [GigPress](https://wordpress.org/plugins/gigpress/)
+* [Image Widget](https://wordpress.org/plugins/image-widget/)
 
-Our Premium Plugins:
+Our Premium Plugins and Services:
 
-* <a href="http://m.tri.be/2c" target="_blank">Events Calendar PRO</a>
-* <a href="http://m.tri.be/18vy" target="_blank">Event Tickets Plus</a>
-* <a href="http://m.tri.be/2e" target="_blank">The Events Calendar: Eventbrite Tickets</a>
-* <a href="http://m.tri.be/2g" target="_blank">The Events Calendar: Community Events</a>
-* <a href="http://m.tri.be/18vw" target="_blank">The Events Calendar: Community Tickets</a>
-* <a href="http://m.tri.be/2h" target="_blank">The Events Calendar: Facebook Events</a>
-* <a href="http://m.tri.be/18h9" target="_blank">The Events Calendar: iCal Importer</a>
-* <a href="http://m.tri.be/fa" target="_blank">The Events Calendar: Filter Bar</a>
+* [Events Calendar PRO](http://m.tri.be/18wi)
+* [Event Aggregator](http://m.tri.be/197u) (service)
+* [Event Tickets Plus](http://m.tri.be/18wk)
+* [Community Events](http://m.tri.be/2g)
+* [Community Tickets](http://m.tri.be/18wl)
+* [Filter Bar](http://m.tri.be/fa)
+* [Eventbrite Tickets](http://m.tri.be/2e)
 
 == Screenshots ==
 

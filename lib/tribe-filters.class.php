@@ -686,7 +686,7 @@ class Tribe_Filters {
 			'displaying' => $wp_query->found_posts . ' found',
 		);
 
-		echo "\n<script type='text/javascript'>";
+		echo "\n<script>";
 		echo "\n\tvar Tribe_Filters = " . json_encode( $js );
 		echo "\n</script>";
 	}
