@@ -1,13 +1,13 @@
 {
   "name": "advanced-post-manager",
-  "version": "4.4.0",
+  "version": "4.5.0",
   "repository": "git@github.com:moderntribe/advanced-post-manager.git",
   "_zipname": "advanced-post-manager",
   "_zipfoldername": "advanced-post-manager",
   "_resourcepath": "src/resources",
   "_domainPath": "lang",
   "_textDomain": "advanced-post-manager",
-  "_glotPressUrl": "http://translations.theeventscalendar.com",
+  "_glotPressUrl": "https://translations.theeventscalendar.com",
   "_glotPressSlug": "tribe-apm",
   "_glotPressFileFormat": "%textdomain%-%wp_locale%.%format%",
   "_glotPressFormats": [

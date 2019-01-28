@@ -1,12 +1,12 @@
 === Advanced Post Manager ===
 
-Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jbrinley, leahkoerper, lucatume, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shane.pearlman, vicskf, zbtirrell
+Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jbrinley, leahkoerper, lucatume, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shane.pearlman, vicskf, zbtirrell, juanfra
 Donate link: http://m.tri.be/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
-Tested up to: 4.7
+Tested up to: 5.0.3
 License: GPL v2
-Stable tag: 4.4
+Stable tag: 4.5
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
@@ -118,6 +118,10 @@ Our Premium Plugins and Services:
 2. Automatically registered metaboxes for data entry
 
 == Changelog ==
+
+= [4.5] TBD =
+
+*
 
 = [4.4] 2017-01-09 =
 
