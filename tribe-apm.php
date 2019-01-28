@@ -126,8 +126,8 @@ class Tribe_APM {
 		foreach ( $taxonomies as $tax ) {
 			if ( $tax->show_ui && in_array( $tribe_cpt_filters->post_type, (array) $tax->object_type, true ) ) {
 				$args[ 'taxonomy-'.$tax->name ] = array(
-					'name' => $tax->labels->name,
-					'taxonomy' => $tax->name,
+					'name'       => $tax->labels->name,
+					'taxonomy'   => $tax->name,
 					'query_type' => 'taxonomy',
 				);
 			}
