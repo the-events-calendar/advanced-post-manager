@@ -1,7 +1,7 @@
 <?php
 /*
- Plugin Name:  Advanced Post Manager
- Description:  Dialing custom post types to 11 with advanced filtering controls.
+ Plugin Name: Advanced Post Manager
+ Description: Dialing custom post types to 11 with advanced filtering controls.
  Version: 4.5
  Author: Modern Tribe, Inc.
  Author URI: http://m.tri.be/4n
