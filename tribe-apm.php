@@ -1,7 +1,7 @@
 <?php
 /*
- Plugin Name:  Advanced Post Manager
- Description:  Dialing custom post types to 11 with advanced filtering controls.
+ Plugin Name: Advanced Post Manager
+ Description: Dialing custom post types to 11 with advanced filtering controls.
  Version: 4.5
  Author: Modern Tribe, Inc.
  Author URI: http://m.tri.be/4n
@@ -11,6 +11,35 @@
 define( 'TRIBE_APM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRIBE_APM_FILE', __FILE__ );
 define( 'TRIBE_APM_LIB_PATH', TRIBE_APM_PATH . 'lib/' );
+
+// Load the required php min version functions
+require_once TRIBE_APM_LIB_PATH . 'php-min-version.php';
+
+/**
+ * Verifies if we need to warn the user about min PHP version and bail to avoid fatals
+ */
+if ( tribe_is_not_min_php_version() ) {
+	tribe_not_php_version_textdomain( 'advanced-post-manager', TRIBE_APM_FILE );
+	/**
+	 * Include the plugin name into the correct place
+	 *
+	 * @since  TBD
+	 *
+	 * @param  array $names current list of names
+	 *
+	 * @return array
+	 */
+	function tribe_apm_not_php_version_plugin_name( $names ) {
+		$names['tribe-apm'] = esc_html__( 'Advanced Post Manager', 'advanced-post-manager' );
+		return $names;
+	}
+	add_filter( 'tribe_not_php_version_names', 'tribe_apm_not_php_version_plugin_name' );
+	if ( ! has_filter( 'admin_notices', 'tribe_not_php_version_notice' ) ) {
+		add_action( 'admin_notices', 'tribe_not_php_version_notice' );
+	}
+	return false;
+}
+
 
 class Tribe_APM {
 	/**
@@ -126,8 +155,8 @@ class Tribe_APM {
 		foreach ( $taxonomies as $tax ) {
 			if ( $tax->show_ui && in_array( $tribe_cpt_filters->post_type, (array) $tax->object_type, true ) ) {
 				$args[ 'taxonomy-'.$tax->name ] = array(
-					'name' => $tax->labels->name,
-					'taxonomy' => $tax->name,
+					'name'       => $tax->labels->name,
+					'taxonomy'   => $tax->name,
 					'query_type' => 'taxonomy',
 				);
 			}
@@ -189,7 +218,7 @@ class Tribe_APM {
 	}
 
 	protected function is_active() {
-		$desired_screen = 'edit-'.$this->post_type;
+		$desired_screen = 'edit-' . $this->post_type;
 
 		// Exit early on autosave
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
