@@ -7,6 +7,7 @@ Requires at least: 3.2
 Tested up to: 5.0.3
 License: GPL v2
 Stable tag: 4.5
+Requires PHP: 5.6
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
@@ -119,9 +120,9 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
-= [4.5] TBD =
+= [4.5] 2019-02-14 =
 
-*
+* Tweak - Change the required Version of PHP to 5.6
 
 = [4.4] 2017-01-09 =
 
