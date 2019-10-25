@@ -35,7 +35,6 @@ class Tribe_Columns {
 	 *
 	 * @return void
 	 **/
-
 	public function __construct( $post_type, $columns = array(), $active = array(), $fallback = array() ) {
 
 		$this->columns_example = array(
@@ -58,6 +57,7 @@ class Tribe_Columns {
 		$this->url = trailingslashit( plugins_url( '', __FILE__ ) );
 	}
 
+
 	// PUBLIC API METHODS
 
 	/**
@@ -77,7 +77,7 @@ class Tribe_Columns {
 	 * See documentation for column array construction
 	 * @param $columns array of column arrays
 	 */
-	public function add_columns ( $columns = array() ) {
+	public function add_columns( $columns = array() ) {
 		if ( ! empty( $columns ) ) {
 			$this->columns = array_merge( $this->columns, $columns );
 			$this->alphabetize_columns();
@@ -289,9 +289,12 @@ class Tribe_Columns {
 	}
 
 	public function custom_columns( $column_id, $post_id ) {
-		if ( ! $this->is_our_post_type() )
+		if ( ! $this->is_our_post_type() ) {
 			return;
+		}
+
 		$post = get_post( $post_id );
+
 		if ( array_key_exists( $column_id, $this->columns ) ) {
 			$column = $this->columns[ $column_id ];
 			// meta ?
@@ -333,7 +336,7 @@ class Tribe_Columns {
 	}
 
 
-	// UTLITIES AND INTERNAL METHODS
+	// UTILITIES AND INTERNAL METHODS
 
 	protected function sweep_empties() {
 		$headers = $this->get_column_headers();
