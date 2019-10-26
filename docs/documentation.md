@@ -305,7 +305,7 @@ Unfortunately, WP does not accept `$wp_query->set('orderby', 'post_status')`. We
 		return $by . ' ' . $order;
 	}
 
-That wasn't so bad was it? That's it for our out post_status functionality. The verbosity largely derived from the inline comments. Otherwise, the whole thing looks like:
+That wasn't so bad was it? That's it for our own post_status functionality. The verbosity is largely derived from the inline comments. Otherwise, the whole thing looks like:
 
 	class Tribe_Status_Type {
 
