@@ -39,10 +39,9 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 		 * Constructor function is critical.
 		 *
 		 * @param string $post_type The post type to be filtered.
-		 * @param array  $filters   A multidimensional array of available filters with named keys and options for how to query them.
-		 *
+		 * @param array  $filters   A multidimensional array of available filters with named keys and options for
+		 *                          how to query them.
 		 */
-
 		private $saved_active = false;
 
 		public function __construct( $post_type, $filters = array() ) {
@@ -111,7 +110,7 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 		/**
 		 * Set Filters with an array of filter arrays
 		 *
-		 * See documentation for the paramaters of a filter array
+		 * See documentation for the parameters of a filter array
 		 *
 		 * @param $filters array
 		 */
@@ -121,7 +120,6 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 			}
 			$this->alphabetize_filters();
 		}
-
 
 		/**
 		 * Get array of currently set filters
@@ -149,7 +147,9 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 		/**
 		 * Merges a new active array into current active array
 		 *
-		 * @param $new_active array multideminsional array. @see $active_example
+		 * @see $active_example
+		 *
+		 * @param array $new_active A multidimensional array.
 		 */
 		public function add_active( $new_active = array() ) {
 			$new_active   = (array) $new_active;
@@ -157,9 +157,9 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 		}
 
 		/**
-		 * Get currently active filters
+		 * Get currently active filters.
 		 *
-		 * @return array current active filters array
+		 * @return array The current active filters array.
 		 */
 		public function get_active() {
 			return $this->active;
@@ -167,7 +167,8 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 
 		/**
 		 * Outputs the drag & drop columns view.
-		 * Expects to be inside a form
+		 *
+		 * Expects to be inside a form.
 		 */
 		public function output_form() {
 			wp_nonce_field( $this->nonce, $this->nonce, false );
