@@ -33,6 +33,8 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 
 		private $active_example;
 
+		private $inactive = array();
+
 		/**
 		 * Constructor function is critical.
 		 *
@@ -669,10 +671,9 @@ if ( ! class_exists( 'Tribe_Filters' ) ) {
 		}
 
 		protected function inactive_dropdown() {
-			$inactive = $this->inactive;
 			echo '<span class="apm-select-wrap"><select name="tribe-filters-inactive" id="tribe-filters-inactive">';
 			echo '<option value="0">' . esc_html__( 'Add a Filter', 'advanced-post-manager' ) . '</option>';
-			foreach ( $inactive as $k => $v ) {
+			foreach ( $this->inactive as $k => $v ) {
 				echo $this->dropdown_row( $k, $v );
 			}
 			echo '</select></span>';
