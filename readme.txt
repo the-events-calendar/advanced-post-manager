@@ -1,7 +1,7 @@
 === Advanced Post Manager ===
 
 Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jbrinley, leahkoerper, lucatume, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shane.pearlman, vicskf, zbtirrell, juanfra
-Donate link: http://m.tri.be/4o
+Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
 Tested up to: 5.4.1
@@ -37,7 +37,7 @@ This plugin is for developers. Nothing will happen until you write some code to 
 
 == Contributors ==
 
-The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
+The plugin is produced by <a href="https://evnt.is/2s">Modern Tribe Inc</a>.
 
 = Current Contributors =
 
@@ -90,11 +90,11 @@ The plugin is produced by <a href="http://m.tri.be/2s">Modern Tribe Inc</a>.
 
 = Translations =
 
-Many thanks to all our translators!  You can grab the latest translations or contribute at <a href=“http://m.tri.be/194h”>translations.theeventscalendar.com</a>.
+Many thanks to all our translators!  You can grab the latest translations or contribute at <a href=“https://evnt.is/194h”>translations.theeventscalendar.com</a>.
 
 == Add-Ons ==
 
-But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over on [our website](http://m.tri.be/18wn).
+But wait: there's more! We've got a whole stable of plugins available to help you be awesome at what you do. Check out a full list of the products below, and over on [our website](https://evnt.is/18wn).
 
 Our Free Plugins:
 
@@ -105,13 +105,13 @@ Our Free Plugins:
 
 Our Premium Plugins and Services:
 
-* [Events Calendar PRO](http://m.tri.be/18wi)
-* [Event Aggregator](http://m.tri.be/197u) (service)
-* [Event Tickets Plus](http://m.tri.be/18wk)
-* [Community Events](http://m.tri.be/2g)
-* [Community Tickets](http://m.tri.be/18wl)
-* [Filter Bar](http://m.tri.be/fa)
-* [Eventbrite Tickets](http://m.tri.be/2e)
+* [Events Calendar PRO](https://evnt.is/18wi)
+* [Event Aggregator](https://evnt.is/197u) (service)
+* [Event Tickets Plus](https://evnt.is/18wk)
+* [Community Events](https://evnt.is/2g)
+* [Community Tickets](https://evnt.is/18wl)
+* [Filter Bar](https://evnt.is/fa)
+* [Eventbrite Tickets](https://evnt.is/2e)
 
 == Screenshots ==
 
