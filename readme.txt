@@ -4,7 +4,7 @@ Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, 
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 3.2
-Tested up to: 5.4.1
+Tested up to: 5.7.1
 License: GPL v2
 Stable tag: 4.5
 Requires PHP: 5.6
@@ -23,7 +23,7 @@ This is a tool for developers who want to turbo-charge their custom post type li
 
 See docs/documentation.html in the plugin directory for full documentation.
 
-The team at Modern Tribe stands by our work and offers light support every Wednesday to the community via the WordPress.org support forums. Feel free to ask a question if you're having a problem with implementation or if you find bugs.
+The team at The Events Calendar stands by our work and offers light support every Wednesday to the community via the WordPress.org support forums. Feel free to ask a question if you're having a problem with implementation or if you find bugs.
 
 = SUBMITTING PATCHES =
 
@@ -37,7 +37,7 @@ This plugin is for developers. Nothing will happen until you write some code to 
 
 == Contributors ==
 
-The plugin is produced by <a href="https://evnt.is/2s">Modern Tribe Inc</a>.
+The plugin is produced by <a href="https://evnt.is/2s">The Events Calendar</a>.
 
 = Current Contributors =
 
