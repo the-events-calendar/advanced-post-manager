@@ -429,10 +429,10 @@ class Tribe_Filters {
 		$resources_url = trailingslashit( $resources_url );
 		if ( $current_screen->id == 'edit-' . $this->filtered_post_type ) {
 			wp_enqueue_style( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css', array(), '1.8.10' );
-			wp_enqueue_script( 'tribe-jquery-ui-datepicker', $resources_url . 'jquery-ui-datepicker.js', array( 'jquery-ui-core' ), null, true );
+			wp_enqueue_script( 'jquery-ui-datepicker' );
 			wp_enqueue_script( 'tribe-filters', $resources_url . 'tribe-filters.js', array(
 				'jquery-ui-sortable',
-				'tribe-jquery-ui-datepicker',
+				'jquery-ui-datepicker',
 			), false, true );
 		}
 	}
