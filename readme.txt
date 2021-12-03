@@ -3,11 +3,11 @@
 Contributors: ModernTribe, aguseo, barry.hughes, bordoni, borkweb, brianjessee, courane01, faction23, GeoffBel, geoffgraham, ggwicz, jbrinley, leahkoerper, lucatume, neillmcshea, nicosantos, peterchester, reid.peifer, roblagatta, ryancurban, shane.pearlman, vicskf, zbtirrell, juanfra
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
-Requires at least: 3.2
-Tested up to: 5.7.1
+Requires at least: 5.6
+Tested up to: 5.8.2
 License: GPL v2
 Stable tag: 4.5.1
-Requires PHP: 5.6
+Requires PHP: 7.1
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
@@ -119,6 +119,10 @@ Our Premium Plugins and Services:
 2. Automatically registered metaboxes for data entry
 
 == Changelog ==
+
+= [4.5.1] 2021-12-03 =
+
+* Fix - Use WP-provided jQuery UI datepicker to resolve JS error when interacting with filters. (props to @ethanclevenger91) 
 
 = [4.5] 2019-02-14 =
 
