@@ -142,7 +142,7 @@ class Tribe_Filters {
 	 */
 	public function set_active( $active = null ) {
 		if ( ! empty( $active ) ) {
-			$this->active = $active;
+			$this->active = (array) $active;
 			$this->cache_last_query( $active );
 		}
 	}
@@ -330,7 +330,20 @@ class Tribe_Filters {
 		if ( isset( $_GET['saved_filter'] ) && $_GET['saved_filter'] > 0 ) {
 
 			$filterset = get_post( $_GET['saved_filter'] );
-			$active = unserialize( $filterset->post_content );
+			if ( substr( $filterset->post_content, 0, 2 ) === 'a:' ) {
+				// If post_content is serialized, grab it and update it to json_encoded.
+				$active = unserialize( $filterset->post_content );
+
+				if ( $active ) {
+					wp_update_post( [
+						'ID'           => $filterset->ID,
+						'post_content' => json_encode( $active ),
+					] );
+				}
+			} else {
+				$active = json_decode( $filterset->post_content, true );
+			}
+
 			if ( $active ) {
 				$this->set_active( $active );
 				$this->saved_active = $filterset;
@@ -403,7 +416,7 @@ class Tribe_Filters {
 		// update the filter with currently active stuff
 		if ( isset( $_POST['tribe-update-saved-filter'] ) ) {
 			$filter = get_post( $_POST['tribe-saved-filter-active'] );
-			$filter->post_content = serialize( $this->active );
+			$filter->post_content = json_encode( $this->active );
 			wp_update_post( $filter );
 		}
 
@@ -445,7 +458,7 @@ class Tribe_Filters {
 	}
 
 	protected function cache_last_query( $query ) {
-		return update_user_meta( get_current_user_id(), 'last_used_filters_'.$this->filtered_post_type, $query );
+		return update_user_meta( get_current_user_id(), 'last_used_filters_'.$this->filtered_post_type, json_encode( $query ) );
 	}
 
 	protected function clear_last_query() {
@@ -500,7 +513,7 @@ class Tribe_Filters {
 		}
 
 		$filter = array(
-			'post_content' => serialize( $this->active ),
+			'post_content' => json_encode( $this->active ),
 			'post_title' => $_POST['filter_name'],
 			'post_type' => self::FILTER_POST_TYPE,
 			'post_status' => 'publish',
