@@ -348,8 +348,11 @@ class Tribe_Filters {
 				$this->set_active( $active );
 				$this->saved_active = $filterset;
 			}
-		} elseif ( ! $_POST && $last_query = $this->last_query() ) {
-			$this->set_active( $last_query );
+		} elseif ( ! $_POST ) {
+			$last_query = $this->last_query();
+			if ( $last_query ) {
+				$this->set_active( $last_query );
+			}
 		}
 	}
 
@@ -454,7 +457,7 @@ class Tribe_Filters {
 	// UTLITIES AND INTERNAL METHODS
 
 	protected function last_query() {
-		return get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true );
+		return json_decode( get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true ), true );
 	}
 
 	protected function cache_last_query( $query ) {
