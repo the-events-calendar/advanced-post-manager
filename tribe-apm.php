@@ -3,7 +3,7 @@
  Plugin Name: Advanced Post Manager
  Description: Dialing custom post types to 11 with advanced filtering controls.
  Version: 4.5.3
- Author: Modern Tribe, Inc.
+ Author: StellarWP
  Author URI: https://evnt.is/4n
  Text Domain: advanced-post-manager
  */
