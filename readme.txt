@@ -67,6 +67,10 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
+= [TBD] TBD =
+
+* Fix - Revolve error thrown by JSON decode issue. [APM-5]
+
 = [4.5.3] 2022-08-05 =
 
 * Fix - Resolve issue where filters that were being set were being lost after editing posts.

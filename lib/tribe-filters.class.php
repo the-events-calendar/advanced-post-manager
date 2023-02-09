@@ -457,7 +457,9 @@ class Tribe_Filters {
 	// UTLITIES AND INTERNAL METHODS
 
 	protected function last_query() {
-		return json_decode( get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true ), true );
+		$meta = get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true );
+
+		return is_string( $meta ) ? json_decode( $meta, true ) : [];
 	}
 
 	protected function cache_last_query( $query ) {
