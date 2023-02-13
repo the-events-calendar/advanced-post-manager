@@ -69,7 +69,7 @@ Our Premium Plugins and Services:
 
 = [TBD] TBD =
 
-* Fix - Revolve error thrown by JSON decode issue. [APM-5]
+* Fix - Resolve error thrown by JSON decode issue. [APM-5]
 
 = [4.5.3] 2022-08-05 =
 
