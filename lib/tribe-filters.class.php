@@ -457,7 +457,18 @@ class Tribe_Filters {
 	// UTLITIES AND INTERNAL METHODS
 
 	protected function last_query() {
-		return json_decode( get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true ), true );
+		$meta = get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true );
+
+		if ( ! is_string( $meta ) ) {
+			return [];
+		}
+		$decoded = json_decode( $meta, true );
+
+		if ( ! is_array( $decoded ) ) {
+			return [];
+		}
+
+		return $decoded;
 	}
 
 	protected function cache_last_query( $query ) {

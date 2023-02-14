@@ -1,1 +1,8 @@
 node_modules
+
+/vendor/
+
+# Codeception configuration files.
+codeception.yml
+tests/*.suite.yml
+
