@@ -1,0 +1,21 @@
+{
+  "name": "the-events-calendar/advanced-post-manager",
+  "description": "Dialing custom post types to 11 with advanced filtering controls.",
+  "type": "wordpress-plugin",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "The Events Calendar"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "require-dev": {
+    "lucatume/wp-browser": "3.1.7"
+  },
+  "autoload-dev": {
+    "files": [
+      "tests/_autoload.php"
+    ]
+  }
+}
