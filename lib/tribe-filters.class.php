@@ -459,16 +459,16 @@ class Tribe_Filters {
 	protected function last_query() {
 		$meta = get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true );
 
-		if ( is_string( $meta ) ) {
-			$decoded = json_decode( $meta, true );
-			if ( ! is_array( $decoded ) ) {
-				return [];
-			}
+		if ( ! is_string( $meta ) ) {
+			return [];
+		}
+		$decoded = json_decode( $meta, true );
 
-			return $decoded;
+		if ( ! is_array( $decoded ) ) {
+			return [];
 		}
 
-		return [];
+		return $decoded;
 	}
 
 	protected function cache_last_query( $query ) {
