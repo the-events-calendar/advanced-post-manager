@@ -125,7 +125,7 @@ Our Premium Plugins and Services:
 
 = [4.0] 2015-12-02 =
 
-* Fix - improved code standardization to bring this up to Modern Tribe standards
+* Fix - improved code standardization to bring this up to The Events Calendar standards
 * Feature - increased language support including Catalan, Czech, French, and Portuguese (Portugal)
 
 = [3.12] 2015-09-08 =
@@ -141,7 +141,7 @@ Our Premium Plugins and Services:
 
 * Bug - fixed escaping throughout
 * Bug - fixed comments bubbles when they exist in the table
-* Tweak - Brought version in line with other Modern Tribe plugins
+* Tweak - Brought version in line with other The Events Calendar plugins
 * Tweak - Added some changelog formatting enhancements after seeing keepachangelog.com :)
 * Feature - added translation support
 * Feature - Added Brazilian Portuguese translation files, courtesy of Gustavo Bordoni

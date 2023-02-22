@@ -3,7 +3,7 @@
  Plugin Name: Advanced Post Manager
  Description: Dialing custom post types to 11 with advanced filtering controls.
  Version: 4.5.4
- Author: Modern Tribe, Inc.
+ Author: The Events Calendar
  Author URI: https://evnt.is/4n
  Text Domain: advanced-post-manager
  */
@@ -43,7 +43,7 @@ if ( tribe_is_not_min_php_version() ) {
 
 class Tribe_APM {
 	/**
-	 * The current version of iCal Importer
+	 * The current version of APM
 	 */
 	const VERSION = '4.5.4';
 
