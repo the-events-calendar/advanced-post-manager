@@ -20,14 +20,14 @@
     "waiting_strings": false
   },
   "engines": {
-    "node": "10.16.0",
-    "npm": "6.9.0"
+    "node": "18.13.0",
+    "npm": "8.19.0"
   },
   "devDependencies": {
     "archiver": "^0.10.1",
     "glob": "~4.0.5",
-    "gulp": "^3.9.1",
-    "product-taskmaster": "git+https://github.com/the-events-calendar/product-taskmaster.git",
+    "gulp": "^4.0.2",
+    "@the-events-calendar/product-taskmaster": "^3.0.0",
     "require-dir": "^0.3.0"
   }
 }
