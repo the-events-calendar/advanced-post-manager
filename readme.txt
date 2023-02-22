@@ -6,7 +6,7 @@ Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin,
 Requires at least: 5.7
 Tested up to: 6.0.1
 License: GPL v2
-Stable tag: 4.5.3
+Stable tag: 4.5.4
 Requires PHP: 7.1
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
