@@ -76,7 +76,6 @@ Our Premium Plugins and Services:
 * Tweak - Version Node updated to 18.13.0
 * Tweak - Version NPM update to 8.19.3
 
-
 = [4.5.3] 2022-08-05 =
 
 * Fix - Resolve issue where filters that were being set were being lost after editing posts.
