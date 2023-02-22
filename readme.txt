@@ -4,7 +4,7 @@ Contributors: aguseo, bordoni, borkweb, brianjessee, GeoffBel, leahkoerper, luca
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 5.7
-Tested up to: 6.0.1
+Tested up to: 6.1.1
 License: GPL v2
 Stable tag: 4.5.4
 Requires PHP: 7.1
