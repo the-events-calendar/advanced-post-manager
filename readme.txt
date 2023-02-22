@@ -67,9 +67,15 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
-= [TBD] TBD =
+= [4.5.4] 2023-02-22 =
 
+* Version - Advanced post Manager 4.8.5 is only compatible with The Events Calendar 6.0.10 and higher.
 * Fix - Resolve error thrown by JSON decode issue. [APM-5]
+* Tweak - PHP version compatibility bumped to PHP 7.4
+* Tweak - Version Composer updated to 2
+* Tweak - Version Node updated to 18.13.0
+* Tweak - Version NPM update to 8.19.3
+
 
 = [4.5.3] 2022-08-05 =
 
