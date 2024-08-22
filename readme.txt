@@ -35,6 +35,14 @@ If you’ve identified a bug and want to submit a patch, we’d welcome it at ou
 
 This plugin is for developers. Nothing will happen until you write some code to take advantage of the functionality it offers.
 
+= Found a security vulnerability? =
+
+Make sure you are reporting in a safe and responsible way. We take security very seriously. If you discover a security issue, please bring it to our attention right away! Below you will find all the methods to report security vulnerabilities:
+
+* [Report security bugs through the Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/advanced-post-manager)
+* Check our [Bug Bounty Program](https://www.liquidweb.com/policies/bug-bounty-program/)
+* Reach out directly to us on `security [at] stellarwp.com`.
+
 = Translations =
 
 Many thanks to all our translators!  You can grab the latest translations or contribute at <a href=“https://evnt.is/194h”>translations.theeventscalendar.com</a>.
