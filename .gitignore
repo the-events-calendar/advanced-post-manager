@@ -6,3 +6,41 @@ node_modules
 codeception.yml
 tests/*.suite.yml
 
+# /vendor/
+.DS_Store
+.idea
+.vscode
+*.code-workspace
+
+# Composer / Package files
+node_modules
+/files
+/vcs
+/repo
+
+# Vendor handling.
+/vendor
+
+# Some people makes...
+Makefile
+
+# Tests - local config files
+codeception.yml
+tests/*.suite.yml
+phpunit.xml
+
+*.local
+*.test
+*.testing
+codeception.tric.yml
+codeception.slic.yml
+
+# Tests - local output files
+tests/_output
+tests/_support/_generated
+
+# Local packaging files
+.pup-*
+
+# get from translate.wordpress.org as needed
+lang/*.po
