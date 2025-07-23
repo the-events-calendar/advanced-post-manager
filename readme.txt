@@ -1,12 +1,12 @@
 === Advanced Post Manager ===
 
-Contributors: aguseo, bordoni, borkweb, brianjessee, GeoffBel, leahkoerper, lucatume, neillmcshea, vicskf, zbtirrell, juanfra
+Contributors: aguseo, bordoni, borkweb, brianjessee, GeoffBel, leahkoerper, lucatume, neillmcshea, sdokus, vicskf, zbtirrell, juanfra
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
 Requires at least: 5.7
 Tested up to: 6.1.1
 License: GPL v2
-Stable tag: 4.5.4
+Stable tag: 4.5.5
 Requires PHP: 7.1
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
