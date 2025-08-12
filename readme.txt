@@ -3,11 +3,11 @@
 Contributors: aguseo, bordoni, borkweb, brianjessee, GeoffBel, leahkoerper, lucatume, neillmcshea, sdokus, vicskf, zbtirrell, juanfra
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
-Requires at least: 5.7
-Tested up to: 6.1.1
+Requires at least: 6.6
+Tested up to: 6.8.2
 License: GPL v2
 Stable tag: 4.5.5
-Requires PHP: 7.1
+Requires PHP: 7.4
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
 
