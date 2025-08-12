@@ -70,6 +70,7 @@ jobs:
           echo "SLIC_BIN=${GITHUB_WORKSPACE}/slic/slic" >> $GITHUB_ENV
           echo "TRIC_WP_DIR=${GITHUB_WORKSPACE}/slic/_wordpress" >> $GITHUB_ENV
           echo "TRIC_WORDPRESS_DOCKERFILE=Dockerfile.base" >> $GITHUB_ENV
+          echo "WORDPRESS_VERSION=6.6" >> $GITHUB_ENV
       - name: Set run context for slic
         if: steps.skip.outputs.value != 1
         run: echo "TRIC=1" >> $GITHUB_ENV && echo "CI=1" >> $GITHUB_ENV
@@ -222,6 +223,9 @@ jobs:
         run: |
           ${SLIC_BIN} use advanced-post-manager
           ${SLIC_BIN} composer install
+      - name: Set WordPress version
+        if: steps.skip.outputs.value != 1
+        run: ${SLIC_BIN} wp-version 6.6
       - name: Init the WordPress container
         if: steps.skip.outputs.value != 1
         run: ${SLIC_BIN} up wordpress
