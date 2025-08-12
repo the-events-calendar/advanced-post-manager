@@ -223,12 +223,14 @@ jobs:
         run: |
           ${SLIC_BIN} use advanced-post-manager
           ${SLIC_BIN} composer install
-      - name: Set WordPress version
-        if: steps.skip.outputs.value != 1
-        run: ${SLIC_BIN} wp-version 6.6
       - name: Init the WordPress container
         if: steps.skip.outputs.value != 1
         run: ${SLIC_BIN} up wordpress
+      - name: Update WordPress to version 6.6
+        if: steps.skip.outputs.value != 1
+        run: |
+          ${SLIC_BIN} wp core update --version=6.6 --force
+          ${SLIC_BIN} wp core update-db
       - name: Ensure Twenty-Twenty is installed
         if: steps.skip.outputs.value != 1
         run: |
