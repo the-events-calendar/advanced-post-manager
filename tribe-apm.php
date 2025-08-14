@@ -2,7 +2,7 @@
 /*
  Plugin Name: Advanced Post Manager
  Description: Dialing custom post types to 11 with advanced filtering controls.
- Version: 4.5.4
+ Version: 4.5.5
  Author: The Events Calendar
  Author URI: https://evnt.is/4n
  Text Domain: advanced-post-manager
@@ -76,14 +76,29 @@ class Tribe_APM {
 		$this->url = apply_filters( 'tribe_apm_url', plugins_url( '', __FILE__ ), __FILE__ );
 
 		$this->register_active_plugin();
+		$this->register_hooks();
 
-		add_action( 'admin_init', array( $this, 'init' ), 0 );
-		add_action( 'admin_init', array( $this, 'init_meta_box' ) );
-		add_action( 'tribe_cpt_filters_init', array( $this, 'maybe_add_taxonomies' ), 10, 1 );
-		add_filter( 'tribe_apm_resources_url', array( $this, 'resources_url' ) );
+		// Check if we need to delay initialization for screen availability.
+		if ( is_admin() && ! wp_doing_ajax() && ! get_current_screen() ) {
+			// Screen not available yet, delay until current_screen.
+			add_action( 'current_screen', [ $this, 'delayed_init' ] );
+		} else {
+			// Screen available or not needed, initialize normally.
+			add_action( 'admin_init', [ $this, 'init' ], 0 );
+		}
 	}
 
 	// PUBLIC METHODS
+
+	/**
+	 * Register hooks that don't depend on initialization state.
+	 *
+	 * @since TBD
+	 */
+	private function register_hooks() {
+		// Always-available filter for resource URLs.
+		add_filter( 'tribe_apm_resources_url', [ $this, 'resources_url' ] );
+	}
 
 	/**
 	 * Registers this plugin as being active for other tribe plugins and extensions
@@ -118,6 +133,10 @@ class Tribe_APM {
 
 		$this->load_text_domain();
 
+		// Register hooks that depend on successful initialization.
+		add_action( 'admin_init', [ $this, 'init_meta_box' ] );
+		add_action( 'tribe_cpt_filters_init', [ $this, 'maybe_add_taxonomies' ], 10, 1 );
+
 		do_action( 'tribe_cpt_filters_init', $this );
 
 		require_once TRIBE_APM_LIB_PATH . 'tribe-filters.class.php';
@@ -127,8 +146,33 @@ class Tribe_APM {
 
 		do_action( 'tribe_cpt_filters_after_init', $this );
 
-		add_action( 'admin_notices', array( $this, 'maybe_show_filters' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue' ) );
+		add_action( 'admin_notices', [ $this, 'maybe_show_filters' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'maybe_enqueue' ] );
+	}
+
+	/**
+	 * Delayed initialization when screen is available.
+	 *
+	 * This method is called when get_current_screen() is not available during admin_init,
+	 * which can happen in newer versions of The Events Calendar (6.12.0+).
+	 *
+	 * @since 4.5.4
+	 */
+	public function delayed_init() {
+		// Remove the hook immediately to prevent multiple calls.
+		remove_action( 'current_screen', array( $this, 'delayed_init' ) );
+
+		// Only initialize if we haven't already and we're on the right screen.
+		if ( ! $this->is_active() ) {
+			return;
+		}
+
+		// Check if already initialized (filters/columns objects exist).
+		if ( isset( $this->filters ) && isset( $this->columns ) ) {
+			return;
+		}
+
+		$this->init();
 	}
 
 	private function load_text_domain() {
