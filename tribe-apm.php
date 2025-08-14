@@ -80,14 +80,14 @@ class Tribe_APM {
 		// Check if we need to delay initialization for screen availability.
 		if ( is_admin() && ! wp_doing_ajax() && ! get_current_screen() ) {
 			// Screen not available yet, delay until current_screen.
-			add_action( 'current_screen', array( $this, 'delayed_init' ) );
+			add_action( 'current_screen', [ $this, 'delayed_init' ] );
 		} else {
 			// Screen available or not needed, initialize normally.
-			add_action( 'admin_init', array( $this, 'init' ), 0 );
+			add_action( 'admin_init', [ $this, 'init' ], 0 );
 		}
-		add_action( 'admin_init', array( $this, 'init_meta_box' ) );
-		add_action( 'tribe_cpt_filters_init', array( $this, 'maybe_add_taxonomies' ), 10, 1 );
-		add_filter( 'tribe_apm_resources_url', array( $this, 'resources_url' ) );
+		add_action( 'admin_init', [ $this, 'init_meta_box' ] );
+		add_action( 'tribe_cpt_filters_init', [ $this, 'maybe_add_taxonomies' ], 10, 1 );
+		add_filter( 'tribe_apm_resources_url', [ $this, 'resources_url' ] );
 	}
 
 	// PUBLIC METHODS
@@ -134,8 +134,8 @@ class Tribe_APM {
 
 		do_action( 'tribe_cpt_filters_after_init', $this );
 
-		add_action( 'admin_notices', array( $this, 'maybe_show_filters' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue' ) );
+		add_action( 'admin_notices', [ $this, 'maybe_show_filters' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'maybe_enqueue' ] );
 	}
 
 	/**
