@@ -76,6 +76,7 @@ class Tribe_APM {
 		$this->url = apply_filters( 'tribe_apm_url', plugins_url( '', __FILE__ ), __FILE__ );
 
 		$this->register_active_plugin();
+		$this->register_hooks();
 
 		// Check if we need to delay initialization for screen availability.
 		if ( is_admin() && ! wp_doing_ajax() && ! get_current_screen() ) {
@@ -85,12 +86,19 @@ class Tribe_APM {
 			// Screen available or not needed, initialize normally.
 			add_action( 'admin_init', [ $this, 'init' ], 0 );
 		}
-		add_action( 'admin_init', [ $this, 'init_meta_box' ] );
-		add_action( 'tribe_cpt_filters_init', [ $this, 'maybe_add_taxonomies' ], 10, 1 );
-		add_filter( 'tribe_apm_resources_url', [ $this, 'resources_url' ] );
 	}
 
 	// PUBLIC METHODS
+
+	/**
+	 * Register hooks that don't depend on initialization state.
+	 *
+	 * @since TBD
+	 */
+	private function register_hooks() {
+		// Always-available filter for resource URLs.
+		add_filter( 'tribe_apm_resources_url', [ $this, 'resources_url' ] );
+	}
 
 	/**
 	 * Registers this plugin as being active for other tribe plugins and extensions
@@ -124,6 +132,10 @@ class Tribe_APM {
 		}
 
 		$this->load_text_domain();
+
+		// Register hooks that depend on successful initialization.
+		add_action( 'admin_init', [ $this, 'init_meta_box' ] );
+		add_action( 'tribe_cpt_filters_init', [ $this, 'maybe_add_taxonomies' ], 10, 1 );
 
 		do_action( 'tribe_cpt_filters_init', $this );
 
