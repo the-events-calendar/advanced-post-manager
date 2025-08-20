@@ -16,10 +16,10 @@ class Tribe_Filters {
 
 	private $filtered_post_type;
 
-	private $filters = array();
-	private $active = array();
+	private $filters = [];
+	private $active = [];
+	private $inactive = [];
 	private $orderby_cast;
-	private $sortby; // takes an array
 
 	private $url;
 	private $nonce = '_tribe_filters';
@@ -27,15 +27,24 @@ class Tribe_Filters {
 	private $is_pre;
 	private $val_pre;
 
-	private $query_options;
+	private $query_options = [];
 
-	private $query_options_map;
+	private $query_options_map =  [ // turn into SQL comparison operators
+		'is' => '=',
+		'not' => '!=',
+		'gt' => '>',
+		'lt' => '<',
+		'gte' => '>=',
+		'lte' => '<=',
+		'like' => 'LIKE',
+	];
 
-	private $query_search_options;
+	private $query_search_options = [];
 
-	private $filters_example;
 
-	private $active_example;
+	private $sortby; // takes an array
+	private $filters_example = [];
+	private $active_example = [];
 
 	/**
 	 * Constructor function is critical.
@@ -44,58 +53,52 @@ class Tribe_Filters {
 	 *
 	 */
 
-	private $saved_active = false;
+	/**
+	 * Saved active filters.
+	 *
+	 * @var object
+	 */
+	private $saved_active;
 
-	public function __construct( $post_type, $filters = array() ) {
+	public function __construct( $post_type, $filters = [] ) {
 
-		$this->query_options = array(
+		$this->query_options = [
 			'is' => __( 'Is', 'advanced-post-manager' ),
 			'not' => __( 'Is Not', 'advanced-post-manager' ),
 			'gt' => '>',
 			'lt' => '<',
 			'gte' => '>=',
 			'lte' => '<=',
-		);
+		];
 
-		$this->query_options_map = array( // turn into SQL comparison operators
-			'is' => '=',
-			'not' => '!=',
-			'gt' => '>',
-			'lt' => '<',
-			'gte' => '>=',
-			'lte' => '<=',
-			'like' => 'LIKE',
-		);
+		$this->query_search_options = array_merge(
+            $this->query_options_map,
+            [
+                'like' => __( 'Search', 'advanced-post-manager' ),
+                'is'   => __( 'Is', 'advanced-post-manager' ),
+                'not'  => __( 'Is Not', 'advanced-post-manager' ),
+            ]
+        );
 
-		$this->query_search_options = array(
-			'like' => __( 'Search', 'advanced-post-manager' ),
-			'is' => __( 'Is', 'advanced-post-manager' ),
-			'not' => __( 'Is Not', 'advanced-post-manager' ),
-			'gt' => '>',
-			'lt' => '<',
-			'gte' => '>=',
-			'lte' => '<=',
-		);
-
-		$this->filters_example = array(
-			'filter_key' => array(
-				'name' => __( 'Member Type', 'advanced-post-manager' ), // text label
-				'meta' => '_type', // the meta key to query
+		$this->filters_example = [
+			'filter_key' => [
+				'name'     => __( 'Member Type', 'advanced-post-manager' ), // text label
+				'meta'     => '_type', // the meta key to query
 				'taxonomy' => 'some_taxonomy',// the taxonomy to query. Would never be set alongside meta above
-				'options' => array( // options for a meta query. Restricts them.
-					'cafe' => __( 'Cafe', 'advanced-post-manager' ),
-					'desk' => __( 'Private Desk', 'advanced-post-manager' ),
+				'options'  => [ // options for a meta query. Restricts them.
+					'cafe'   => __( 'Cafe', 'advanced-post-manager' ),
+					'desk'   => __( 'Private Desk', 'advanced-post-manager' ),
 					'office' => __( 'Office', 'advanced-post-manager' ),
-				),
-			),
-		);
+				],
+			],
+		];
 
-		$this->active_example = array(
-			'filter_key' => array( // array key corresponds to key in $filters
-				'value' => __( 'what i’m querying. probably a key in the options array in $filters', 'advanced-post-manager' ),
+		$this->active_example = [
+			'filter_key' => [ // array key corresponds to key in $filters
+				'value'        => __( 'what i’m querying. probably a key in the options array in $filters', 'advanced-post-manager' ),
 				'query_option' => 'is/is not,etc.',
-			),
-		);
+			],
+		];
 
 		$this->filtered_post_type = $post_type;
 		$this->set_filters( $filters );
@@ -116,10 +119,11 @@ class Tribe_Filters {
 	 *
 	 * @param $filters array
 	 */
-	public function set_filters( $filters = array() ) {
+	public function set_filters( $filters = [] ) {
 		if ( ! empty( $filters ) ) {
 			$this->filters = $filters;
 		}
+
 		$this->alphabetize_filters();
 	}
 
@@ -138,7 +142,7 @@ class Tribe_Filters {
 	 *
 	 * Only use this to specifically set a particular set of filters that shouldn't be changed, as this will override filters set by the UI
 	 *
-	 * @param $active array multideminsional array. @see $active_example
+	 * @param $active array multidimensional array. @see $active_example
 	 */
 	public function set_active( $active = null ) {
 		if ( ! empty( $active ) ) {
@@ -150,9 +154,9 @@ class Tribe_Filters {
 	/**
 	 * Merges a new active array into current active array
 	 *
-	 * @param $new_active array multideminsional array. @see $active_example
+	 * @param $new_active array multidimensional array. @see $active_example
 	 */
-	public function add_active( $new_active = array() ) {
+	public function add_active( $new_active = [] ) {
 		$new_active = (array) $new_active;
 		$this->active = array_merge( $this->active, $new_active );
 	}
@@ -193,17 +197,20 @@ class Tribe_Filters {
 	// CALLBACKS
 
 	protected function add_actions_and_filters() {
-		add_action( 'admin_init', array( $this, 'init_active' ), 10 );
-		add_action( 'admin_init', array( $this, 'save_active' ), 20 );
-		add_action( 'admin_init', array( $this, 'update_or_delete_saved_filters' ), 21 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-		add_action( 'load-edit.php', array( $this, 'add_query_filters' ), 30 );
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_filter( 'admin_body_class', array( $this, 'add_body_class' ) );
-		add_action( 'tribe_after_parse_query', array( $this, 'maybe_cast_for_ordering' ), 10, 2 );
-		add_action( 'tribe_after_parse_query', array( $this, 'add_cast_helpers' ) );
-		add_filter( 'tribe_filter_input_class', array( $this, 'input_date_class' ), 10, 2 );
-		add_filter( 'tribe_query_options', array( $this, 'input_date_options' ), 10, 3 );
+		// We need to add actions and filters on the current screen hook if we're in a delayed initialization.
+		$hook = Tribe_APM::$delayed_init ? 'current_screen' : 'admin_init';
+
+		add_action( $hook, [ $this, 'init_active' ], 10 );
+		add_action( $hook, [ $this, 'save_active' ], 20 );
+		add_action( $hook, [ $this, 'update_or_delete_saved_filters' ], 21 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
+		add_action( 'load-edit.php', [ $this, 'add_query_filters' ], 30 );
+		add_action( $hook, [ $this, 'register_post_type' ] );
+		add_filter( 'admin_body_class', [ $this, 'add_body_class' ] );
+		add_action( 'tribe_after_parse_query', [ $this, 'maybe_cast_for_ordering' ], 10, 2 );
+		add_action( 'tribe_after_parse_query', [ $this, 'add_cast_helpers' ] );
+		add_filter( 'tribe_filter_input_class', [ $this, 'input_date_class' ], 10, 2 );
+		add_filter( 'tribe_query_options', [ $this, 'input_date_options' ], 10, 3 );
 	}
 
 	public function input_date_options( $options, $key, $filter ) {
@@ -221,7 +228,7 @@ class Tribe_Filters {
 	}
 
 	public function add_cast_helpers() {
-		add_filter( 'posts_request', array( $this, 'help_decimal_cast' ), 10, 1 );
+		add_filter( 'posts_request', [ $this, 'help_decimal_cast' ], 10, 1 );
 	}
 
 	public function maybe_cast_for_ordering( $wp_query, $active ) {
@@ -236,18 +243,18 @@ class Tribe_Filters {
 		}
 
 		$this->orderby_cast = $this->map_meta_cast( $filter );
-		add_filter( 'posts_orderby', array( $this, 'cast_orderby' ), 10, 2 );
+		add_filter( 'posts_orderby', [ $this, 'cast_orderby' ], 10, 2 );
 	}
 
 	public function help_decimal_cast( $query ) {
 		// Run once
-		remove_filter( 'posts_request', array( $this, 'help_decimal_cast' ), 10, 1 );
+		remove_filter( 'posts_request', [ $this, 'help_decimal_cast' ], 10, 1 );
 		return preg_replace( '/AS DECIMAL\)/', 'AS DECIMAL(6,2))', $query );
 	}
 
 	public function cast_orderby( $orderby, $wp_query ) {
 		// Run once
-		remove_filter( 'posts_orderby', array( $this, 'cast_orderby' ), 10, 2 );
+		remove_filter( 'posts_orderby', [ $this, 'cast_orderby' ], 10, 2 );
 		list( $by, $dir ) = explode( ' ', trim( $orderby ) );
 		if ( ! empty( $this->orderby_cast ) && 'CAST' !== $this->orderby_cast ) {
 			$by = sprintf( 'CAST(%s AS %s)', $by, $this->orderby_cast );
@@ -263,7 +270,7 @@ class Tribe_Filters {
 		if ( $screen->post_type !== $this->filtered_post_type )
 			return;
 
-		add_action( 'parse_query', array( $this, 'parse_query' ) );
+		add_action( 'parse_query', [ $this, 'parse_query' ] );
 	}
 
 	public function parse_query( $wp_query ) {
@@ -271,12 +278,12 @@ class Tribe_Filters {
 		// If we just remove it though, without leaving something in its place
 		// the next action that's supposed to run on parse query might be skipped.
 		add_action( 'parse_query', '__return_true' );
-		remove_action( 'parse_query', array( $this, 'parse_query' ) );
+		remove_action( 'parse_query', [ $this, 'parse_query' ] );
 
-		do_action_ref_array( 'tribe_before_parse_query', array( $wp_query, $this->active ) );
+		do_action_ref_array( 'tribe_before_parse_query', [ $wp_query, $this->active ] );
 
-		$tax_query = array();
-		$meta_query = array();
+		$tax_query = [];
+		$meta_query = [];
 
 		foreach ( $this->active as $k => $v ) {
 			if ( ! isset( $this->filters[ $k ] ) ) {
@@ -292,18 +299,18 @@ class Tribe_Filters {
 			}
 		}
 		$old_tax_query = $wp_query->get( 'tax_query' );
-		$old_tax_query = ( empty( $old_tax_query ) ) ? array() : $old_tax_query;
+		$old_tax_query = ( empty( $old_tax_query ) ) ? [] : $old_tax_query;
 		$tax_query = array_merge( $old_tax_query, $tax_query );
 		$wp_query->set( 'tax_query', $tax_query );
 
 		$old_meta_query = $wp_query->get( 'meta_query' );
-		$old_meta_query = ( empty( $old_meta_query ) ) ? array() : $old_meta_query;
+		$old_meta_query = ( empty( $old_meta_query ) ) ? [] : $old_meta_query;
 		$meta_query = array_merge( $old_meta_query, $meta_query );
 		$wp_query->set( 'meta_query', $meta_query );
 
 		$this->maybe_set_ordering( $wp_query );
 
-		do_action_ref_array( 'tribe_after_parse_query', array( $wp_query, $this->active ) );
+		do_action_ref_array( 'tribe_after_parse_query', [ $wp_query, $this->active ] );
 	}
 
 	public function debug() {
@@ -328,17 +335,19 @@ class Tribe_Filters {
 	public function init_active() {
 		// saved filter active?
 		if ( isset( $_GET['saved_filter'] ) && $_GET['saved_filter'] > 0 ) {
-
 			$filterset = get_post( $_GET['saved_filter'] );
+
 			if ( substr( $filterset->post_content, 0, 2 ) === 'a:' ) {
 				// If post_content is serialized, grab it and update it to json_encoded.
 				$active = unserialize( $filterset->post_content );
 
 				if ( $active ) {
-					wp_update_post( [
-						'ID'           => $filterset->ID,
-						'post_content' => json_encode( $active ),
-					] );
+					wp_update_post(
+						[
+							'ID'           => $filterset->ID,
+							'post_content' => json_encode( $active ),
+						]
+					);
 				}
 			} else {
 				$active = json_decode( $filterset->post_content, true );
@@ -370,7 +379,7 @@ class Tribe_Filters {
 			$this->reset_active();
 			return;
 		}
-		$active = array();
+		$active = [];
 
 		foreach ( $this->filters as $key => $filter ) {
 			$maybe_active = false;
@@ -432,11 +441,14 @@ class Tribe_Filters {
 	}
 
 	public function register_post_type() {
-		register_post_type( self::FILTER_POST_TYPE, array(
-			'show_ui' => false,
-			'rewrite' => false,
-			'show_in_nav_menus' => false,
-		) );
+		register_post_type(
+			self::FILTER_POST_TYPE,
+			[
+				'show_ui'           => false,
+				'rewrite'           => false,
+				'show_in_nav_menus' => false,
+			]
+		);
 	}
 
 	public function enqueue() {
@@ -444,17 +456,24 @@ class Tribe_Filters {
 		$resources_url = apply_filters( 'tribe_apm_resources_url', $this->url . 'resources' );
 		$resources_url = trailingslashit( $resources_url );
 		if ( $current_screen->id == 'edit-' . $this->filtered_post_type ) {
-			wp_enqueue_style( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css', array(), '1.8.10' );
+			wp_enqueue_style( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css', [], '1.8.10' );
 			wp_enqueue_script( 'jquery-ui-datepicker' );
-			wp_enqueue_script( 'tribe-filters', $resources_url . 'tribe-filters.js', array(
-				'jquery-ui-sortable',
-				'jquery-ui-datepicker',
-			), false, true );
+			wp_enqueue_script(
+				'tribe-filters',
+				$resources_url .
+				'tribe-filters.js',
+				[
+					'jquery-ui-sortable',
+					'jquery-ui-datepicker',
+				],
+				false,
+				true
+			);
 		}
 	}
 
 
-	// UTLITIES AND INTERNAL METHODS
+	// UTILITIES AND INTERNAL METHODS
 
 	protected function last_query() {
 		$meta = get_user_meta( get_current_user_id(), 'last_used_filters_' . $this->filtered_post_type, true );
@@ -480,7 +499,7 @@ class Tribe_Filters {
 	}
 
 	protected function reset_active() {
-		$this->active = array();
+		$this->active = [];
 		$this->clear_last_query();
 	}
 
@@ -507,7 +526,7 @@ class Tribe_Filters {
 	protected function maybe_active_taxonomy( $key, $filter ) {
 		$val = $this->prefix . $key;
 		if ( isset( $_POST[ $val ] ) ) {
-			return array( 'value' => $_POST[ $val ] );
+			return [ 'value' => $_POST[ $val ] ];
 		}
 		return false;
 	}
@@ -515,8 +534,12 @@ class Tribe_Filters {
 	protected function maybe_active_meta( $key, $filter ) {
 		$val = $this->val_pre . $key;
 		$is = $this->is_pre . $key;
-		if ( isset( $_POST[ $val ] ) && isset( $_POST[ $is ] ) && ( $_POST[ $val ] !== '' ) ) {
-			return array( 'value' => $_POST[ $val ], 'query_option' => $_POST[ $is ] );
+
+		if ( !empty( $_POST[ $val ] ) && isset( $_POST[ $is ] ) ) {
+			return [
+				'value'        => $_POST[ $val ],
+				'query_option' => $_POST[ $is ]
+			];
 		}
 		return false;
 	}
@@ -526,36 +549,41 @@ class Tribe_Filters {
 			return;
 		}
 
-		$filter = array(
+		$filter = [
 			'post_content' => json_encode( $this->active ),
-			'post_title' => $_POST['filter_name'],
-			'post_type' => self::FILTER_POST_TYPE,
-			'post_status' => 'publish',
-		);
+			'post_title'   => $_POST['filter_name'],
+			'post_type'    => self::FILTER_POST_TYPE,
+			'post_status'  => 'publish',
+		];
 
 		$post_id = wp_insert_post( $filter );
 		update_post_meta( $post_id, self::FILTER_META, $this->filtered_post_type );
 	}
 
-	public function log( $data = array() ) {
-		error_log( print_r( $data, true ) );
+	public function log( $data = [] ) {
+		error_log( print_r( $data, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	}
 
 	protected function saved_filters_dropdown() {
-		$filters = get_posts( array(
-			'numberposts' => -1,
-			'post_type' => self::FILTER_POST_TYPE,
-			'meta_key' => self::FILTER_META,
-			'meta_value' => $this->filtered_post_type,
-		) );
+		$filters = get_posts(
+			[
+				'numberposts' => -1,
+				'post_type'   => self::FILTER_POST_TYPE,
+				'meta_key'    => self::FILTER_META,
+				'meta_value'  => $this->filtered_post_type,
+			]
+		);
 		if ( empty( $filters ) ) {
 			return;
 		}
 
-		$url = add_query_arg( array(
-				'post_type' => $this->filtered_post_type,
+		$url = add_query_arg(
+			[
+				'post_type'    => $this->filtered_post_type,
 				'saved_filter' => 'balderdash',
-			), admin_url( 'edit.php' ) );
+			],
+			admin_url( 'edit.php' )
+		);
 		$url = str_replace( 'balderdash', '', $url );
 
 		// @TODO: this is an inappropriate way to do pluralization
@@ -620,9 +648,9 @@ class Tribe_Filters {
 	}
 
 	protected function taxonomy_row( $key, $value, $filter ) {
-		$terms = get_terms( $filter['taxonomy'], array( 'hide_empty' => 0 ) );
-		$value = array_merge( array( 'value' => 0 ), (array) $value );
-		$opts = array();
+		$terms = get_terms( $filter['taxonomy'], [ 'hide_empty' => 0 ] );
+		$value = array_merge( [ 'value' => 0 ], (array) $value );
+		$opts = [];
 		foreach ( $terms as $term ) {
 			$opts[ $term->term_id ] = $term->name;
 		}
@@ -633,7 +661,13 @@ class Tribe_Filters {
 		$ret = '';
 		$is_key = $this->is_pre . $key;
 		$val_key = $this->val_pre . $key;
-		$value = array_merge( array( 'value' => 0, 'query_option' => 0 ), (array) $value );
+		$value = array_merge(
+			[
+				'value'        => 0,
+				'query_option' => 0
+			],
+			(array) $value
+		);
 
 		// We have explicit dropdown options.
 		if ( isset( $filter['options'] ) && ! empty( $filter['options'] ) ) {
@@ -696,22 +730,22 @@ class Tribe_Filters {
 	protected function form_js() {
 		global $wp_query;
 
-		$templates = array();
-		$option_rows = array();
+		$templates = [];
+		$option_rows = [];
 
 		foreach ( $this->filters as $k => $v ) {
 			$templates[ $k ] = $this->table_row( $k, '' );
 			$option_rows[ $k ] = $this->dropdown_row( $k, $v );
 		}
 
-		$js = array(
-			'filters' => $this->filters,
-			'template' => $templates,
-			'option' => $option_rows,
-			'valPrefix' => $this->val_pre,
-			'prefix' => $this->prefix,
+		$js = [
+			'filters'    => $this->filters,
+			'template'   => $templates,
+			'option'     => $option_rows,
+			'valPrefix'  => $this->val_pre,
+			'prefix'     => $this->prefix,
 			'displaying' => $wp_query->found_posts . ' found',
-		);
+		];
 
 		echo "\n<script>";
 		echo "\n\tvar Tribe_Filters = " . json_encode( $js );
@@ -737,37 +771,37 @@ class Tribe_Filters {
 			// Custom Field?
 			$custom_field = $this->get_filter_by_field( 'custom_type', $orderby );
 			if ( $custom_field ) {
-				do_action_ref_array( 'tribe_orderby_custom'.$orderby, array( $wp_query, $custom_field ) );
+				do_action_ref_array( 'tribe_orderby_custom'.$orderby, [ $wp_query, $custom_field ] );
 			}
 		}
 	}
 
 	protected function tax_query( $key, $val ) {
 		$filter = $this->filters[ $key ];
-		$tax_query = array(
+		$tax_query = [
 			'taxonomy' => $filter['taxonomy'],
-			'field' => 'id',
-			'terms' => $val['value'],
+			'field'    => 'id',
+			'terms'    => $val['value'],
 			'operator' => 'IN',
-		);
+		];
 		return apply_filters( 'tribe_filters_tax_query', $tax_query, $key, $val, $filter );
 	}
 
 	protected function meta_query( $key, $val ) {
 		$filter = $this->filters[ $key ];
-		$meta_query = array(
-			'key' => $filter['meta'],
-			'value' => $val['value'],
+		$meta_query = [
+			'key'     => $filter['meta'],
+			'value'   => $val['value'],
 			'compare' => $this->map_meta_compare( $val ),
-			'type' => $this->map_meta_cast( $filter ),
-		);
+			'type'    => $this->map_meta_cast( $filter ),
+		];
 		return apply_filters( 'tribe_filters_meta_query', $meta_query, $key, $val, $filter );
 	}
 
 	protected function map_meta_cast( $filter ) {
 		$cast = ( isset( $filter['cast'] ) ) ? strtoupper( $filter['cast'] ) : 'CHAR';
 		$cast = ( 'NUMERIC' === $cast ) ? 'SIGNED' : $cast;
-		$allowed = array( 'BINARY', 'CHAR', 'DATE', 'DATETIME', 'DECIMAL', 'SIGNED', 'TIME', 'UNSIGNED' );
+		$allowed = [ 'BINARY', 'CHAR', 'DATE', 'DATETIME', 'DECIMAL', 'SIGNED', 'TIME', 'UNSIGNED' ];
 		return ( in_array( $cast, $allowed ) ) ? $cast : 'CHAR';
 	}
 
@@ -786,7 +820,7 @@ class Tribe_Filters {
 	protected function is_date( $filter ) {
 		if ( isset( $filter['cast'] ) ) {
 			$cast = ucwords( $filter['cast'] );
-			if ( in_array( $cast, array( 'DATE', 'DATETIME' ) ) ) {
+			if ( in_array( $cast, [ 'DATE', 'DATETIME' ] ) ) {
 				return true;
 			}
 		}

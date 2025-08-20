@@ -28,12 +28,12 @@ class Tribe_Meta_Box {
 		$this->_meta_box = $meta_box;
 		// Cast pages to array
 		$this->_meta_box['pages'] = (array) $meta_box['pages'];
-		$this->_fields = $this->_meta_box['fields'];
+		$this->_fields            = $this->_meta_box['fields'];
 		$this->add_missed_values();
 		$this->register_scripts_and_styles();
 
-		add_action( 'add_meta_boxes', array( $this, 'add' ) );	// add meta box, using 'add_meta_boxes' for WP 3.0+
-		add_action( 'save_post', array( $this, 'save' ) );		// save meta box's data
+		add_action( 'add_meta_boxes', [ $this, 'add' ] );	// add meta box, using 'add_meta_boxes' for WP 3.0+
+		add_action( 'save_post', [ $this, 'save' ] );		// save meta box's data
 
 		// check for some special fields and add needed actions for them
 		$this->check_field_upload();
@@ -43,25 +43,25 @@ class Tribe_Meta_Box {
 
 		// load common js, css files
 		// must enqueue for all pages as we need js for the media upload, too
-		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'js_css' ) );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'js_css' ] );
 	}
 
 	public function register_scripts_and_styles() {
 		// change '\' to '/' in case using Windows
 		$content_dir = str_replace( '\\', '/', WP_CONTENT_DIR );
-		$script_dir = str_replace( '\\', '/', dirname( __FILE__ ) );
+		$script_dir  = str_replace( '\\', '/', dirname( __FILE__ ) );
 
 		// get URL of the directory of current file, this works in both theme or plugin
-		$base_url = trailingslashit( str_replace( $content_dir, WP_CONTENT_URL, $script_dir ) );
+		$base_url      = trailingslashit( str_replace( $content_dir, WP_CONTENT_URL, $script_dir ) );
 		$resources_url = apply_filters( 'tribe_apm_resources_url', $base_url . 'resources' );
 		$resources_url = trailingslashit( $resources_url );
 
 		wp_register_style( 'tribe-meta-box', $resources_url . 'meta-box.css' );
-		wp_register_script( 'tribe-meta-box', $resources_url . 'meta-box.js', array( 'jquery' ), null, true );
+		wp_register_script( 'tribe-meta-box', $resources_url . 'meta-box.js', [ 'jquery' ], null, true );
 
 		wp_register_style( 'tribe-jquery-ui-css', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . self::get_jqueryui_ver() . '/themes/base/jquery-ui.css' );
-		wp_register_script( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . self::get_jqueryui_ver() . '/jquery-ui.min.js', array( 'jquery' ) );
-		wp_register_script( 'tribe-timepicker', 'https://github.com/trentrichardson/jQuery-Timepicker-Addon/raw/master/jquery-ui-timepicker-addon.js', array( 'tribe-jquery-ui' ) );
+		wp_register_script( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . self::get_jqueryui_ver() . '/jquery-ui.min.js', [ 'jquery' ] );
+		wp_register_script( 'tribe-timepicker', 'https://github.com/trentrichardson/jQuery-Timepicker-Addon/raw/master/jquery-ui-timepicker-addon.js', [ 'tribe-jquery-ui' ] );
 	}
 
 	// Load common js, css files for the script
@@ -78,20 +78,20 @@ class Tribe_Meta_Box {
 			return;
 		}
 
-		add_action( 'post_edit_form_tag', array( $this, 'add_enctype' ) );				// add data encoding type for file uploading
+		add_action( 'post_edit_form_tag', [ $this, 'add_enctype' ] );				// Add data encoding type for file uploading.
 
-		// make upload feature works even when custom post type doesn't support 'editor'
+		// Make upload feature works even when custom post type doesn't support 'editor'.
 		wp_enqueue_script( 'media-upload' );
 		add_thickbox();
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
-		add_filter( 'media_upload_gallery', array( $this, 'insert_images' ) );			// process adding multiple images to image meta field
-		add_filter( 'media_upload_library', array( $this, 'insert_images' ) );
-		add_filter( 'media_upload_image', array( $this, 'insert_images' ) );
+		add_filter( 'media_upload_gallery', [ $this, 'insert_images' ] );			// process adding multiple images to image meta field
+		add_filter( 'media_upload_library', [ $this, 'insert_images' ] );
+		add_filter( 'media_upload_image', [ $this, 'insert_images' ] );
 
-		add_action( 'wp_ajax_tribe_delete_file', array( $this, 'delete_file' ) );		// ajax delete files
-		add_action( 'wp_ajax_tribe_reorder_images', array( $this, 'reorder_images' ) );	// ajax reorder images
+		add_action( 'wp_ajax_tribe_delete_file', [ $this, 'delete_file' ] );		// ajax delete files
+		add_action( 'wp_ajax_tribe_reorder_images', [ $this, 'reorder_images' ] );	// ajax reorder images
 	}
 
 	// Add data encoding type for file uploading
@@ -99,7 +99,7 @@ class Tribe_Meta_Box {
 		echo ' enctype="multipart/form-data"';
 	}
 
-	// Process adding images to image meta field, modifiy from 'Faster image insert' plugin
+	// Process adding images to image meta field, modify from 'Faster image insert' plugin
 	public function insert_images() {
 		if ( ! isset( $_POST['tribe-insert'] ) || empty( $_POST['attachments'] ) ){
 			return;
@@ -107,9 +107,9 @@ class Tribe_Meta_Box {
 
 		check_admin_referer( 'media-form' );
 
-		$nonce = wp_create_nonce( 'tribe_ajax_delete' );
+		$nonce   = wp_create_nonce( 'tribe_ajax_delete' );
 		$post_id = $_POST['post_id'];
-		$id = $_POST['field_id'];
+		$id      = $_POST['field_id'];
 
 		// modify the insertion string
 		$html = '';
@@ -132,11 +132,13 @@ class Tribe_Meta_Box {
 
 	// Delete all attachments when delete post
 	public function delete_attachments( $post_id ) {
-		$attachments = get_posts( array(
-			'numberposts' => -1,
-			'post_type' => 'attachment',
-			'post_parent' => $post_id,
-		) );
+		$attachments = get_posts(
+			[
+				'numberposts' => -1,
+				'post_type'   => 'attachment',
+				'post_parent' => $post_id,
+			]
+		);
 		if ( ! empty( $attachments ) ) {
 			foreach ( $attachments as $att ) {
 				wp_delete_attachment( $att->ID );
@@ -201,11 +203,13 @@ class Tribe_Meta_Box {
 		$items = $items['item'];
 		$order = 1;
 		foreach ( $items as $item ) {
-			wp_update_post( array(
-				'ID' => $item,
-				'post_parent' => $post_id,
-				'menu_order' => $order,
-			) );
+			wp_update_post(
+				[
+					'ID'          => $item,
+					'post_parent' => $post_id,
+					'menu_order'  => $order,
+				]
+			);
 			$order++;
 		}
 
@@ -249,7 +253,7 @@ class Tribe_Meta_Box {
 	// Add meta box for multiple post types
 	public function add() {
 		foreach ( (array) $this->_meta_box['pages'] as $page ) {
-			add_meta_box( $this->_meta_box['id'], $this->_meta_box['title'], array( $this, 'show' ), $page, $this->_meta_box['context'], $this->_meta_box['priority'] );
+			add_meta_box( $this->_meta_box['id'], $this->_meta_box['title'], [ $this, 'show' ], $page, $this->_meta_box['context'], $this->_meta_box['priority'] );
 		}
 	}
 
@@ -264,7 +268,7 @@ class Tribe_Meta_Box {
 			$meta = $this->retrieve_meta_for_field( $field, $post );
 			echo '<tr>';
 			// call separated methods for displaying each type of field
-			call_user_func( array( $this, 'show_field_' . $field['type'] ), $field, $meta );
+			call_user_func( [ $this, 'show_field_' . $field['type'] ], $field, $meta );
 			echo '</tr>';
 		}
 		echo '</table>';
@@ -278,17 +282,17 @@ class Tribe_Meta_Box {
 	}
 
 	public function array_map_deep( $callback, $data ) {
-		$results =	array();
-		$args = array();
+		$results = [];
+		$args    = [];
 		if ( func_num_args() > 2 ) {
-			$args =	(array) array_shift( array_slice( func_get_args(), 2 ) );
+			$args = (array) array_shift( array_slice( func_get_args(), 2 ) );
 		}
 
 		foreach ( $data as $key => $value ) {
 			if ( is_array( $value ) ) {
 				array_unshift( $args, $value );
 				array_unshift( $args, $callback );
-				$results[ $key ] = call_user_func_array( array( 'self', 'array_map_deep' ), $args );
+				$results[ $key ] = call_user_func_array( [ 'self', 'array_map_deep' ], $args );
 			}
 			else {
 				array_unshift( $args, $value );
@@ -360,9 +364,9 @@ class Tribe_Meta_Box {
 		$this->show_field_begin( $field, $meta );
 		$content  = get_post_meta( get_the_ID(), $field['meta'], true );
 		$content  = empty( $content ) || ! is_string( $content ) ? '' : $content;
-		$settings = array(
+		$settings = [
 			'media_buttons' => isset( $field['media_buttons'] ) ? (bool) $field['meta_buttons'] : false,
-		);
+		];
 		wp_editor( $content, $field['meta'], $settings );
 		$this->show_field_end( $field, $meta );
 	}
@@ -416,7 +420,7 @@ class Tribe_Meta_Box {
 		echo "<input type='hidden' class='tribe-images-data' value='{$post->ID}|{$field['meta']}|$nonce_sort' />
 				<ul class='tribe-images tribe-upload' id='tribe-images-{$field['meta']}'>";
 
-		// re-arrange images with 'menu_order', thanks Onur
+		// Re-arrange images with 'menu_order', thanks Onur!
 		if ( ! empty( $meta ) ) {
 			$meta = implode( ',', $meta );
 			$images = $wpdb->get_col( "
@@ -460,7 +464,7 @@ class Tribe_Meta_Box {
 		}
 
 		$this->show_field_begin( $field, $meta );
-		$html = array();
+		$html = [];
 		foreach ( $field['options'] as $key => $value ) {
 			$html[] = "<input type='checkbox' class='tribe-checkbox_list' name='{$field['meta']}[]' value='$key'" . checked( in_array( $key, $meta ), true, false ) . " /> $value";
 		}
@@ -487,7 +491,7 @@ class Tribe_Meta_Box {
 		$size = floor( 36 / count( $field['ids'] ) );
 
 		echo '<div class="tribe-multi-text-wrap' . esc_attr( $hide_remove ) . '">';
-		foreach ( $meta as $k => $v ) {
+		foreach ( $meta as $v ) {
 			echo '<div class="tribe-multi-text">';
 			foreach ( $field['ids'] as $key => $id ) {
 				$val = ( isset( $v[ $id ] ) ) ? $v[ $id ] : '';
@@ -514,12 +518,14 @@ class Tribe_Meta_Box {
 			$field['dropdown_title'] = sprintf( 'Select %s', $post_type_object->labels->singular_name );
 		}
 
-		$this->dropdown_posts( array(
-			'post_type' => $field['post_type'],
-			'show_option_none' => $field['dropdown_title'],
-			'name' => $field['meta'],
-			'class' => 'p2p-drop',
-		) );
+		$this->dropdown_posts(
+			[
+				'post_type'        => $field['post_type'],
+				'show_option_none' => $field['dropdown_title'],
+				'name'             => $field['meta'],
+				'class'            => 'p2p-drop',
+			]
+		);
 
 		$list_items = '';
 		$list_item_template = '<li><label><input type="checkbox" name="'.$field['meta'].'[]" value="%s" checked="checked" /> %s</label></li>';
@@ -554,18 +560,18 @@ class Tribe_Meta_Box {
 		foreach ( $this->_fields as $field ) {
 			$name = $field['meta'];
 			$type = $field['type'];
-			$old = get_post_meta( $post_id, $name, ! $field['multiple'] );
-			$new = isset( $_POST[ $name ] ) ? $_POST[ $name ] : ( $field['multiple'] ? array() : '' );
+			$old  = get_post_meta( $post_id, $name, ! $field['multiple'] );
+			$new  = isset( $_POST[ $name ] ) ? $_POST[ $name ] : ( $field['multiple'] ? [] : '' );
 
 			// validate meta value
 			if ( class_exists( 'Tribe_Meta_Box_Validate' ) && method_exists( 'Tribe_Meta_Box_Validate', $field['validate_func'] ) ) {
-				$new = call_user_func( array( 'Tribe_Meta_Box_Validate', $field['validate_func'] ), $new );
+				$new = call_user_func( [ 'Tribe_Meta_Box_Validate', $field['validate_func'] ], $new );
 			}
 
 			// call defined method to save meta value, if there's no methods, call common one
 			$save_func = 'save_field_' . $type;
 			if ( method_exists( $this, $save_func ) ) {
-				call_user_func( array( $this, 'save_field_' . $type ), $post_id, $field, $old, $new );
+				call_user_func( [ $this, 'save_field_' . $type ], $post_id, $field, $old, $new );
 			} else {
 				$this->save_field( $post_id, $field, $old, $new );
 			}
@@ -577,7 +583,7 @@ class Tribe_Meta_Box {
 		$name = $field['meta'];
 
 		delete_post_meta( $post_id, $name );
-		if ( $new === '' || $new === array() ) {
+		if ( $new === '' || $new === [] ) {
 			return;
 		}
 
@@ -604,7 +610,7 @@ class Tribe_Meta_Box {
 		self::fix_file_array( $_FILES[ $name ] );
 
 		foreach ( $_FILES[ $name ] as $position => $fileitem ) {
-			$file = wp_handle_upload( $fileitem, array( 'test_form' => false ) );
+			$file = wp_handle_upload( $fileitem, [ 'test_form' => false ] );
 
 			if ( empty( $file['file'] ) ){
 				continue;
@@ -612,13 +618,13 @@ class Tribe_Meta_Box {
 
 			$filename = $file['file'];
 
-			$attachment = array(
+			$attachment = [
 				'post_mime_type' => $file['type'],
-				'guid' => $file['url'],
-				'post_parent' => $post_id,
-				'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
-				'post_content' => '',
-			);
+				'guid'           => $file['url'],
+				'post_parent'    => $post_id,
+				'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+				'post_content'   => '',
+			];
 			$id = wp_insert_attachment( $attachment, $filename, $post_id );
 			if ( ! is_wp_error( $id ) ) {
 				wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $filename ) );
@@ -628,7 +634,7 @@ class Tribe_Meta_Box {
 	}
 
 	public function save_field_text_multi( $post_id, $field, $old, $new ) {
-		$data = array();
+		$data = [];
 		$new = (array) $new;
 		foreach ( $field['ids'] as $id ) {
 			foreach ( $new[ $id ] as $key => $value ) {
@@ -658,19 +664,19 @@ class Tribe_Meta_Box {
 	/******************** BEGIN HELPER FUNCTIONS **********************/
 
 	public function dropdown_posts( $args = '' ) {
-		$defaults = array(
-			'numberposts' => -1,
-			'post_type' => 'post',
-			'depth' => 0,
-			'selected' => 0,
-			'echo' => 1,
-			'name' => 'page_id',
-			'id' => '',
-			'class' => '',
-			'show_option_none' => '',
+		$defaults = [
+			'numberposts'           => -1,
+			'post_type'             => 'post',
+			'depth'                 => 0,
+			'selected'              => 0,
+			'echo'                  => 1,
+			'name'                  => 'page_id',
+			'id'                    => '',
+			'class'                 => '',
+			'show_option_none'      => '',
 			'show_option_no_change' => '',
-			'option_none_value' => '',
-		);
+			'option_none_value'     => '',
+		];
 
 		$r = wp_parse_args( $args, $defaults );
 		extract( $r, EXTR_SKIP );
@@ -705,25 +711,31 @@ class Tribe_Meta_Box {
 	// Add missed values for meta box
 	public function add_missed_values() {
 		// default values for meta box
-		$this->_meta_box = array_merge( array(
-			'context' => 'normal',
-			'priority' => 'high',
-			'pages' => array( 'post' ),
-		), $this->_meta_box );
+		$this->_meta_box = array_merge(
+			[
+				'context' => 'normal',
+				'priority' => 'high',
+				'pages' => [ 'post' ],
+			],
+			$this->_meta_box
+		);
 
 		// default values for fields
 		foreach ( $this->_fields as &$field ) {
-			$multiple = in_array( $field['type'], array( 'checkbox_list', 'file', 'image' ) );
-			$std = $multiple ? array() : '';
+			$multiple = in_array( $field['type'], [ 'checkbox_list', 'file', 'image' ] );
+			$std = $multiple ? [] : '';
 			$format = 'date' == $field['type'] ? 'yy-mm-dd' : ( 'time' == $field['type'] ? 'hh:mm' : '' );
 
-			$field = array_merge( array(
-				'multiple' => $multiple,
-				'std' => $std,
-				'desc' => '',
-				'format' => $format,
-				'validate_func' => '',
-			), $field );
+			$field = array_merge(
+				[
+					'multiple'      => $multiple,
+					'std'           => $std,
+					'desc'          => '',
+					'format'        => $format,
+					'validate_func' => '',
+				],
+				$field
+			);
 		}
 	}
 
@@ -734,13 +746,14 @@ class Tribe_Meta_Box {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
 	// Check if current page is edit page
 	public static function is_edit_page() {
 		global $pagenow;
-		return in_array( $pagenow, array( 'post.php', 'post-new.php' ) );
+		return in_array( $pagenow, [ 'post.php', 'post-new.php' ] );
 	}
 
 	/**
@@ -750,7 +763,7 @@ class Tribe_Meta_Box {
 	 *	 $_FILES['field']['index']['key']
 	 */
 	public static function fix_file_array( &$files ) {
-		$output = array();
+		$output = [];
 		foreach ( $files as $key => $list ) {
 			foreach ( $list as $index => $value ) {
 				$output[ $index ][ $key ] = $value;

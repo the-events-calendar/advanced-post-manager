@@ -1,0 +1,61 @@
+{
+	"build": [
+		"composer install --no-dev",
+		"npm ci --no-audit --no-fund"
+	],
+	"build_dev": [
+		"composer install",
+		"npm ci --no-audit --no-fund"
+	],
+	"i18n": [
+		{
+			"slug": "wp-plugins/advanced-post-manager/stable",
+			"textdomain": "advanced-post-manager",
+			"url": "https://translate.wordpress.org"
+		},
+		{
+			"slug": "tribe-apm",
+			"textdomain": "advanced-post-manager",
+			"url": "https://translations.stellarwp.com/glotpress/"
+		}
+	],
+    "checks": {
+        "tbd": {
+            "dirs": [
+                "lib",
+                "views"
+            ]
+        }
+    },
+	"paths": {
+		"changelog": "readme.txt",
+		"css": [
+			"resources/"
+		],
+		"js": [
+			"resources/"
+		],
+		"versions": [
+			{
+				"file": "tribe-apm.php",
+				"regex": "(const VERSION += ')([^']+)"
+			},
+			{
+				"file": "tribe-apm.php",
+				"regex": "(Version: )(.+)"
+			},
+			{
+				"file": "package.json",
+				"regex": "(\"version\": ?\")([^\"]+)"
+			},
+			{
+				"file": "readme.txt",
+				"regex": "(Stable tag: )(.+)"
+			}
+		],
+		"views": [
+			"views"
+		]
+	},
+	"zip_name": "advanced-post-manager"
+}

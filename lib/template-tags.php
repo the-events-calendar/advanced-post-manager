@@ -8,7 +8,7 @@
  * @param $allow_multi boolean Whether or not this field should be expandable to a multi-select field
  * @return string HTML <select> element
  */
-function tribe_select_field( $name, $options = array(), $active = '', $allow_multi = false ) {
+function tribe_select_field( $name, $options = [], $active = '', $allow_multi = false ) {
 	if ( ! class_exists( 'Tribe_Filters' ) ) {
 		include_once TRIBE_APM_LIB_PATH . 'tribe-filters.class.php';
 	}
@@ -23,6 +23,6 @@ function tribe_select_field( $name, $options = array(), $active = '', $allow_mul
  * @param $metaboxes string|array An array of metabox => Meta Box Title pairs or a single Meta Box Title string
  * @return object Tribe_APM object
  */
-function tribe_setup_apm( $post_type, $args, $metaboxes = array() ) {
+function tribe_setup_apm( $post_type, $args, $metaboxes = [] ) {
 	return new Tribe_APM( $post_type, $args, $metaboxes );
 }
