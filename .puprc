@@ -1,0 +1,50 @@
+{
+	"build": [
+		"composer install --no-dev",
+		"npm ci --no-audit --no-fund",
+		"npm run build"
+	],
+	"build_dev": [
+		"composer install",
+		"npm ci --no-audit --no-fund",
+		"npm run build"
+	],
+	"i18n": [
+		{
+			"slug": "advanced-post-manager",
+			"textdomain": "advanced-post-manager",
+			"url": "https://translations.stellarwp.com/glotpress/"
+		}
+	],
+	"paths": {
+		"changelog": "readme.txt",
+		"css": [
+			"resources/"
+		],
+		"js": [
+			"resources/"
+		],
+		"versions": [
+			{
+				"file": "tribe-apm.php",
+				"regex": "(const VERSION += ')([^']+)"
+			},
+			{
+				"file": "tribe-apm.php",
+				"regex": "(Version: )(.+)"
+			},
+			{
+				"file": "package.json",
+				"regex": "(\"version\": ?\")([^\"]+)"
+			},
+			{
+				"file": "readme.txt",
+				"regex": "(Stable tag: )(.+)"
+			}
+		],
+		"views": [
+			"views"
+		]
+	},
+	"zip_name": "advanced-post-manager"
+}

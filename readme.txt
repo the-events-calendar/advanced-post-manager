@@ -1,8 +1,8 @@
 === Advanced Post Manager ===
 
-Contributors: aguseo, bordoni, borkweb, brianjessee, GeoffBel, leahkoerper, lucatume, neillmcshea, sdokus, vicskf, zbtirrell, juanfra
+Contributors: aguseo, bordoni, borkweb, brianjessee, leahkoerper, lucatume, neillmcshea, sdokus, vicskf, zbtirrell
 Donate link: https://evnt.is/4o
-Tags: developer-tools, custom post, filter, column, metabox, taxonomy, wp-admin, admin, Post, post type, plugin, advanced, tribe
+Tags: developer-tools, custom post, filter, column, wp-admin
 Requires at least: 6.6
 Tested up to: 6.8.2
 License: GPL v2

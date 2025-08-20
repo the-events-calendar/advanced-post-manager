@@ -1,11 +1,16 @@
 <?php
 /*
- Plugin Name: Advanced Post Manager
- Description: Dialing custom post types to 11 with advanced filtering controls.
- Version: 4.5.5
- Author: The Events Calendar
- Author URI: https://evnt.is/4n
- Text Domain: advanced-post-manager
+ * Plugin Name: Advanced Post Manager
+ * Description: Dialing custom post types to 11 with advanced filtering controls.
+ * Version: 4.5.5
+ * Requires at least: 6.6
+ * Requires PHP: 7.4
+ * Author: The Events Calendar
+ * Author URI: https://evnt.is/4n
+ * Text Domain: advanced-post-manager
+ * License: GPLv2 or later
+ * Elementor tested up to: 3.23.1
+ * Elementor Pro tested up to: 3.23.0
  */
 
 define( 'TRIBE_APM_PATH', plugin_dir_path( __FILE__ ) );
@@ -222,7 +227,7 @@ class Tribe_APM {
 		}
 	}
 
-	// UTLITIES AND INTERNAL METHODS
+	// UTILITIES AND INTERNAL METHODS
 
 	protected function get_filter_args() {
 		return $this->filter_disabled( $this->args, 'filters' );
