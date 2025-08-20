@@ -1,21 +1,32 @@
 {
 	"build": [
 		"composer install --no-dev",
-		"npm ci --no-audit --no-fund",
-		"npm run build"
+		"npm ci --no-audit --no-fund"
 	],
 	"build_dev": [
 		"composer install",
-		"npm ci --no-audit --no-fund",
-		"npm run build"
+		"npm ci --no-audit --no-fund"
 	],
 	"i18n": [
 		{
-			"slug": "advanced-post-manager",
+			"slug": "wp-plugins/advanced-post-manager/stable",
+			"textdomain": "advanced-post-manager",
+			"url": "https://translate.wordpress.org"
+		},
+		{
+			"slug": "tribe-apm",
 			"textdomain": "advanced-post-manager",
 			"url": "https://translations.stellarwp.com/glotpress/"
 		}
 	],
+    "checks": {
+        "tbd": {
+            "dirs": [
+                "lib",
+                "views"
+            ]
+        }
+    },
 	"paths": {
 		"changelog": "readme.txt",
 		"css": [

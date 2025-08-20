@@ -1,0 +1,11 @@
+/tribe-apm.php
+/scratch.php
+/readme.txt
+/*.png
+/lib/*
+/docs/*
+/views/**/*
+/lang/**/*.mo
+/lang/**/*.pot
+/lang/**/*.txt
+/resources/*
