@@ -41,6 +41,7 @@ tests/_support/_generated
 
 # Local packaging files
 .pup-*
+bin/pup.phar
 
 # get from translate.wordpress.org as needed
 lang/*.po
