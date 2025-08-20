@@ -71,15 +71,14 @@ class Tribe_Filters {
 			'lte' => '<=',
 		];
 
-		$this->query_search_options = [
-			'like' => __( 'Search', 'advanced-post-manager' ),
-			'is' => __( 'Is', 'advanced-post-manager' ),
-			'not' => __( 'Is Not', 'advanced-post-manager' ),
-			'gt' => '>',
-			'lt' => '<',
-			'gte' => '>=',
-			'lte' => '<=',
-		];
+		$this->query_search_options = array_merge(
+            $this->query_options_map,
+            [
+                'like' => __( 'Search', 'advanced-post-manager' ),
+                'is'   => __( 'Is', 'advanced-post-manager' ),
+                'not'  => __( 'Is Not', 'advanced-post-manager' ),
+            ]
+        );
 
 		$this->filters_example = [
 			'filter_key' => [
