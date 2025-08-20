@@ -52,18 +52,60 @@ class Tribe_APM {
 	 */
 	const VERSION = '4.5.4';
 
+    /**
+     * The textdomain for the plugin.
+     */
 	protected $textdomain = 'advanced-post-manager';
+
+    /**
+     * The arguments for the plugin.
+     */
 	protected $args;
+
+    /**
+     * The metaboxes for the plugin.
+     */
 	protected $metaboxes;
+
+    /**
+     * The URL for the plugin.
+     */
 	protected $url;
 
+    /**
+     * The columns for the plugin.
+     */
 	public $columns; // holds a Tribe_Columns object
+
+    /**
+     * The filters for the plugin.
+     */
 	public $filters; // holds a Tribe_Filters object
 
+    /**
+     * The post type for the plugin.
+     */
 	public $post_type;
-	public $add_taxonomies = true; // Automatically add filters/cols for registered taxonomies?
+
+    /**
+     * Automatically add filters/cols for registered taxonomies?
+     */
+	public $add_taxonomies = true;
+
+    /**
+     * Show export button? (Currently does nothing)
+     */
+	public $export = false;
+
+    /**
+     * Show metaboxes?
+     */
 	public $do_metaboxes = true;
-	public $export = false; // Show export button? (Currently does nothing)
+
+    /**
+     * Whether we're in a delayed initialization.
+     */
+	public static $delayed_init = false;
 
 	// CONSTRUCTOR
 
@@ -74,21 +116,26 @@ class Tribe_APM {
 	 */
 	public function __construct( $post_type, $args, $metaboxes = array() ) {
 		$this->post_type = $post_type;
-		$this->args = $args;
+		$this->args      = $args;
 		$this->metaboxes = $metaboxes;
 
 		$this->textdomain = apply_filters( 'tribe_apm_textdomain', $this->textdomain );
-		$this->url = apply_filters( 'tribe_apm_url', plugins_url( '', __FILE__ ), __FILE__ );
+		$this->url        = apply_filters( 'tribe_apm_url', plugins_url( '', __FILE__ ), __FILE__ );
 
 		$this->register_active_plugin();
 		$this->register_hooks();
 
 		// Check if we need to delay initialization for screen availability.
-		if ( is_admin() && ! wp_doing_ajax() && ! get_current_screen() ) {
+        if ( ! is_admin() ) {
+            // Not admin, bail.
+            return;
+		} elseif ( ! wp_doing_ajax() && ! get_current_screen() ) {
 			// Screen not available yet, delay until current_screen.
+            self::$delayed_init = true;
 			add_action( 'current_screen', [ $this, 'delayed_init' ] );
 		} else {
 			// Screen available or not needed, initialize normally.
+            self::$delayed_init = false;
 			add_action( 'admin_init', [ $this, 'init' ], 0 );
 		}
 	}
@@ -131,15 +178,21 @@ class Tribe_APM {
 
 	// CALLBACKS
 
+	/**
+	 * Initialize the filters and columns.
+	 *
+	 */
 	public function init() {
 		if ( ! $this->is_active() ) {
 			return;
 		}
 
+        $hook = self::$delayed_init ? 'current_screen' : 'admin_init';
+
 		$this->load_text_domain();
 
 		// Register hooks that depend on successful initialization.
-		add_action( 'admin_init', [ $this, 'init_meta_box' ] );
+		add_action( $hook, [ $this, 'init_meta_box' ] );
 		add_action( 'tribe_cpt_filters_init', [ $this, 'maybe_add_taxonomies' ], 10, 1 );
 
 		do_action( 'tribe_cpt_filters_init', $this );
@@ -177,7 +230,7 @@ class Tribe_APM {
 			return;
 		}
 
-		$this->init();
+		$this->init( true );
 	}
 
 	private function load_text_domain() {

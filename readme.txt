@@ -75,9 +75,14 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
+= [4.5.5] 2025-08-25 =
+
+* Fix - Ensure Advanced Post Manager initialization timing can handle switching between `admin_init` and `current_screen`. [ECP-1915]
+* Tweak - PHP 8.3 compatibility fixes.
+
 = [4.5.4] 2023-02-22 =
 
-* Version - Advanced post Manager 4.8.5 is only compatible with The Events Calendar 6.0.10 and higher.
+* Version - Advanced Post Manager 4.8.5 is only compatible with The Events Calendar 6.0.10 and higher.
 * Fix - Resolve error thrown by JSON decode issue. [APM-5]
 * Tweak - PHP version compatibility bumped to PHP 7.4
 * Tweak - Version Composer updated to 2

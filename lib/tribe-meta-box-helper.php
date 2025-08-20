@@ -13,23 +13,23 @@ class Tribe_Meta_Box_Helper {
 
 	const PREFIX = 'tribe_';
 
-	protected $fields = array();
+	protected $fields = [];
 	protected $post_type = '';
-	protected $metaboxes = array();
+	protected $metaboxes = [];
 
-	protected $type_map = array(
+	protected $type_map = [
 		'DATE' => 'date',
 		'TIME' => 'time',
-	);
+	];
 
-	public function __construct( $post_type, $fields, $metaboxes = array() ) {
+	public function __construct( $post_type, $fields, $metaboxes = [] ) {
 		$this->post_type = $post_type;
 		$this->fields = $this->fill_filter_vars( $fields );
 		$this->metaboxes = $metaboxes;
 		$this->create_meta_boxes();
 	}
 
-	// HELPERS AND UTITLIES
+	// HELPERS AND UTILITIES
 
 	protected function create_meta_boxes() {
 		require_once 'tribe-meta-box.php';
@@ -40,19 +40,19 @@ class Tribe_Meta_Box_Helper {
 	}
 
 	protected function map_meta_boxes() {
-		$return_boxes = array();
+		$return_boxes = [];
 		$default_id = self::PREFIX . $this->post_type . '_metabox';
-		$default_box = array( $default_id => __( 'Extended Information', 'advanced-post-manager' ) );
+		$default_box = [ $default_id => __( 'Extended Information', 'advanced-post-manager' ) ];
 		$metaboxes = $this->metaboxes;
 		if ( is_string( $metaboxes ) ) {
 			$default_box[ $default_id ] = $metaboxes;
-			$metaboxes = array();
+			$metaboxes = [];
 		}
 
 		$boxes = array_merge( $metaboxes, $default_box );
-		$box_fields = array();
+		$box_fields = [];
 		foreach ( $boxes as $key => $value ) {
-			$box_fields[ $key ] = array();
+			$box_fields[ $key ] = [];
 		}
 
 		foreach ( $this->fields as $field ) {
@@ -67,18 +67,18 @@ class Tribe_Meta_Box_Helper {
 			if ( empty( $box_fields[ $key ] ) ) {
 				continue;
 			}
-			$return_boxes[] = array(
+			$return_boxes[] = [
 				'id' => $key,
 				'title' => $value,
 				'pages' => $this->post_type,
 				'fields' => $this->order_meta_fields( $box_fields[ $key ] ),
-			);
+			];
 		}
 		return $return_boxes;
 	}
 
 	protected function order_meta_fields( $fields ) {
-		$ordered = array();
+		$ordered = [];
 		foreach ( $fields as $key => $field ) {
 			if ( isset( $field['metabox_order'] ) ) {
 				$order = (int) $field['metabox_order'];
@@ -115,7 +115,7 @@ class Tribe_Meta_Box_Helper {
 
 	public function log() {
 		foreach ( func_get_args() as $data ) {
-			error_log( print_r( $data, true ) );
+			error_log( print_r( $data, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 	}
 }

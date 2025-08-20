@@ -11,11 +11,12 @@ if ( class_exists( 'Tribe_Columns' ) ) {
 class Tribe_Columns {
 
 	private $post_type;
-	private $columns = array();
-	private $active = array();
+	private $columns = [];
+	private $active = [];
 	private $override = false;
 	private $fallback;
-	private $column_headers = array();
+	private $column_headers = [];
+	private $using_fallbacks = false;
 
 	private $url;
 
@@ -26,7 +27,7 @@ class Tribe_Columns {
 	private $columns_example;
 
 	/**
-	 * Sets up the class to work. Duh.
+	 * Sets up the class to work.
 	 *
 	 * @param string $post_type The type of post_type to modify the edit/manage view
 	 * @param array $columns The columns that should be added
@@ -36,14 +37,14 @@ class Tribe_Columns {
 	 * @return void
 	 **/
 
-	public function __construct( $post_type, $columns = array(), $active = array(), $fallback = array() ) {
+	public function __construct( $post_type, $columns = [], $active = [], $fallback = [] ) {
 
-		$this->columns_example = array(
-			'column_id' => array(
+		$this->columns_example = [
+			'column_id' => [
 				'name' => __( 'Column Name', 'advanced-post-manager' ),
 				'meta' => '_some_meta', // in most cases, this piece of meta will be queried to provide column contents
-			),
-		);
+			],
+		];
 
 		$this->nonce .= $post_type; // keep it tidy
 		$this->user_meta .= $post_type;
@@ -65,7 +66,7 @@ class Tribe_Columns {
 	 * See documentation for column array construction
 	 * @param $columns array of column arrays
 	 */
-	public function set_columns( $columns = array() ) {
+	public function set_columns( $columns = [] ) {
 		if ( ! empty( $columns ) ) {
 			$this->columns = $columns;
 			$this->alphabetize_columns();
@@ -77,7 +78,7 @@ class Tribe_Columns {
 	 * See documentation for column array construction
 	 * @param $columns array of column arrays
 	 */
-	public function add_columns ( $columns = array() ) {
+	public function add_columns ( $columns = [] ) {
 		if ( ! empty( $columns ) ) {
 			$this->columns = array_merge( $this->columns, $columns );
 			$this->alphabetize_columns();
@@ -97,7 +98,7 @@ class Tribe_Columns {
 	 * When fallback is empty, all columns will be shown on reset
 	 * @param $fallback array one-dimensional array of column keys
 	 */
-	public function set_fallback( $fallback = array() ) {
+	public function set_fallback( $fallback = [] ) {
 		$this->fallback = (array) $fallback;
 	}
 
@@ -106,7 +107,7 @@ class Tribe_Columns {
 	 * This will override any other internal method of retrieving active columns
 	 * @param $active array one-dimensional array of column keys
 	 */
-	public function set_active( $active = array() ) {
+	public function set_active( $active = [] ) {
 		$this->active = (array) $active;
 	}
 
@@ -122,7 +123,7 @@ class Tribe_Columns {
 		$this->sweep_empties();
 
 		// key 'em up
-		$active = array();
+		$active = [];
 		foreach ( $this->active as $v ) {
 			$active[ $v ] = $v;
 		}
@@ -167,26 +168,28 @@ class Tribe_Columns {
 				echo '<option value="' . esc_attr( $key ) . '">' . esc_html( wp_strip_all_tags( $name ) ) . '</option>';
 			}
 			?></select></span>
-<script> var Tribe_Columns = <?php echo json_encode( array(
-		'prefix' => $this->prefix,
-		'item' => '<li>%name%<b class="close">×</b></li>',
-		'input' => '<input type="hidden" name="" value="%value%" />',
-		) ); ?>; </script><?php	echo "\n";
+<script> var Tribe_Columns = <?php echo json_encode(
+    [
+        'prefix' => $this->prefix,
+        'item' => '<li>%name%<b class="close">×</b></li>',
+        'input' => '<input type="hidden" name="" value="%value%" />',
+    ]
+); ?>; </script><?php	echo "\n";
 	}
 
 
 	// CALLBACKS
 
 	private function add_actions_and_filters() {
-		add_action( 'manage_' . $this->post_type.'_posts_custom_column', array( $this, 'custom_columns' ), 10, 2 );
-		add_filter( 'manage_' . $this->post_type.'_posts_columns', array( $this, 'column_headers' ) );
-		add_filter( 'manage_edit-' . $this->post_type.'_sortable_columns', array( $this, 'sortable_columns' ) );
-		add_action( 'load-edit.php', array( $this, 'init_active' ), 10 );
-		add_action( 'load-edit.php', array( $this, 'save_active' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-		add_filter( 'tribe_columns_column', array( $this, 'date_column' ), 10, 3 );
+		add_action( 'manage_' . $this->post_type.'_posts_custom_column', [ $this, 'custom_columns' ], 10, 2 );
+		add_filter( 'manage_' . $this->post_type.'_posts_columns', [ $this, 'column_headers' ] );
+		add_filter( 'manage_edit-' . $this->post_type.'_sortable_columns', [ $this, 'sortable_columns' ] );
+		add_action( 'load-edit.php', [ $this, 'init_active' ], 10 );
+		add_action( 'load-edit.php', [ $this, 'save_active' ], 20 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
+		add_filter( 'tribe_columns_column', [ $this, 'date_column' ], 10, 3 );
 		// Needs to be executed when quick edit is saved, hence the following line.
-		add_action( 'save_post', array( $this, 'init_active' ) );
+		add_action( 'save_post', [ $this, 'init_active' ] );
 	}
 
 	public function date_column( $value, $column_id, $column ) {
@@ -198,7 +201,7 @@ class Tribe_Columns {
 
 	public function sortable_columns( $columns ) {
 		$sort_prefix = apply_filters( 'tribe_sort_prefix', 'tribe_sort_' );
-		$new_cols = array();
+		$new_cols = [];
 		foreach ( $this->columns as $k => $v ) {
 			$sort_key = false;
 			// Custom Type must have the sortable flag set
@@ -224,7 +227,7 @@ class Tribe_Columns {
 		$resources_url = apply_filters( 'tribe_apm_resources_url', $this->url . 'resources' );
 		$resources_url = trailingslashit( $resources_url );
 		if ( $current_screen->id == 'edit-' . $this->post_type ) {
-			wp_enqueue_script( 'tribe-columns', $resources_url . 'tribe-columns.js', array( 'jquery-ui-sortable' ) );
+			wp_enqueue_script( 'tribe-columns', $resources_url . 'tribe-columns.js', [ 'jquery-ui-sortable' ] );
 		}
 	}
 
@@ -279,7 +282,7 @@ class Tribe_Columns {
 
 		if ( ! empty( $this->active ) ) {
 			$headers = $this->get_column_headers( false );
-			$columns = array( 'cb' => $headers['cb'] );
+			$columns = [ 'cb' => $headers['cb'] ];
 			foreach ( $this->active as $v ) {
 				$columns[ $v ] = $headers[ $v ];
 			}
@@ -333,7 +336,7 @@ class Tribe_Columns {
 	}
 
 
-	// UTLITIES AND INTERNAL METHODS
+	// UTILITIES AND INTERNAL METHODS
 
 	protected function sweep_empties() {
 		$headers = $this->get_column_headers();
@@ -351,17 +354,17 @@ class Tribe_Columns {
 		else {
 			// If we're nuking the existing columns, still provide checkboxes
 			if ( $this->override ) {
-				$headers = array( 'cb' => '<input type="checkbox" />' );
+				$headers = [ 'cb' => '<input type="checkbox" />' ];
 			}
 			else {
 				// Cause infinite loops get boring after a while
-				remove_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'column_headers' ) );
+				remove_filter( 'manage_' . $this->post_type . '_posts_columns', [ $this, 'column_headers' ] );
 				$this->load_list_table();
 
 				$list = new WP_Posts_List_Table();
 				$headers = $list->get_columns();
 
-				add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'column_headers' ) );
+				add_filter( 'manage_' . $this->post_type . '_posts_columns', [ $this, 'column_headers' ] );
 			}
 			foreach ( $this->columns as $key => $value ) {
 				$headers[ $key ] = $value['name'];
@@ -407,8 +410,8 @@ class Tribe_Columns {
 		unset( $alpha_columns, $temp );
 	}
 
-	public function log( $data = array() ) {
-		error_log( print_r( $data, true ) );
+	public function log( $data = [] ) {
+		error_log( print_r( $data, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	}
 
 	protected function taxonomy_column( $post_id, $taxonomy ) {
@@ -416,13 +419,13 @@ class Tribe_Columns {
 		if ( ! $terms || empty( $terms ) ){
 			return '&ndash;';
 		}
-		$ret = array();
+		$ret = [];
 		$post = get_post( $post_id );
 		foreach ( $terms as $term ) {
-			$url = add_query_arg( array(
+			$url = add_query_arg( [
 				'post_type' => $post->post_type,
 				$taxonomy => $term->slug,
-			), admin_url( 'edit.php' ) );
+			], admin_url( 'edit.php' ) );
 			$ret[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $term->name ) );
 		}
 		return implode( ', ', $ret );
@@ -431,14 +434,14 @@ class Tribe_Columns {
 	private function reset_active() {
 		global $userdata;
 		delete_user_meta( $userdata->ID, $this->user_meta );
-		$this->active = array();
+		$this->active = [];
 		$this->init_active();
 	}
 
 	protected function is_date( $column ) {
 		if ( isset( $column['cast'] ) ) {
 			$cast = ucwords( $column['cast'] );
-			if ( in_array( $cast, array( 'DATE', 'DATETIME' ) ) ) {
+			if ( in_array( $cast, [ 'DATE', 'DATETIME' ] ) ) {
 				return true;
 			}
 		}

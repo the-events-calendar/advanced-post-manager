@@ -32,8 +32,8 @@ class Tribe_Meta_Box {
 		$this->add_missed_values();
 		$this->register_scripts_and_styles();
 
-		add_action( 'add_meta_boxes', array( $this, 'add' ) );	// add meta box, using 'add_meta_boxes' for WP 3.0+
-		add_action( 'save_post', array( $this, 'save' ) );		// save meta box's data
+		add_action( 'add_meta_boxes', [ $this, 'add' ] );	// add meta box, using 'add_meta_boxes' for WP 3.0+
+		add_action( 'save_post', [ $this, 'save' ] );		// save meta box's data
 
 		// check for some special fields and add needed actions for them
 		$this->check_field_upload();
@@ -43,7 +43,7 @@ class Tribe_Meta_Box {
 
 		// load common js, css files
 		// must enqueue for all pages as we need js for the media upload, too
-		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'js_css' ) );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'js_css' ] );
 	}
 
 	public function register_scripts_and_styles() {
@@ -78,9 +78,9 @@ class Tribe_Meta_Box {
 			return;
 		}
 
-		add_action( 'post_edit_form_tag', array( $this, 'add_enctype' ) );				// add data encoding type for file uploading
+		add_action( 'post_edit_form_tag', [ $this, 'add_enctype' ] );				// Add data encoding type for file uploading.
 
-		// make upload feature works even when custom post type doesn't support 'editor'
+		// Make upload feature works even when custom post type doesn't support 'editor'.
 		wp_enqueue_script( 'media-upload' );
 		add_thickbox();
 		wp_enqueue_script( 'jquery-ui-core' );
@@ -99,7 +99,7 @@ class Tribe_Meta_Box {
 		echo ' enctype="multipart/form-data"';
 	}
 
-	// Process adding images to image meta field, modifiy from 'Faster image insert' plugin
+	// Process adding images to image meta field, modify from 'Faster image insert' plugin
 	public function insert_images() {
 		if ( ! isset( $_POST['tribe-insert'] ) || empty( $_POST['attachments'] ) ){
 			return;
@@ -416,7 +416,7 @@ class Tribe_Meta_Box {
 		echo "<input type='hidden' class='tribe-images-data' value='{$post->ID}|{$field['meta']}|$nonce_sort' />
 				<ul class='tribe-images tribe-upload' id='tribe-images-{$field['meta']}'>";
 
-		// re-arrange images with 'menu_order', thanks Onur
+		// Re-arrange images with 'menu_order', thanks Onur!
 		if ( ! empty( $meta ) ) {
 			$meta = implode( ',', $meta );
 			$images = $wpdb->get_col( "
