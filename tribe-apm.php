@@ -52,59 +52,59 @@ class Tribe_APM {
 	 */
 	const VERSION = '4.5.4';
 
-    /**
-     * The textdomain for the plugin.
-     */
+	/**
+	 * The textdomain for the plugin.
+	 */
 	protected $textdomain = 'advanced-post-manager';
 
-    /**
-     * The arguments for the plugin.
-     */
+	/**
+	 * The arguments for the plugin.
+	 */
 	protected $args;
 
-    /**
-     * The metaboxes for the plugin.
-     */
+	/**
+	 * The metaboxes for the plugin.
+	 */
 	protected $metaboxes;
 
-    /**
-     * The URL for the plugin.
-     */
+	/**
+	 * The URL for the plugin.
+	 */
 	protected $url;
 
-    /**
-     * The columns for the plugin.
-     */
+	/**
+	 * The columns for the plugin.
+	 */
 	public $columns; // holds a Tribe_Columns object
 
-    /**
-     * The filters for the plugin.
-     */
+	/**
+	 * The filters for the plugin.
+	 */
 	public $filters; // holds a Tribe_Filters object
 
-    /**
-     * The post type for the plugin.
-     */
+	/**
+	 * The post type for the plugin.
+	 */
 	public $post_type;
 
-    /**
-     * Automatically add filters/cols for registered taxonomies?
-     */
+	/**
+	 * Automatically add filters/cols for registered taxonomies?
+	 */
 	public $add_taxonomies = true;
 
-    /**
-     * Show export button? (Currently does nothing)
-     */
+	/**
+	 * Show export button? (Currently does nothing)
+	 */
 	public $export = false;
 
-    /**
-     * Show metaboxes?
-     */
+	/**
+	 * Show metaboxes?
+	 */
 	public $do_metaboxes = true;
 
-    /**
-     * Whether we're in a delayed initialization.
-     */
+	/**
+	 * Whether we're in a delayed initialization.
+	 */
 	public static $delayed_init = false;
 
 	// CONSTRUCTOR
@@ -114,7 +114,7 @@ class Tribe_APM {
 	 * @param $post_type What post_type to enable filters for
 	 * @param $args array multidimensional array of filter/column arrays. See documentation
 	 */
-	public function __construct( $post_type, $args, $metaboxes = array() ) {
+	public function __construct( $post_type, $args, $metaboxes = [] ) {
 		$this->post_type = $post_type;
 		$this->args      = $args;
 		$this->metaboxes = $metaboxes;
@@ -126,16 +126,16 @@ class Tribe_APM {
 		$this->register_hooks();
 
 		// Check if we need to delay initialization for screen availability.
-        if ( ! is_admin() ) {
-            // Not admin, bail.
-            return;
+		if ( ! is_admin() ) {
+			// Not admin, bail.
+			return;
 		} elseif ( ! wp_doing_ajax() && ! get_current_screen() ) {
 			// Screen not available yet, delay until current_screen.
-            self::$delayed_init = true;
+			self::$delayed_init = true;
 			add_action( 'current_screen', [ $this, 'delayed_init' ] );
 		} else {
 			// Screen available or not needed, initialize normally.
-            self::$delayed_init = false;
+			self::$delayed_init = false;
 			add_action( 'admin_init', [ $this, 'init' ], 0 );
 		}
 	}
@@ -170,10 +170,16 @@ class Tribe_APM {
 	 *
 	 * @param $filters multidimensional array of filter/column arrays
 	 */
-	public function add_filters( $filters = array() ) {
-		if ( is_array( $filters ) && ! empty( $filters ) ) {
-			$this->args = array_merge( $this->args, $filters );
+	public function add_filters( $filters = [] ) {
+		if ( empty( $filters ) ) {
+			return;
 		}
+
+		if ( ! is_array( $filters ) ) {
+			return;
+		}
+
+		$this->args = array_merge( $this->args, $filters );
 	}
 
 	// CALLBACKS
@@ -187,7 +193,7 @@ class Tribe_APM {
 			return;
 		}
 
-        $hook = self::$delayed_init ? 'current_screen' : 'admin_init';
+		$hook = self::$delayed_init ? 'current_screen' : 'admin_init';
 
 		$this->load_text_domain();
 
@@ -218,7 +224,7 @@ class Tribe_APM {
 	 */
 	public function delayed_init() {
 		// Remove the hook immediately to prevent multiple calls.
-		remove_action( 'current_screen', array( $this, 'delayed_init' ) );
+		remove_action( 'current_screen', [ $this, 'delayed_init' ] );
 
 		// Only initialize if we haven't already and we're on the right screen.
 		if ( ! $this->is_active() ) {
@@ -242,8 +248,10 @@ class Tribe_APM {
 	}
 
 	public function init_meta_box() {
-		if ( ! $this->do_metaboxes )
+		if ( ! $this->do_metaboxes ) {
 			return;
+		}
+
 		require_once TRIBE_APM_LIB_PATH . 'tribe-meta-box-helper.php';
 		$for_meta_box = $this->only_meta_filters( $this->args, 'metabox' );
 		new Tribe_Meta_Box_Helper( $this->post_type, $for_meta_box, $this->metaboxes );
@@ -251,16 +259,19 @@ class Tribe_APM {
 
 	// Dogfooding a bit! We're hooked into the tribe_cpt_filters_init action hook
 	public function maybe_add_taxonomies( $tribe_cpt_filters ) {
-		if ( ! $tribe_cpt_filters->add_taxonomies ) return;
-		$args = array();
-		$taxonomies = apply_filters( 'tribe_apm_taxonomies', get_taxonomies( array(), 'objects' ), $this->post_type );
+		if ( ! $tribe_cpt_filters->add_taxonomies ) {
+			return;
+		}
+
+		$args = [];
+		$taxonomies = apply_filters( 'tribe_apm_taxonomies', get_taxonomies( [], 'objects' ), $this->post_type );
 		foreach ( $taxonomies as $tax ) {
 			if ( $tax->show_ui && in_array( $tribe_cpt_filters->post_type, (array) $tax->object_type, true ) ) {
-				$args[ 'taxonomy-'.$tax->name ] = array(
+				$args[ 'taxonomy-'.$tax->name ] = [
 					'name'       => $tax->labels->name,
 					'taxonomy'   => $tax->name,
 					'query_type' => 'taxonomy',
-				);
+				];
 			}
 		}
 
@@ -268,16 +279,20 @@ class Tribe_APM {
 	}
 
 	public function maybe_enqueue( $unused_blah ) {
-		if ( $this->is_active() ) {
-			wp_enqueue_script( 'tribe-fac', $this->url . '/resources/tribe-apm.js', array( 'jquery' ) );
-			wp_enqueue_style( 'tribe-fac', $this->url . '/resources/tribe-apm.css', array() );
+		if ( ! $this->is_active() ) {
+			return;
 		}
+
+		wp_enqueue_script( 'tribe-fac', $this->url . '/resources/tribe-apm.js', [ 'jquery' ] );
+		wp_enqueue_style( 'tribe-fac', $this->url . '/resources/tribe-apm.css', [] );
 	}
 
 	public function maybe_show_filters() {
-		if ( $this->is_active() ) {
-			include 'views/edit-filters.php';
+		if ( ! $this->is_active() ) {
+			return;
 		}
+
+		include 'views/edit-filters.php';
 	}
 
 	// UTILITIES AND INTERNAL METHODS
@@ -307,6 +322,7 @@ class Tribe_APM {
 				unset( $args[ $key ] );
 			}
 		}
+
 		return $args;
 	}
 
@@ -332,23 +348,27 @@ class Tribe_APM {
 			return true;
 		}
 
-		if ( ! $screen = get_current_screen() ) {
+		$screen = get_current_screen();
+		if ( ! $screen ) {
 			global $pagenow;
 			if ( 'edit.php' === $pagenow ) {
 				if ( isset( $_GET['post_type'] ) && $this->post_type === $_GET['post_type'] ) {
 					return true;
 				}
-				elseif ( 'post' === $this->post_type ) {
+
+				if ( 'post' === $this->post_type ) {
 					return true;
 				}
+
 				return false;
 			}
 		}
+
 		if ( is_object( $screen ) && isset( $screen->id ) ) {
 			return $desired_screen === $screen->id;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	public function log( $data ) {

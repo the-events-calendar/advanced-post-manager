@@ -89,7 +89,7 @@ function tribe_not_php_version_names() {
 	 *
 	 * @param array $names Name of the plugins that are not compatible
 	 */
-	return apply_filters( 'tribe_not_php_version_names', array() );
+	return apply_filters( 'tribe_not_php_version_names', [] );
 }
 
 /**
@@ -114,11 +114,11 @@ function tribe_not_php_version_notice() {
  * @return void
  */
 function tribe_not_php_version_textdomain( $domain, $file ) {
-    load_plugin_textdomain(
+	load_plugin_textdomain(
 		$domain,
 		false,
 		plugin_basename( $file ) . DIRECTORY_SEPARATOR . 'lang' . DIRECTORY_SEPARATOR
-    );
+	);
 }
 
 endif;

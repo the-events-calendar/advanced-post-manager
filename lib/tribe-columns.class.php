@@ -169,11 +169,11 @@ class Tribe_Columns {
 			}
 			?></select></span>
 <script> var Tribe_Columns = <?php echo json_encode(
-    [
-        'prefix' => $this->prefix,
-        'item' => '<li>%name%<b class="close">×</b></li>',
-        'input' => '<input type="hidden" name="" value="%value%" />',
-    ]
+	[
+		'prefix' => $this->prefix,
+		'item'   => '<li>%name%<b class="close">×</b></li>',
+		'input'  => '<input type="hidden" name="" value="%value%" />',
+	]
 ); ?>; </script><?php	echo "\n";
 	}
 
@@ -422,10 +422,13 @@ class Tribe_Columns {
 		$ret = [];
 		$post = get_post( $post_id );
 		foreach ( $terms as $term ) {
-			$url = add_query_arg( [
-				'post_type' => $post->post_type,
-				$taxonomy => $term->slug,
-			], admin_url( 'edit.php' ) );
+			$url = add_query_arg(
+				[
+					'post_type' => $post->post_type,
+					$taxonomy   => $term->slug,
+				],
+				admin_url( 'edit.php' )
+			);
 			$ret[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $term->name ) );
 		}
 		return implode( ', ', $ret );

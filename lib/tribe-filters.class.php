@@ -30,14 +30,14 @@ class Tribe_Filters {
 	private $query_options = [];
 
 	private $query_options_map =  [ // turn into SQL comparison operators
-        'is' => '=',
-        'not' => '!=',
-        'gt' => '>',
-        'lt' => '<',
-        'gte' => '>=',
-        'lte' => '<=',
-        'like' => 'LIKE',
-    ];
+		'is' => '=',
+		'not' => '!=',
+		'gt' => '>',
+		'lt' => '<',
+		'gte' => '>=',
+		'lte' => '<=',
+		'like' => 'LIKE',
+	];
 
 	private $query_search_options = [];
 
@@ -198,8 +198,8 @@ class Tribe_Filters {
 	// CALLBACKS
 
 	protected function add_actions_and_filters() {
-        // We need to add actions and filters on the current screen hook if we're in a delayed initialization.
-        $hook = Tribe_APM::$delayed_init ? 'current_screen' : 'admin_init';
+		// We need to add actions and filters on the current screen hook if we're in a delayed initialization.
+		$hook = Tribe_APM::$delayed_init ? 'current_screen' : 'admin_init';
 
 		add_action( $hook, [ $this, 'init_active' ], 10 );
 		add_action( $hook, [ $this, 'save_active' ], 20 );
@@ -279,7 +279,7 @@ class Tribe_Filters {
 		// If we just remove it though, without leaving something in its place
 		// the next action that's supposed to run on parse query might be skipped.
 		add_action( 'parse_query', '__return_true' );
-		remove_action( 'parse_query', array( $this, 'parse_query' ) );
+		remove_action( 'parse_query', [ $this, 'parse_query' ] );
 
 		do_action_ref_array( 'tribe_before_parse_query', [ $wp_query, $this->active ] );
 
@@ -442,11 +442,14 @@ class Tribe_Filters {
 	}
 
 	public function register_post_type() {
-		register_post_type( self::FILTER_POST_TYPE, array(
-			'show_ui' => false,
-			'rewrite' => false,
-			'show_in_nav_menus' => false,
-		) );
+		register_post_type(
+			self::FILTER_POST_TYPE,
+			[
+				'show_ui'           => false,
+				'rewrite'           => false,
+				'show_in_nav_menus' => false,
+			]
+		);
 	}
 
 	public function enqueue() {
@@ -456,10 +459,17 @@ class Tribe_Filters {
 		if ( $current_screen->id == 'edit-' . $this->filtered_post_type ) {
 			wp_enqueue_style( 'tribe-jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css', [], '1.8.10' );
 			wp_enqueue_script( 'jquery-ui-datepicker' );
-			wp_enqueue_script( 'tribe-filters', $resources_url . 'tribe-filters.js', array(
-				'jquery-ui-sortable',
-				'jquery-ui-datepicker',
-			), false, true );
+			wp_enqueue_script(
+				'tribe-filters',
+				$resources_url .
+				'tribe-filters.js',
+				[
+					'jquery-ui-sortable',
+					'jquery-ui-datepicker',
+				],
+				false,
+				true
+			);
 		}
 	}
 
@@ -517,7 +527,7 @@ class Tribe_Filters {
 	protected function maybe_active_taxonomy( $key, $filter ) {
 		$val = $this->prefix . $key;
 		if ( isset( $_POST[ $val ] ) ) {
-			return array( 'value' => $_POST[ $val ] );
+			return [ 'value' => $_POST[ $val ] ];
 		}
 		return false;
 	}
@@ -525,8 +535,12 @@ class Tribe_Filters {
 	protected function maybe_active_meta( $key, $filter ) {
 		$val = $this->val_pre . $key;
 		$is = $this->is_pre . $key;
-		if ( isset( $_POST[ $val ] ) && isset( $_POST[ $is ] ) && ( $_POST[ $val ] !== '' ) ) {
-			return array( 'value' => $_POST[ $val ], 'query_option' => $_POST[ $is ] );
+
+		if ( !empty( $_POST[ $val ] ) && isset( $_POST[ $is ] ) ) {
+			return [
+				'value'        => $_POST[ $val ],
+				'query_option' => $_POST[ $is ]
+			];
 		}
 		return false;
 	}
@@ -536,12 +550,12 @@ class Tribe_Filters {
 			return;
 		}
 
-		$filter = array(
+		$filter = [
 			'post_content' => json_encode( $this->active ),
-			'post_title' => $_POST['filter_name'],
-			'post_type' => self::FILTER_POST_TYPE,
-			'post_status' => 'publish',
-		);
+			'post_title'   => $_POST['filter_name'],
+			'post_type'    => self::FILTER_POST_TYPE,
+			'post_status'  => 'publish',
+		];
 
 		$post_id = wp_insert_post( $filter );
 		update_post_meta( $post_id, self::FILTER_META, $this->filtered_post_type );
@@ -552,20 +566,25 @@ class Tribe_Filters {
 	}
 
 	protected function saved_filters_dropdown() {
-		$filters = get_posts( array(
-			'numberposts' => -1,
-			'post_type' => self::FILTER_POST_TYPE,
-			'meta_key' => self::FILTER_META,
-			'meta_value' => $this->filtered_post_type,
-		) );
+		$filters = get_posts(
+			[
+				'numberposts' => -1,
+				'post_type'   => self::FILTER_POST_TYPE,
+				'meta_key'    => self::FILTER_META,
+				'meta_value'  => $this->filtered_post_type,
+			]
+		);
 		if ( empty( $filters ) ) {
 			return;
 		}
 
-		$url = add_query_arg( array(
-				'post_type' => $this->filtered_post_type,
+		$url = add_query_arg(
+			[
+				'post_type'    => $this->filtered_post_type,
 				'saved_filter' => 'balderdash',
-			), admin_url( 'edit.php' ) );
+			],
+			admin_url( 'edit.php' )
+		);
 		$url = str_replace( 'balderdash', '', $url );
 
 		// @TODO: this is an inappropriate way to do pluralization
@@ -630,8 +649,8 @@ class Tribe_Filters {
 	}
 
 	protected function taxonomy_row( $key, $value, $filter ) {
-		$terms = get_terms( $filter['taxonomy'], array( 'hide_empty' => 0 ) );
-		$value = array_merge( array( 'value' => 0 ), (array) $value );
+		$terms = get_terms( $filter['taxonomy'], [ 'hide_empty' => 0 ] );
+		$value = array_merge( [ 'value' => 0 ], (array) $value );
 		$opts = [];
 		foreach ( $terms as $term ) {
 			$opts[ $term->term_id ] = $term->name;
@@ -643,7 +662,13 @@ class Tribe_Filters {
 		$ret = '';
 		$is_key = $this->is_pre . $key;
 		$val_key = $this->val_pre . $key;
-		$value = array_merge( array( 'value' => 0, 'query_option' => 0 ), (array) $value );
+		$value = array_merge(
+			[
+				'value'        => 0,
+				'query_option' => 0
+			],
+			(array) $value
+		);
 
 		// We have explicit dropdown options.
 		if ( isset( $filter['options'] ) && ! empty( $filter['options'] ) ) {
@@ -715,11 +740,11 @@ class Tribe_Filters {
 		}
 
 		$js = [
-			'filters' => $this->filters,
-			'template' => $templates,
-			'option' => $option_rows,
-			'valPrefix' => $this->val_pre,
-			'prefix' => $this->prefix,
+			'filters'    => $this->filters,
+			'template'   => $templates,
+			'option'     => $option_rows,
+			'valPrefix'  => $this->val_pre,
+			'prefix'     => $this->prefix,
 			'displaying' => $wp_query->found_posts . ' found',
 		];
 
@@ -756,8 +781,8 @@ class Tribe_Filters {
 		$filter = $this->filters[ $key ];
 		$tax_query = [
 			'taxonomy' => $filter['taxonomy'],
-			'field' => 'id',
-			'terms' => $val['value'],
+			'field'    => 'id',
+			'terms'    => $val['value'],
 			'operator' => 'IN',
 		];
 		return apply_filters( 'tribe_filters_tax_query', $tax_query, $key, $val, $filter );
@@ -766,10 +791,10 @@ class Tribe_Filters {
 	protected function meta_query( $key, $val ) {
 		$filter = $this->filters[ $key ];
 		$meta_query = [
-			'key' => $filter['meta'],
-			'value' => $val['value'],
+			'key'     => $filter['meta'],
+			'value'   => $val['value'],
 			'compare' => $this->map_meta_compare( $val ),
-			'type' => $this->map_meta_cast( $filter ),
+			'type'    => $this->map_meta_cast( $filter ),
 		];
 		return apply_filters( 'tribe_filters_meta_query', $meta_query, $key, $val, $filter );
 	}
