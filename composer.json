@@ -12,17 +12,24 @@
   "config": {
     "platform": {
       "php": "7.4.0"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
   "require": {
     "php": ">=7.4"
   },
   "require-dev": {
-    "lucatume/wp-browser": "^3.0 <3.5",
+    "automattic/vipwpcs": "^3.0",
     "behat/gherkin": "^4.8.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
     "illuminate/collections": "^8.0",
     "illuminate/support": "^8.0",
-    "szepeviktor/phpstan-wordpress": "^2.0"
+    "lucatume/wp-browser": "^3.0 <3.5",
+    "stellarwp/coding-standards": "dev-main",
+    "szepeviktor/phpstan-wordpress": "^2.0",
+    "wp-coding-standards/wpcs": "3.0"
   },
   "autoload-dev": {
     "files": [
@@ -30,7 +37,8 @@
     ]
   },
   "allow-plugins": {
-    "phpstan/extension-installer": true
+    "phpstan/extension-installer": true,
+    "dealerdirect/phpcodesniffer-composer-installer": true
   },
   "scripts": {
     "analyze": [

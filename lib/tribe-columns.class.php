@@ -1,55 +1,129 @@
 <?php
-
 /**
  * A class to set columns in a WordPress edit page.
+ *
+ * @package Advanced_Post_Manager
+ * @subpackage Tribe_Columns
+ * @since 1.0.0
  */
 
 if ( class_exists( 'Tribe_Columns' ) ) {
 	return;
 }
 
+/**
+ * A class to set columns in a WordPress edit page.
+ *
+ * @package Advanced_Post_Manager
+ * @since 1.0.0
+ */
 class Tribe_Columns {
-
+	/**
+	 * The post type to set columns for.
+	 *
+	 * @var string
+	 */
 	private $post_type;
-	private $columns = [];
+
+	/**
+	 * The active columns.
+	 *
+	 * @var array
+	 */
 	private $active = [];
-	private $override = false;
+	/**
+	 * The columns to set.
+	 *
+	 * @var array
+	 */
+	private $columns = [];
+
+	/**
+	 * The fallback columns.
+	 *
+	 * @var array
+	 */
 	private $fallback;
+
+	/**
+	 * The column headers.
+	 *
+	 * @var array
+	 */
 	private $column_headers = [];
+
+	/**
+	 * Whether to use fallbacks.
+	 *
+	 * @var boolean
+	 */
 	private $using_fallbacks = false;
 
+	/**
+	 * The URL to the resources.
+	 *
+	 * @var string
+	 */
 	private $url;
 
+	/**
+	 * The prefix for the columns.
+	 *
+	 * @var string
+	 */
 	private $prefix = 'tribe_col_';
+
+	/**
+	 * The user meta for the columns.
+	 *
+	 * @var string
+	 */
 	private $user_meta = 'tribe_columns_';
+
+	/**
+	 * The nonce for the columns.
+	 *
+	 * @var string
+	 */
 	private $nonce = 'tribe_columns';
 
+	/**
+	 * The example columns.
+	 *
+	 * @var array
+	 */
 	private $columns_example;
+
+	/**
+	 * Whether to override the existing columns.
+	 *
+	 * @var boolean
+	 */
+	private $override = false;
 
 	/**
 	 * Sets up the class to work.
 	 *
-	 * @param string $post_type The type of post_type to modify the edit/manage view
-	 * @param array $columns The columns that should be added
-	 * @param array $active The active columns from $columns. Priority: 1) instantiation argument 2) user meta 3) all $columns
-	 * @param array $fallback If no columns are active, showing all of them might suck. These are the fallbacks for that case.
+	 * @param string $post_type The type of post_type to modify the edit/manage view.
+	 * @param array  $columns The columns that should be added.
+	 * @param array  $active The active columns from $columns. Priority: 1) instantiation argument 2) user meta 3) all $columns.
+	 * @param array  $fallback If no columns are active, showing all of them might suck. These are the fallbacks for that case.
 	 *
 	 * @return void
-	 **/
-
+	 */
 	public function __construct( $post_type, $columns = [], $active = [], $fallback = [] ) {
 
 		$this->columns_example = [
 			'column_id' => [
 				'name' => __( 'Column Name', 'advanced-post-manager' ),
-				'meta' => '_some_meta', // in most cases, this piece of meta will be queried to provide column contents
+				'meta' => '_some_meta', // In most cases, this piece of meta will be queried to provide column contents.
 			],
 		];
 
-		$this->nonce .= $post_type; // keep it tidy
+		$this->nonce     .= $post_type; // Keep it tidy.
 		$this->user_meta .= $post_type;
+		$this->post_type  = $post_type;
 
-		$this->post_type = $post_type;
 		$this->set_active( $active );
 		$this->set_columns( $columns );
 		$this->set_fallback( $fallback );
@@ -59,12 +133,15 @@ class Tribe_Columns {
 		$this->url = trailingslashit( plugins_url( '', __FILE__ ) );
 	}
 
-	// PUBLIC API METHODS
+	/**
+	 * Public API Methods.
+	 */
 
 	/**
-	 * Sets the columns to be shown in the list view for associated post type
-	 * See documentation for column array construction
-	 * @param $columns array of column arrays
+	 * Sets the columns to be shown in the list view for associated post type.
+	 * See documentation for column array construction.
+	 *
+	 * @param array $columns array of column arrays.
 	 */
 	public function set_columns( $columns = [] ) {
 		if ( ! empty( $columns ) ) {
@@ -74,11 +151,12 @@ class Tribe_Columns {
 	}
 
 	/**
-	 * Adds columns to the current set of registered columns
-	 * See documentation for column array construction
-	 * @param $columns array of column arrays
+	 * Adds columns to the current set of registered columns.
+	 * See documentation for column array construction.
+	 *
+	 * @param array $columns array of column arrays.
 	 */
-	public function add_columns ( $columns = [] ) {
+	public function add_columns( $columns = [] ) {
 		if ( ! empty( $columns ) ) {
 			$this->columns = array_merge( $this->columns, $columns );
 			$this->alphabetize_columns();
@@ -86,17 +164,19 @@ class Tribe_Columns {
 	}
 
 	/**
-	 * Whether registered columns should be shown after or before WordPress defaults
-	 * @param $append bool 'before' or 'after'
+	 * Whether registered columns should be shown after or before WordPress defaults.
+	 *
+	 * @param boolean $override Whether registered columns should be shown after or before WordPress defaults.
 	 */
 	public function set_override( $override ) {
 		$this->override = (bool) $override;
 	}
 
 	/**
-	 * Set fallback defaults for when custom column are cleared
-	 * When fallback is empty, all columns will be shown on reset
-	 * @param $fallback array one-dimensional array of column keys
+	 * Set fallback defaults for when custom column are cleared.
+	 * When fallback is empty, all columns will be shown on reset.
+	 *
+	 * @param array $fallback one-dimensional array of column keys.
 	 */
 	public function set_fallback( $fallback = [] ) {
 		$this->fallback = (array) $fallback;
@@ -104,8 +184,9 @@ class Tribe_Columns {
 
 	/**
 	 * Explicitly set an active set of columns. Usually not set.
-	 * This will override any other internal method of retrieving active columns
-	 * @param $active array one-dimensional array of column keys
+	 * This will override any other internal method of retrieving active columns.
+	 *
+	 * @param array $active one-dimensional array of column keys.
 	 */
 	public function set_active( $active = [] ) {
 		$this->active = (array) $active;
@@ -113,16 +194,18 @@ class Tribe_Columns {
 
 	/**
 	 * Outputs the drag & drop columns view.
-	 * Expects to be inside a form
+	 * Expects to be inside a form.
+	 *
+	 * @return void
 	 */
 	public function output_form() {
 		wp_nonce_field( $this->nonce, $this->nonce, false );
 		$headers = $this->get_column_headers();
 
-		// make sure there are no strays
+		// Make sure there are no strays.
 		$this->sweep_empties();
 
-		// key 'em up
+		// Key 'em up.
 		$active = [];
 		foreach ( $this->active as $v ) {
 			$active[ $v ] = $v;
@@ -131,59 +214,71 @@ class Tribe_Columns {
 		unset( $active );
 		?>
 		<div class="apm-selected-cols">
-		<ul id="tribe-cols-active" class="group">
-			<?php
-			$i = 1;
-			foreach ( $this->active as $v ) {
+			<ul id="tribe-cols-active" class="group">
+				<?php
+				$i = 1;
+				foreach ( $this->active as $v ) {
 
-				if ( ! isset( $headers[ $v ] ) ) {
-					continue;
+					if ( ! isset( $headers[ $v ] ) ) {
+						continue;
+					}
+
+					// The comments header is typically an icon. This swaps it out with text.
+					if ( 'comments' == $v ) {
+						$headers[ $v ] = __( 'Comments' );
+					}//end if
+
+					echo '<li>';
+					echo '<input type="hidden" name="' . esc_attr( $this->prefix . $i ) . '" value="' . esc_attr( $v ) . '" />';
+					echo esc_html( wp_strip_all_tags( $headers[ $v ] ) );
+					echo '<b class="close">×</b>';
+					echo '</li>';
+					++$i;
 				}
-
-				// the comments header is typically an icon. This swaps it out with text
-				if ( 'comments' == $v ) {
-					$headers[ $v ] = __( 'Comments' );
-				}//end if
-
-				echo '<li>';
-				echo '<input type="hidden" name="' . esc_attr( $this->prefix . $i ) . '" value="' . esc_attr( $v ) . '" />';
-				echo esc_html( wp_strip_all_tags( $headers[ $v ] ) );
-				echo '<b class="close">×</b>';
-				echo '</li>';
-				$i++;
-			}
-			?>
-		</ul>
+				?>
+			</ul>
 		</div>
-		<span class="apm-select-wrap"><select name="tribe-cols-drop" id="tribe-cols-drop"><?php
+		<span class="apm-select-wrap">
+			<select name="tribe-cols-drop" id="tribe-cols-drop">
+			<?php
 			echo '<option value="0">' . esc_html__( 'Add a Column', 'advanced-post-manager' ) . '</option>';
 			foreach ( $inactive as $key => $value ) {
 				$name = ( is_string( $value ) ) ? $value : $value['name'];
 				if ( empty( $name ) ) {
 					continue;
 				}
+
 				if ( false !== strstr( $name, '="Comments"' ) ) {
 					$name = __( 'Comments' );
 				}
+
 				echo '<option value="' . esc_attr( $key ) . '">' . esc_html( wp_strip_all_tags( $name ) ) . '</option>';
 			}
-			?></select></span>
-<script> var Tribe_Columns = <?php echo json_encode(
-	[
-		'prefix' => $this->prefix,
-		'item'   => '<li>%name%<b class="close">×</b></li>',
-		'input'  => '<input type="hidden" name="" value="%value%" />',
-	]
-); ?>; </script><?php	echo "\n";
+			?>
+			</select>
+		</span>
+		<?php
+		$args = [
+			'prefix' => $this->prefix,
+			'item'   => '<li>%name%<b class="close">×</b></li>',
+			'input'  => '<input type="hidden" name="" value="%value%" />',
+		];
+		?>
+		<script> var Tribe_Columns = <?php echo wp_json_encode( $args ); ?>;
+		</script>
+		<?php
 	}
 
 
-	// CALLBACKS
-
+	/**
+	 * Callbacks.
+	 *
+	 * @return void
+	 */
 	private function add_actions_and_filters() {
-		add_action( 'manage_' . $this->post_type.'_posts_custom_column', [ $this, 'custom_columns' ], 10, 2 );
-		add_filter( 'manage_' . $this->post_type.'_posts_columns', [ $this, 'column_headers' ] );
-		add_filter( 'manage_edit-' . $this->post_type.'_sortable_columns', [ $this, 'sortable_columns' ] );
+		add_action( 'manage_' . $this->post_type . '_posts_custom_column', [ $this, 'custom_columns' ], 10, 2 );
+		add_filter( 'manage_' . $this->post_type . '_posts_columns', [ $this, 'column_headers' ] );
+		add_filter( 'manage_edit-' . $this->post_type . '_sortable_columns', [ $this, 'sortable_columns' ] );
 		add_action( 'load-edit.php', [ $this, 'init_active' ], 10 );
 		add_action( 'load-edit.php', [ $this, 'save_active' ], 20 );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
@@ -192,93 +287,140 @@ class Tribe_Columns {
 		add_action( 'save_post', [ $this, 'init_active' ] );
 	}
 
+	/**
+	 * Date column.
+	 *
+	 * @param string $value The value.
+	 * @param string $column_id The column ID.
+	 * @param array  $column The column.
+	 * @return string The date column.
+	 */
 	public function date_column( $value, $column_id, $column ) {
 		if ( ! empty( $value ) && self::is_date( $column ) && isset( $column['date_format'] ) ) {
-			$value = date( $column['date_format'], strtotime( $value ) );
+			$value = date( $column['date_format'], strtotime( $value ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 		}
 		return $value;
 	}
 
+	/**
+	 * Sortable columns.
+	 *
+	 * @param array $columns The columns.
+	 * @return array The sortable columns.
+	 */
 	public function sortable_columns( $columns ) {
 		$sort_prefix = apply_filters( 'tribe_sort_prefix', 'tribe_sort_' );
-		$new_cols = [];
+		$new_cols    = [];
+
 		foreach ( $this->columns as $k => $v ) {
 			$sort_key = false;
-			// Custom Type must have the sortable flag set
+			// Custom Type must have the sortable flag set.
 			if ( isset( $v['custom_type'] ) && isset( $v['sortable'] ) && $v['sortable'] ) {
 				$sort_key = $v['custom_type'];
-			}
-			// Meta is always sortable
-			elseif ( isset( $v['meta'] ) ) {
+			} elseif ( isset( $v['meta'] ) ) {
+				// Meta is always sortable.
 				$sort_key = $v['meta'];
 			}
 
-			// Got it?
+			// Got it? Got it.
 			if ( $sort_key ) {
 				$new_cols[ $k ] = $sort_prefix . $sort_key;
 			}
-		} // endforeach
-		$columns = array_merge( $columns, $new_cols );
-		return $columns;
+		}
+
+		return array_merge( $columns, $new_cols );
 	}
 
+	/**
+	 * Enqueue.
+	 *
+	 * @return void
+	 */
 	public function enqueue() {
 		global $current_screen;
 		$resources_url = apply_filters( 'tribe_apm_resources_url', $this->url . 'resources' );
 		$resources_url = trailingslashit( $resources_url );
 		if ( $current_screen->id == 'edit-' . $this->post_type ) {
-			wp_enqueue_script( 'tribe-columns', $resources_url . 'tribe-columns.js', [ 'jquery-ui-sortable' ] );
+			wp_enqueue_script(
+				'tribe-columns',
+				$resources_url . 'tribe-columns.js',
+				[ 'jquery-ui-sortable' ],
+				Tribe_APM::VERSION,
+				true
+			);
 		}
 	}
 
+	/**
+	 * Init active.
+	 *
+	 * @return void
+	 */
 	public function init_active() {
 		global $userdata;
 
-		// get active from usermeta
+		// Get active from usermeta.
 		if ( empty( $this->active ) ) {
 			$this->active = get_user_meta( $userdata->ID, $this->user_meta, true );
 		}
-		// if empty, try the fallback
+		// If empty, try the fallback.
 		if ( empty( $this->active ) ) {
 			$this->active = $this->fallback;
 		}
-		// if still empty, show everything. God help us.
+		// If still empty, show everything. God help us.
 		if ( empty( $this->active ) ) {
 			$this->active = array_keys( $this->get_column_headers() );
 		}
 	}
 
+	/**
+	 * Save active.
+	 *
+	 * @return void
+	 */
 	public function save_active() {
-		if ( ! isset( $_REQUEST[ $this->nonce ] ) || ! wp_verify_nonce( $_REQUEST[ $this->nonce ], $this->nonce ) ) {
+		$nonce = $_POST[ $this->nonce ] ?? ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, $this->nonce ) ) {
 			return;
 		}
 
-		// Clear button on frontend
+		// Clear button on frontend.
 		if ( isset( $_POST['tribe-clear'] ) ) {
 			$this->reset_active();
 			return;
 		}
 
-		$data = $_REQUEST;
-		$i = 1;
-		while ( $i <= count( $this->get_column_headers() ) ) {
+		$data  = $_POST;
+		$i     = 1;
+		$count = count( $this->get_column_headers() );
+
+		while ( $i <= $count ) {
 			if ( isset( $data[ $this->prefix . $i ] ) ) {
 				$to_save[] = $data[ $this->prefix . $i ];
 			}
-			$i++;
+
+			++$i;
 		}
 
 		if ( ! empty( $to_save ) ) {
 			global $userdata;
 			update_user_meta( $userdata->ID, $this->user_meta, $to_save );
+
 			$this->using_fallbacks = false;
-			$this->active = $to_save;
+			$this->active          = $to_save;
 		}
 	}
 
+	/**
+	 * Column headers.
+	 *
+	 * @param array $columns The columns.
+	 * @return array The column headers.
+	 */
 	public function column_headers( $columns ) {
-		if ( ! $this->is_our_post_type() )
+		if ( ! $this->is_our_post_type() ) {
 			return $columns;
+		}
 
 		if ( ! empty( $this->active ) ) {
 			$headers = $this->get_column_headers( false );
@@ -291,53 +433,61 @@ class Tribe_Columns {
 		return $columns;
 	}
 
+	/**
+	 * Custom columns.
+	 *
+	 * @param string $column_id The column ID.
+	 * @param int    $post_id The post ID.
+	 * @return void
+	 */
 	public function custom_columns( $column_id, $post_id ) {
-		if ( ! $this->is_our_post_type() )
+		if ( ! $this->is_our_post_type() ) {
 			return;
+		}
 		$post = get_post( $post_id );
 		if ( array_key_exists( $column_id, $this->columns ) ) {
 			$column = $this->columns[ $column_id ];
 			// meta ?
 			if ( isset( $column['meta'] ) ) {
 				$value = get_post_meta( $post_id, $column['meta'], true );
-				// Do an options map for prettiness
+				// Do an options map for prettiness.
 				if ( isset( $column['options'] ) && isset( $column['options'][ $value ] ) ) {
 					$value = $column['options'][ $value ];
 				}
-			}
-			// taxonomy?
-			elseif ( isset( $column['taxonomy'] ) ) {
+			} elseif ( isset( $column['taxonomy'] ) ) {
+				// Taxonomy?
 				$value = $this->taxonomy_column( $post_id, $column['taxonomy'] );
-			}
-			// custom type?
-			elseif ( isset( $column['custom_type'] ) ) {
+			} elseif ( isset( $column['custom_type'] ) ) {
+				// Custom type?
 				$value = apply_filters( 'tribe_custom_column' . $column['custom_type'], '', $column_id, $post_id );
 			}
 
-			// filter time
+			// Filter time.
 			$value = apply_filters( 'tribe_columns_column', $value, $column_id, $column, $post_id );
 			$value = apply_filters( 'tribe_columns_column_' . $column_id, $value, $post_id );
 
-			// if name isn't set, and first in $this->columns, let's link it up
+			// If name isn't set, and first in $this->columns, let's link it up.
 			if ( ! array_key_exists( 'title', $this->active ) && reset( $this->active ) == $column_id ) {
-				// if value is empty, we've got a problem for, you know, clicking.
+				// If value is empty, we've got a problem for, you know, clicking.
 				$value = ( empty( $value ) ) ? '–Blank–' : $value;
-				$value = sprintf( '<strong><a href="%s" title="%s">%s</a>%s</strong>',
+				$value = sprintf(
+					'<strong><a href="%s" title="%s">%s</a>%s</strong>', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					esc_url( get_admin_url( null, "post.php?post={$post_id}&action=edit" ) ),
-					'Edit &lsquo;' . strip_tags( esc_attr( get_the_title( $post_id ) ) ) . '&rsquo;',
+					'Edit &lsquo;' . wp_strip_all_tags( get_the_title( $post_id ) ) . '&rsquo;',
 					$value,
-					// Post status, if not published
-					( $post->post_status !== 'publish' ) ? " - {$post->post_status}" : ''
+					( $post->post_status !== 'publish' ) ? " - {$post->post_status}" : '' // Post status, if not published.
 				);
 			}
 
-			echo $value;
+			echo wp_kses_post( $value );
 		}
 	}
 
-
-	// UTILITIES AND INTERNAL METHODS
-
+	/**
+	 * Sweep empties.
+	 *
+	 * @return void
+	 */
 	protected function sweep_empties() {
 		$headers = $this->get_column_headers();
 		foreach ( $headers as $k => $v ) {
@@ -347,30 +497,38 @@ class Tribe_Columns {
 		}
 	}
 
+	/**
+	 * Get the column headers.
+	 *
+	 * @param boolean $omit_checkbox Whether to omit the checkbox column.
+	 * @return array The column headers.
+	 */
 	private function get_column_headers( $omit_checkbox = true ) {
 		if ( ! empty( $this->column_headers ) ) {
 			$headers = $this->column_headers;
-		}
-		else {
-			// If we're nuking the existing columns, still provide checkboxes
+		} else {
+			// If we're nuking the existing columns, still provide checkboxes.
 			if ( $this->override ) {
 				$headers = [ 'cb' => '<input type="checkbox" />' ];
-			}
-			else {
-				// Cause infinite loops get boring after a while
+			} else {
+				// Cause infinite loops get boring after a while.
 				remove_filter( 'manage_' . $this->post_type . '_posts_columns', [ $this, 'column_headers' ] );
 				$this->load_list_table();
 
-				$list = new WP_Posts_List_Table();
+				$list    = new WP_Posts_List_Table();
 				$headers = $list->get_columns();
 
 				add_filter( 'manage_' . $this->post_type . '_posts_columns', [ $this, 'column_headers' ] );
 			}
+
 			foreach ( $this->columns as $key => $value ) {
 				$headers[ $key ] = $value['name'];
 			}
+
 			$this->column_headers = $headers;
 		}
+
+		// If we're nuking the existing columns, still provide checkboxes.
 		if ( $omit_checkbox && isset( $headers['cb'] ) ) {
 			unset( $headers['cb'] );
 		}
@@ -385,20 +543,35 @@ class Tribe_Columns {
 		return apply_filters( 'tribe_apm_column_headers', $headers );
 	}
 
+	/**
+	 * Load the list table.
+	 *
+	 * @return void
+	 */
 	private function load_list_table() {
 		if ( ! class_exists( 'WP_Posts_List_Table' ) ) {
-			require_once( ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php' );
+			require_once ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php';
 		}
 	}
 
+	/**
+	 * Alphabetize the columns.
+	 *
+	 * @return void
+	 */
 	private function alphabetize_columns() {
-		$columns = (array) $this->columns;
-		if ( empty( $columns ) )
+		$columns       = (array) $this->columns;
+		$alpha_columns = [];
+		$temp          = [];
+
+		if ( empty( $columns ) ) {
 			return;
+		}
 
 		foreach ( $columns as $k => $v ) {
-			if ( ! empty( $v['name'] ) )
+			if ( ! empty( $v['name'] ) ) {
 				$temp[ $k ] = $v['name'];
+			}
 		}
 		asort( $temp );
 
@@ -407,20 +580,38 @@ class Tribe_Columns {
 		}
 
 		$this->columns = $alpha_columns;
+
 		unset( $alpha_columns, $temp );
 	}
 
+	/**
+	 * Log data.
+	 *
+	 * @param array $data The data to log.
+	 *
+	 * @return void
+	 */
 	public function log( $data = [] ) {
 		error_log( print_r( $data, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log, WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	}
 
+	/**
+	 * Get the taxonomy column.
+	 *
+	 * @param int    $post_id The post ID.
+	 * @param string $taxonomy The taxonomy.
+	 * @return string The taxonomy column.
+	 */
 	protected function taxonomy_column( $post_id, $taxonomy ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
-		if ( ! $terms || empty( $terms ) ){
+
+		if ( ! $terms || empty( $terms ) ) {
 			return '&ndash;';
 		}
-		$ret = [];
+
+		$ret  = [];
 		$post = get_post( $post_id );
+
 		foreach ( $terms as $term ) {
 			$url = add_query_arg(
 				[
@@ -429,11 +620,17 @@ class Tribe_Columns {
 				],
 				admin_url( 'edit.php' )
 			);
+
 			$ret[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $term->name ) );
 		}
 		return implode( ', ', $ret );
 	}
 
+	/**
+	 * Reset the active columns.
+	 *
+	 * @return void
+	 */
 	private function reset_active() {
 		global $userdata;
 		delete_user_meta( $userdata->ID, $this->user_meta );
@@ -441,31 +638,44 @@ class Tribe_Columns {
 		$this->init_active();
 	}
 
+	/**
+	 * Check if the column is a date.
+	 *
+	 * @param array $column The column.
+	 * @return boolean Whether the column is a date.
+	 */
 	protected function is_date( $column ) {
 		if ( isset( $column['cast'] ) ) {
 			$cast = ucwords( $column['cast'] );
 			if ( in_array( $cast, [ 'DATE', 'DATETIME' ] ) ) {
 				return true;
 			}
-		}
-		elseif ( isset( $column['type'] ) && 'DATE' === ucwords( $column['type'] ) ) {
+		} elseif ( isset( $column['type'] ) && 'DATE' === ucwords( $column['type'] ) ) {
 			return true;
 		}
+
 		return false;
 	}
 
+	/**
+	 * Check if the post type is ours.
+	 *
+	 * @return boolean Whether the post type is ours.
+	 */
 	protected function is_our_post_type() {
 		$screen = get_current_screen();
+
 		if ( empty( $screen ) ) {
 			global $typenow;
 			$post_type = empty( $typenow ) ? 'post' : $typenow;
-		}
-		else {
+		} else {
 			$post_type = $screen->post_type;
 		}
-		if ( $post_type === $this->post_type )
+
+		if ( $post_type === $this->post_type ) {
 			return true;
-		else
-			return false;
+		}
+
+		return false;
 	}
 }

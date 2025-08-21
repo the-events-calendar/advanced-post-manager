@@ -75,8 +75,9 @@ jQuery(document).ready(function($) {
 		id = me.val(),
 		url = me.attr('data:submit_url') + id;
 
-		if ( id > 0 )
-			window.location = url;
+		if ( id > 0 ) {
+            window.location = url;
+        }
 	});
 
 	// clicking on page numbers - need to save the goodness
