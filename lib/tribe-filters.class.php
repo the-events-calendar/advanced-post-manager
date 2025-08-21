@@ -161,6 +161,10 @@ class Tribe_Filters {
 	 * @param array  $filters   A multidimensional array of available filters with named keys and options for how to query them.
 	 */
 	public function __construct( $post_type, $filters = [] ) {
+		$this->url                = trailingslashit( plugins_url( '', __FILE__ ) );
+		$this->filtered_post_type = $post_type;
+		$this->is_pre             = $this->prefix . 'is_';
+		$this->val_pre            = $this->prefix . 'val_';
 
 		$this->query_options = [
 			'is'  => __( 'Is', 'advanced-post-manager' ),
@@ -200,14 +204,9 @@ class Tribe_Filters {
 			],
 		];
 
-		$this->filtered_post_type = $post_type;
 		$this->set_filters( $filters );
 
-		$this->url = trailingslashit( plugins_url( '', __FILE__ ) );
 		$this->add_actions_and_filters();
-
-		$this->is_pre  = $this->prefix . 'is_';
-		$this->val_pre = $this->prefix . 'val_';
 	}
 
 	// PUBLIC API METHODS.
@@ -247,7 +246,6 @@ class Tribe_Filters {
 	 */
 	public function set_active( $active = null ) {
 		if ( empty( $active ) ) {
-			$this->log( 'set_active: empty active' );
 			return;
 		}
 
@@ -320,12 +318,12 @@ class Tribe_Filters {
 		// We need to add actions and filters on the current screen hook if we're in a delayed initialization.
 		$hook = Tribe_APM::$delayed_init ? 'current_screen' : 'admin_init';
 
-		add_action( $hook, [ $this, 'init_active' ], 10 );
-		add_action( $hook, [ $this, 'save_active' ], 20 );
-		add_action( $hook, [ $this, 'update_or_delete_saved_filters' ], 21 );
-		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
-		add_action( 'load-edit.php', [ $this, 'add_query_filters' ], 30 );
+		add_action( $hook, [ $this, 'init_active' ], 20 );
+		add_action( $hook, [ $this, 'save_active' ], 30 );
+		add_action( $hook, [ $this, 'update_or_delete_saved_filters' ], 31 );
 		add_action( $hook, [ $this, 'register_post_type' ] );
+		add_action( 'pre_get_posts', [ $this, 'parse_query' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_filter( 'admin_body_class', [ $this, 'add_body_class' ] );
 		add_action( 'tribe_after_parse_query', [ $this, 'maybe_cast_for_ordering' ], 10, 2 );
 		add_action( 'tribe_after_parse_query', [ $this, 'add_cast_helpers' ] );
@@ -430,16 +428,12 @@ class Tribe_Filters {
 
 	/**
 	 * Add query filters.
+	 *
+	 * @deprecated TBD
 	 */
 	public function add_query_filters() {
-		$screen = get_current_screen();
-
-		// Only filter our post type.
-		if ( $screen->post_type !== $this->filtered_post_type ) {
-			return;
-		}
-
-		add_action( 'parse_query', [ $this, 'parse_query' ] );
+		_deprecated_function( __METHOD__, 'TBD', 'parse_query' );
+		$this->parse_query( $GLOBALS['wp_query'] );
 	}
 
 	/**
@@ -448,18 +442,20 @@ class Tribe_Filters {
 	 * @param WP_Query $wp_query The WP_Query object.
 	 */
 	public function parse_query( $wp_query ) {
-		/*
-		 * Run once.
-		 * However, if we just remove it without leaving something in its place
-		 * the next action that's supposed to run on parse query might be skipped.
-		 */
-		add_action( 'parse_query', '__return_true' );
+		$screen = get_current_screen();
+
+		// Only filter our post type.
+		if ( $screen->post_type !== $this->filtered_post_type ) {
+			return;
+		}
+
 		remove_action( 'parse_query', [ $this, 'parse_query' ] );
 
 		do_action_ref_array( 'tribe_before_parse_query', [ $wp_query, $this->active ] );
 
-		$tax_query  = [];
-		$meta_query = [];
+		$tax_query  = (array) $wp_query->get( 'tax_query' );
+		$meta_query = (array) $wp_query->get( 'meta_query' );
+
 
 		foreach ( $this->active as $k => $v ) {
 			if ( ! isset( $this->filters[ $k ] ) ) {
@@ -473,15 +469,12 @@ class Tribe_Filters {
 				$meta_query[] = $this->meta_query( $k, $v );
 			}
 		}
-		$old_tax_query = $wp_query->get( 'tax_query' );
-		$old_tax_query = ( empty( $old_tax_query ) ) ? [] : $old_tax_query;
-		$tax_query     = array_merge( $old_tax_query, $tax_query );
+
+		$tax_query = array_merge( $tax_query, $tax_query );
 
 		$wp_query->set( 'tax_query', $tax_query );
 
-		$old_meta_query = $wp_query->get( 'meta_query' );
-		$old_meta_query = ( empty( $old_meta_query ) ) ? [] : $old_meta_query;
-		$meta_query     = array_merge( $old_meta_query, $meta_query );
+		$meta_query = array_merge( (array) $meta_query, $meta_query );
 
 		$wp_query->set( 'meta_query', $meta_query );
 
@@ -494,7 +487,6 @@ class Tribe_Filters {
 	 * Debug.
 	 */
 	public function debug() {
-		$this->log( $GLOBALS['wp_query'] );
 	}
 
 	/**
@@ -524,12 +516,13 @@ class Tribe_Filters {
 	 * @return void
 	 */
 	public function init_active() {
-		// Saved filter active?
-		if ( isset( $_GET['saved_filter'] ) && absint( $_GET['saved_filter'] ) > 0 ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$filterset = get_post( absint( $_GET['saved_filter'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
+		if ( isset( $_GET['saved_filter'] ) && absint( $_GET['saved_filter'] ) > 0 ) {
+			// Saved filter is active.
+			$filterset = get_post( absint( $_GET['saved_filter'] ) );
 
-			if ( substr( $filterset->post_content, 0, 2 ) === 'a:' ) {
-				// If post_content is serialized, grab it and update it to json_encoded.
+			if ( is_serialized( $filterset->post_content ) ) {
+				// If post_content is serialized, grab it and update it to json_encoded. For backwards compatibility.
 				$active = unserialize( $filterset->post_content ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 
 				if ( $active ) {
@@ -548,12 +541,13 @@ class Tribe_Filters {
 				$this->set_active( $active );
 				$this->saved_active = $filterset;
 			}
-		} elseif ( ! $_POST ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
+		} elseif ( ! $_POST ) {
 			$last_query = $this->last_query();
 			if ( $last_query ) {
 				$this->set_active( $last_query );
 			}
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
 	}
 
 	/**
@@ -575,7 +569,6 @@ class Tribe_Filters {
 
 		foreach ( $this->filters as $key => $filter ) {
 			$maybe_active = false;
-
 
 			if ( isset( $filter['meta'] ) ) {
 				// Meta fields.
@@ -761,17 +754,19 @@ class Tribe_Filters {
 	/**
 	 * Maybe active taxonomy.
 	 *
-	 * @param string $key    The key.
+	 * @param string $key The key.
 	 *
 	 * @return array The result.
 	 */
 	protected function maybe_active_taxonomy( $key ) {
-		$val = $this->prefix . $key;
-		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		if ( isset( $_POST[ $val ] ) ) {
-			return [ 'value' => $_POST[ $val ] ];
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+			return;
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		$val = $this->prefix . $key;
+		if ( isset( $_POST[ $val ] ) ) {
+			return [ 'value' => $_POST[ $val ] ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		}
 
 		return false;
 	}
@@ -784,19 +779,24 @@ class Tribe_Filters {
 	 * @return array The result.
 	 */
 	protected function maybe_active_meta( $key ) {
-		$val = $this->val_pre . $key;
-		$is  = $this->is_pre . $key;
-
-		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		if ( ! empty( $_POST[ $val ] ) && isset( $_POST[ $is ] ) ) {
-			return [
-				'value'        => $_POST[ $val ],
-				'query_option' => $_POST[ $is ],
-			];
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+			return;
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
-		return false;
+		$val = $this->val_pre . $key;
+		if ( empty( $_POST[ $val ] ) ) {
+			return false;
+		}
+
+		$is = $this->is_pre . $key;
+		if ( empty( $_POST[ $is ] ) ) {
+			return false;
+		}
+
+		return [
+			'value'        => $_POST[ $val ], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			'query_option' => $_POST[ $is ], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		];
 	}
 
 	/**
@@ -1103,7 +1103,11 @@ class Tribe_Filters {
 			$orderby = sanitize_text_field( $_POST['orderby'] ); //phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
-		if ( ! empty( $orderby ) && 0 === strpos( $orderby, $sort_prefix ) ) {
+		if ( empty( $orderby ) ) {
+			return;
+		}
+
+		if ( is_string( $orderby ) && 0 === strpos( $orderby, $sort_prefix ) ) {
 			$orderby = preg_replace( '/^' . $sort_prefix . '/', '', $orderby );
 			// If it's a meta field, easy enough.
 			$meta_field = $this->get_filter_by_field( 'meta', $orderby );
@@ -1118,6 +1122,8 @@ class Tribe_Filters {
 				do_action_ref_array( 'tribe_orderby_custom' . $orderby, [ $wp_query, $custom_field ] );
 			}
 		}
+
+		// @TODO: Handle array orderby.
 	}
 
 	/**
