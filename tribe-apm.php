@@ -55,7 +55,7 @@ class Tribe_APM {
 	/**
 	 * The current version of APM.
 	 */
-	const VERSION = '4.5.4';
+	const VERSION = '4.5.5';
 
 	/**
 	 * The textdomain for the plugin.
