@@ -147,6 +147,7 @@ class Tribe_Filters {
 	 */
 	private $active_example = [];
 
+
 	/**
 	 * Saved active filters.
 	 *

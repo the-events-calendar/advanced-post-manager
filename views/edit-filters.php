@@ -4,8 +4,11 @@
  *
  * @package Advanced_Post_Manager
  * @subpackage Views
+ *
  * @since 1.0.0
  * @version 4.4
+ *
+ * @var Tribe_APM $this The Tribe_APM object.
  */
 
 $action_url = add_query_arg( 'post_type', $GLOBALS['typenow'], admin_url( 'edit.php' ) );

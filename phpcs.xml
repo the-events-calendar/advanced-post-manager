@@ -9,6 +9,7 @@
 	<rule ref="WordPress">
 		<exclude name="WordPress.Files.FileName"/>
 		<exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
 	</rule>
 	<rule ref="StellarWP"/>
 
