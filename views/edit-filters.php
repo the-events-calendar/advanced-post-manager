@@ -13,7 +13,7 @@
 
 $action_url = add_query_arg( 'post_type', $GLOBALS['typenow'], admin_url( 'edit.php' ) );
 
-do_action_deprecated( 'tribe-filters-box', [], 'TBD', 'tribe_filters_box', 'Convert to WordPress standards action format.' );
+do_action_deprecated( 'tribe-filters-box', [], '4.5.5', 'tribe_filters_box', 'Convert to WordPress standards action format.' );
 do_action( 'tribe_filters_box' );
 
 ?>

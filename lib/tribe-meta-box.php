@@ -21,7 +21,7 @@ class Tribe_Meta_Box {
 	 * @var array
 	 *
 	 * @since 1.7.3
-	 * @deprecated TBD Use $this->meta_box instead.
+	 * @deprecated 4.5.5 Use $this->meta_box instead.
 	 */
 	protected $_meta_box; // phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore
 
@@ -30,7 +30,7 @@ class Tribe_Meta_Box {
 	 *
 	 * @var array
 	 *
-	 * @since TBD
+	 * @since 4.5.5
 	 */
 	protected $meta_box;
 
@@ -40,7 +40,7 @@ class Tribe_Meta_Box {
 	 * @var array
 	 *
 	 * @since 1.7.3
-	 * @deprecated TBD Use $this->fields instead.
+	 * @deprecated 4.5.5 Use $this->fields instead.
 	 */
 	protected $_fields; // phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore
 
@@ -49,7 +49,7 @@ class Tribe_Meta_Box {
 	 *
 	 * @var array
 	 *
-	 * @since TBD
+	 * @since 4.5.5
 	 */
 	protected $fields;
 

@@ -300,7 +300,7 @@ class Tribe_Filters {
 	/**
 	 * Active filters table.
 	 *
-	 * @since TBD
+	 * @since 4.5.5
 	 */
 	public function active_filters_table(): void {
 		echo '<h4>' . esc_html__( 'Active Filters', 'advanced-post-manager' ) . '</h4>';
@@ -376,7 +376,7 @@ class Tribe_Filters {
 	 *
 	 * @param WP_Query $wp_query The WP_Query object.
 	 *
-	 * @since TBD Removed unused $active parameter.
+	 * @since 4.5.5 Removed unused $active parameter.
 	 */
 	public function maybe_cast_for_ordering( $wp_query ) {
 		// Only if it's sorting on meta.
@@ -412,7 +412,7 @@ class Tribe_Filters {
 	 *
 	 * @param string $orderby The orderby.
 	 *
-	 * @since TBD Removed unused $wp_query parameter.
+	 * @since 4.5.5 Removed unused $wp_query parameter.
 	 *
 	 * @return string The orderby.
 	 */
@@ -430,10 +430,10 @@ class Tribe_Filters {
 	/**
 	 * Add query filters.
 	 *
-	 * @deprecated TBD
+	 * @deprecated 4.5.5
 	 */
 	public function add_query_filters() {
-		_deprecated_function( __METHOD__, 'TBD', 'parse_query' );
+		_deprecated_function( __METHOD__, '4.5.5', 'parse_query' );
 		$this->parse_query( $GLOBALS['wp_query'] );
 	}
 

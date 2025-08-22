@@ -28,7 +28,7 @@ if ( tribe_is_not_min_php_version() ) {
 	/**
 	 * Include the plugin name into the correct place.
 	 *
-	 * @since TBD
+	 * @since 4.5.5
 	 *
 	 * @param array $names current list of names.
 	 *
@@ -176,7 +176,7 @@ class Tribe_APM {
 	/**
 	 * Register hooks that don't depend on initialization state.
 	 *
-	 * @since TBD
+	 * @since 4.5.5
 	 */
 	private function register_hooks() {
 		// Always-available filter for resource URLs.
@@ -281,7 +281,7 @@ class Tribe_APM {
 	/**
 	 * Get the resources URL.
 	 *
-	 * @since TBD Remove unused parameter.
+	 * @since 4.5.5 Remove unused parameter.
 	 *
 	 * @return string The resources URL.
 	 */
@@ -336,7 +336,7 @@ class Tribe_APM {
 	/**
 	 * Maybe enqueue the scripts and styles.
 	 *
-	 * @since TBD Remove unused parameter.
+	 * @since 4.5.5 Remove unused parameter.
 	 *
 	 * @return void
 	 */
