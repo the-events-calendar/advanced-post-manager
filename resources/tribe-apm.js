@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-	
+
 	// filters & columns box. Move into place. Show/hide.
 	var theFilters = $("#the-filters"),
 	tribeFilters = $("#tribe-filters"),
@@ -13,17 +13,17 @@ jQuery(document).ready(function($) {
 			$.cookie("hideFiltersAndColumns", "true"); // cookies only store strings
 		else
 			$.cookie("hideFiltersAndColumns", "false");
-		
+
 		theFilters.toggle();
 		$("#filters-wrap").toggleClass("closed");
 	});
 	// hide it if it was hidden
 	if ( $.cookie("hideFiltersAndColumns") === "true" )
 		tribeFiltersHeader.click();
-	
+
 	// Also the arrow
 	tribeFilters.find(".handlediv").click(function() { tribeFiltersHeader.click()	});
-	
+
 	// so we preserve our state when clicking on all/published/drafts
 	/*
 	$(".subsubsub a").click(function(event) {
@@ -33,23 +33,23 @@ jQuery(document).ready(function($) {
 		form.attr("action", url).submit();
 	});
 	*/
-	
+
 	// un-fixed width columns
 	$("#posts-filter .fixed").removeClass("fixed");
 
 	// Save/Cancel Filters
 	$("#the-filters .save.button-secondary").click(function(ev) {
+		ev.preventDefault();
 		$(this).parent().hide().find("input").prop("disabled", true);
 		$("#the-filters .save-options").show();
 		$("#filter_name").focus();
-		ev.preventDefault();
 	});
 	$("#cancel-save").click(function(ev) {
+		ev.preventDefault();
 		$(this).parent().hide();
 		$("#the-filters .actions").show().find("input").prop("disabled", false);
-		ev.preventDefault();
 	});
-	
+
 	// Save that Filter
 	$("#filter_name").keypress(function(ev){
 		if ( ev.keyCode == 13 ) {
@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 			$(this).next().click()
 		}
 	});
-	
+
 	// Maintain sorting
 	$(".tribe-filters-active .wp-list-table .sortable a").click(function(ev) {
 		theFilters.attr("action", this.href).submit()

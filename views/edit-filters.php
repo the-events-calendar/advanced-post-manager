@@ -1,9 +1,21 @@
 <?php
 /**
+ * Edit Filters View.
+ *
+ * @package Advanced_Post_Manager
+ * @subpackage Views
+ *
+ * @since 1.0.0
  * @version 4.4
+ *
+ * @var Tribe_APM $this The Tribe_APM object.
  */
+
 $action_url = add_query_arg( 'post_type', $GLOBALS['typenow'], admin_url( 'edit.php' ) );
-do_action( 'tribe-filters-box' );
+
+do_action_deprecated( 'tribe-filters-box', [], '4.5.5', 'tribe_filters_box', 'Convert to WordPress standards action format.' );
+do_action( 'tribe_filters_box' );
+
 ?>
 <div id="tribe-filters" class="metabox-holder meta-box-sortables">
 <div id="filters-wrap" class="postbox">
