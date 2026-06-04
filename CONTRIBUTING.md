@@ -55,4 +55,4 @@ npm rebuild
 
 ### Using Gulp
 
-Our gulp tasks are documented in our [product-taskmanager README](https://github.com/the-events-calendar/product-taskmaster#gulp-tasks).
+Our gulp tasks are documented in our [product-taskmaster README](https://github.com/the-events-calendar/product-taskmaster#gulp-tasks).
