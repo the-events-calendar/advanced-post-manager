@@ -41,13 +41,15 @@ happen to be standing in.
 ### Where the rest is written down
 
 This section covers what is specific to working here. The
-[`tec-openspec` skill](https://github.com/the-events-calendar/skills) covers the
+[`openspec` skill](https://github.com/stellarwp/skills) covers the
 workflow itself — writing a proposal worth reviewing, keeping it current, and
 archiving it once (after the last repository merges, not per repo). Install it with:
 
+The below will work only once the `stellarwp/skills` becomes public.
+
 ```
-/plugin marketplace add the-events-calendar/skills
-/plugin install tec
+/plugin marketplace add stellarwp/skills
+/plugin install nexcess
 ```
 
 ## Running the tests
@@ -61,8 +63,8 @@ All sibling plugins live next to `advanced-post-manager` in the same parent dire
 ```bash
 # 1. Sibling checkouts (APM's integration suite activates both).
 #    Use the branch matching yours if it exists, otherwise the base branch.
-git clone --recurse-submodules git@github.com:the-events-calendar/the-events-calendar.git
-git clone --recurse-submodules git@github.com:the-events-calendar/events-pro.git
+git clone --recursive git@github.com:the-events-calendar/the-events-calendar.git
+git clone --recursive git@github.com:the-events-calendar/events-pro.git
 
 # 2. Point slic at this parent directory and turn off interactivity.
 slic here
