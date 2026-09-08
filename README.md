@@ -49,3 +49,62 @@ archiving it once (after the last repository merges, not per repo). Install it w
 /plugin marketplace add the-events-calendar/skills
 /plugin install tec
 ```
+
+## Running the tests
+
+Tests are Codeception (`lucatume/wp-browser`) integration tests run inside Docker via [slic](https://github.com/stellarwp/slic); CI runs the same `slic run` command.
+
+### Setup
+
+All sibling plugins live next to `advanced-post-manager` in the same parent directory, and `slic` is pointed at that parent. From the directory that contains `advanced-post-manager`:
+
+```bash
+# 1. Sibling checkouts (APM's integration suite activates both).
+#    Use the branch matching yours if it exists, otherwise the base branch.
+git clone --recurse-submodules git@github.com:the-events-calendar/the-events-calendar.git
+git clone --recurse-submodules git@github.com:the-events-calendar/events-pro.git
+
+# 2. Point slic at this parent directory and turn off interactivity.
+slic here
+slic interactive off
+slic build-prompt off
+slic build-subdir off
+slic xdebug off
+slic info
+
+# 3. Install dependencies for each plugin (TEC and ECP are runtime deps only).
+slic use the-events-calendar         && slic composer install --no-dev
+slic use the-events-calendar/common  && slic composer install --no-dev
+slic use events-pro                  && slic composer install --no-dev
+slic use advanced-post-manager       && slic composer install
+
+# 4. Start the WordPress container.
+slic up wordpress
+```
+
+### Running a suite
+
+```bash
+slic use advanced-post-manager
+slic run integration
+
+# Single file
+slic run integration tests/integration/Tribe_FiltersTest.php
+
+# Single test / filter
+slic run integration --filter=test_name
+```
+
+### Suites
+
+| Suite | Covers | CI on every PR |
+|---|---|---|
+| `integration` | WPLoader-booted tests against a real WP install with TEC, ECP and APM activated (`tests/integration/`) | Yes |
+
+`integration` is the only suite in the repo (`tests/integration.suite.dist.yml`) and the only entry in CI's matrix.
+
+### How this differs from CI
+
+- CI pins WordPress to **6.6** (`slic wp core update --version=6.6 --force && slic wp core update-db`) and installs/activates `twentytwenty`. Locally the container's default WP is fine unless you are chasing a version-specific failure.
+- CI adds `--ext DotReporter` for compact output; skip it locally to see per-test names.
+- CI sets a shared composer cache, prunes Docker networks between steps, and skips the whole test job when a PR touches no `.php` files. None of that matters locally.
