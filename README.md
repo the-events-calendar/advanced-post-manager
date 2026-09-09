@@ -121,6 +121,6 @@ slic run integration --filter=test_name
 
 ### How this differs from CI
 
-- CI pins WordPress to **6.6** (`slic wp core update --version=6.6 --force && slic wp core update-db`) and installs/activates `twentytwenty`. Locally the container's default WP is fine unless you are chasing a version-specific failure.
+- CI pins WordPress to **6.8** (`slic wp core update --version=6.8 --force && slic wp core update-db`) and installs/activates `twentytwenty`. Locally the container's default WP is fine unless you are chasing a version-specific failure.
 - CI adds `--ext DotReporter` for compact output; skip it locally to see per-test names.
 - CI sets a shared composer cache, prunes Docker networks between steps, and skips the whole test job when a PR touches no `.php` files. None of that matters locally.

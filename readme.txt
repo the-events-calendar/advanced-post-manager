@@ -3,7 +3,7 @@
 Contributors: aguseo, bordoni, borkweb, brianjessee, leahkoerper, lucatume, neillmcshea, sdokus, vicskf, zbtirrell
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, wp-admin
-Requires at least: 6.6
+Requires at least: 6.8
 Tested up to: 6.8.2
 License: GPL v2
 Stable tag: 4.5.5
