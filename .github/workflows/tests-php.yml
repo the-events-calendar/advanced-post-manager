@@ -71,7 +71,7 @@ jobs:
           echo "SLIC_BIN=${GITHUB_WORKSPACE}/slic/slic" >> $GITHUB_ENV
           echo "TRIC_WP_DIR=${GITHUB_WORKSPACE}/slic/_wordpress" >> $GITHUB_ENV
           echo "TRIC_WORDPRESS_DOCKERFILE=Dockerfile.base" >> $GITHUB_ENV
-          echo "WORDPRESS_VERSION=6.6" >> $GITHUB_ENV
+          echo "WORDPRESS_VERSION=6.7" >> $GITHUB_ENV
       - name: Set run context for slic
         run: echo "TRIC=1" >> $GITHUB_ENV && echo "CI=1" >> $GITHUB_ENV
       - name: Start ssh-agent
@@ -135,9 +135,9 @@ jobs:
           ${SLIC_BIN} composer install
       - name: Init the WordPress container
         run: ${SLIC_BIN} up wordpress
-      - name: Update WordPress to version 6.6
+      - name: Update WordPress to version 6.7
         run: |
-          ${SLIC_BIN} wp core update --version=6.6 --force
+          ${SLIC_BIN} wp core update --version=6.7 --force
           ${SLIC_BIN} wp core update-db
       - name: Ensure Twenty-Twenty is installed
         run: |
