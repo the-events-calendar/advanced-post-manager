@@ -514,6 +514,10 @@ class Tribe_Filters {
 	/**
 	 * Inits a saved filter set if one submitted.
 	 *
+	 * @since TBD Skips the saved_filter post when it is not a filter-set post or the current
+	 *            user cannot read it, and unserializes legacy content with object
+	 *            instantiation disabled.
+	 *
 	 * @return void
 	 */
 	public function init_active() {
@@ -522,9 +526,14 @@ class Tribe_Filters {
 			// Saved filter is active.
 			$filterset = get_post( absint( $_GET['saved_filter'] ) );
 
+			if ( ! $filterset || self::FILTER_POST_TYPE !== $filterset->post_type || ! current_user_can( 'read_post', $filterset->ID ) ) {
+				return;
+			}
+
 			if ( is_serialized( $filterset->post_content ) ) {
 				// If post_content is serialized, grab it and update it to json_encoded. For backwards compatibility.
-				$active = unserialize( $filterset->post_content ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+				// Unserializes with object instantiation disabled; only scalars and arrays are returned.
+				$active = unserialize( $filterset->post_content, [ 'allowed_classes' => false ] ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 
 				if ( $active ) {
 					wp_update_post(

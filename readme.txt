@@ -75,6 +75,10 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
+= [4.5.6] 2026-09-22 =
+
+* Fix - Hardened the restoration of saved filter sets against a security vulnerability.
+
 = [4.5.5] 2025-08-25 =
 
 * Fix - Ensure Advanced Post Manager initialization timing can handle switching between `admin_init` and `current_screen`. [ECP-1915]
