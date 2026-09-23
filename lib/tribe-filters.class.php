@@ -514,7 +514,7 @@ class Tribe_Filters {
 	/**
 	 * Inits a saved filter set if one submitted.
 	 *
-	 * @since TBD Skips the saved_filter post when it is not a filter-set post or the current
+	 * @since 4.5.6 Skips the saved_filter post when it is not a filter-set post or the current
 	 *            user cannot read it, and unserializes legacy content with object
 	 *            instantiation disabled.
 	 *
