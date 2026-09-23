@@ -4,7 +4,7 @@ Contributors: aguseo, bordoni, borkweb, brianjessee, leahkoerper, lucatume, neil
 Donate link: https://evnt.is/4o
 Tags: developer-tools, custom post, filter, column, wp-admin
 Requires at least: 6.8
-Tested up to: 6.8.2
+Tested up to: 7.1
 License: GPL v2
 Stable tag: 4.5.5
 Requires PHP: 7.4
