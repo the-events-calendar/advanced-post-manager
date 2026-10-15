@@ -80,7 +80,7 @@ class Tribe_Filters {
 	 *
 	 * @var string
 	 */
-	private $nonce_action = '_tribe_filters';
+	private string $nonce_action;
 
 	/**
 	 * The prefix for the filters.
