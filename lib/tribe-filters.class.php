@@ -76,6 +76,13 @@ class Tribe_Filters {
 	private $nonce = '_tribe_filters';
 
 	/**
+	 * The nonce action, scoped to the filtered post type.
+	 *
+	 * @var string
+	 */
+	private $nonce_action = '_tribe_filters';
+
+	/**
 	 * The prefix for the filters.
 	 *
 	 * @var string
@@ -164,6 +171,7 @@ class Tribe_Filters {
 	public function __construct( $post_type, $filters = [] ) {
 		$this->url                = trailingslashit( plugins_url( '', __FILE__ ) );
 		$this->filtered_post_type = $post_type;
+		$this->nonce_action       = $this->nonce . '_' . $post_type;
 		$this->is_pre             = $this->prefix . 'is_';
 		$this->val_pre            = $this->prefix . 'val_';
 
@@ -280,7 +288,7 @@ class Tribe_Filters {
 	 * Expects to be inside a form
 	 */
 	public function output_form() {
-		wp_nonce_field( $this->nonce, $this->nonce, false );
+		wp_nonce_field( $this->nonce_action, $this->nonce, false );
 
 		$this->saved_filters_dropdown();
 
@@ -566,7 +574,7 @@ class Tribe_Filters {
 	 * Or, active items can be saved for later retrieval and application.
 	 */
 	public function save_active() {
-		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce_action ) ) ) {
 			return;
 		}
 
@@ -612,10 +620,12 @@ class Tribe_Filters {
 	/**
 	 * Update or delete saved filters.
 	 *
+	 * @since TBD Only acts on saved-filter posts the current user can edit or delete.
+	 *
 	 * @return void
 	 */
 	public function update_or_delete_saved_filters() {
-		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce_action ) ) ) {
 			return;
 		}
 
@@ -624,16 +634,23 @@ class Tribe_Filters {
 			return;
 		}
 
+		$filter_id = absint( $_POST['tribe-saved-filter-active'] );
+		$filter    = get_post( $filter_id );
+
+		// Only saved-filter posts may be touched, and only by users allowed to manage them.
+		if ( ! $filter || self::FILTER_POST_TYPE !== $filter->post_type ) {
+			return;
+		}
+
 		// Update the filter with currently active stuff.
-		if ( isset( $_POST['tribe-update-saved-filter'] ) ) {
-			$filter               = get_post( absint( $_POST['tribe-saved-filter-active'] ) );
+		if ( isset( $_POST['tribe-update-saved-filter'] ) && current_user_can( 'edit_post', $filter->ID ) ) {
 			$filter->post_content = wp_json_encode( $this->active );
 			wp_update_post( $filter );
 		}
 
 		// Delete the saved filter.
-		if ( isset( $_POST['tribe-delete-saved-filter'] ) && absint( $_POST['tribe-saved-filter-active'] ) > 0 ) {
-			wp_delete_post( absint( $_POST['tribe-saved-filter-active'] ), true );
+		if ( isset( $_POST['tribe-delete-saved-filter'] ) && current_user_can( 'delete_post', $filter->ID ) ) {
+			wp_delete_post( $filter->ID, true );
 			// Clear all filters while we're at it.
 			$this->reset_active();
 		}
@@ -769,13 +786,13 @@ class Tribe_Filters {
 	 * @return array The result.
 	 */
 	protected function maybe_active_taxonomy( $key ) {
-		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce_action ) ) ) {
 			return;
 		}
 
 		$val = $this->prefix . $key;
 		if ( isset( $_POST[ $val ] ) ) {
-			return [ 'value' => $_POST[ $val ] ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			return [ 'value' => map_deep( wp_unslash( $_POST[ $val ] ), 'sanitize_text_field' ) ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		}
 
 		return false;
@@ -789,7 +806,7 @@ class Tribe_Filters {
 	 * @return array The result.
 	 */
 	protected function maybe_active_meta( $key ) {
-		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce ) ) ) {
+		if ( ! ( isset( $_POST[ $this->nonce ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->nonce ] ), $this->nonce_action ) ) ) {
 			return;
 		}
 
@@ -804,18 +821,26 @@ class Tribe_Filters {
 		}
 
 		return [
-			'value'        => $_POST[ $val ], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			'query_option' => $_POST[ $is ], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			'value'        => map_deep( wp_unslash( $_POST[ $val ] ), 'sanitize_text_field' ), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			'query_option' => sanitize_text_field( wp_unslash( $_POST[ $is ] ) ), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		];
 	}
 
 	/**
 	 * Save filter.
 	 *
+	 * @since TBD Requires the filtered post type's edit_posts capability.
+	 *
 	 * @return void
 	 */
 	protected function save_filter() {
 		if ( ! isset( $_POST['filter_name'] ) || empty( $this->active ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
+			return;
+		}
+
+		$post_type = get_post_type_object( $this->filtered_post_type );
+
+		if ( ! $post_type || ! current_user_can( $post_type->cap->edit_posts ) ) {
 			return;
 		}
 

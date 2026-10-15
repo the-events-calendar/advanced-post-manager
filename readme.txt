@@ -75,6 +75,10 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
+= [TBD] =
+
+* Security - Hardened the saved filter update, delete and creation actions, the image reorder action and the handling of submitted filter values. Props to cazy for reporting.
+
 = [4.5.6] 2026-09-22 =
 
 * Fix - Hardened the restoration of saved filter sets against a security vulnerability.
