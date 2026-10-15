@@ -287,7 +287,7 @@ class Tribe_Meta_Box {
 	/**
 	 * Ajax callback for reordering images.
 	 *
-	 * @since TBD Requires edit access to the parent post and to every attachment moved, and ignores non-attachments.
+	 * @since 4.5.7 Requires edit access to the parent post and to every attachment moved, and ignores non-attachments.
 	 *
 	 * @return void
 	 */

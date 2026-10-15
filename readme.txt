@@ -6,7 +6,7 @@ Tags: developer-tools, custom post, filter, column, wp-admin
 Requires at least: 6.8
 Tested up to: 7.1
 License: GPL v2
-Stable tag: 4.5.6
+Stable tag: 4.5.7
 Requires PHP: 7.4
 
 Turbo charge your posts admin for any custom post type with sortable filters and columns, and auto-registration of metaboxes.
@@ -75,7 +75,7 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
-= [TBD] =
+= [4.5.7] 2026-10-14 =
 
 * Security - Hardened the saved filter update, delete and creation actions, the image reorder action and the handling of submitted filter values. Props to cazy for reporting.
 

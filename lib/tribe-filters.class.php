@@ -620,7 +620,7 @@ class Tribe_Filters {
 	/**
 	 * Update or delete saved filters.
 	 *
-	 * @since TBD Only acts on saved-filter posts the current user can edit or delete.
+	 * @since 4.5.7 Only acts on saved-filter posts the current user can edit or delete.
 	 *
 	 * @return void
 	 */
@@ -829,7 +829,7 @@ class Tribe_Filters {
 	/**
 	 * Save filter.
 	 *
-	 * @since TBD Requires the filtered post type's edit_posts capability.
+	 * @since 4.5.7 Requires the filtered post type's edit_posts capability.
 	 *
 	 * @return void
 	 */
