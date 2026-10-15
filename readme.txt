@@ -75,7 +75,7 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
-= [4.5.7] 2026-10-14 =
+= [4.5.7] 2026-10-15 =
 
 * Security - Hardened the saved filter update, delete and creation actions, the image reorder action and the handling of submitted filter values. Props to cazy for reporting.
 
