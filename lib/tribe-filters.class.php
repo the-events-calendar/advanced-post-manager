@@ -621,6 +621,7 @@ class Tribe_Filters {
 	 * Update or delete saved filters.
 	 *
 	 * @since 4.5.7 Only acts on saved-filter posts the current user can edit or delete.
+	 * @since 4.5.7 Only acts on saved-filter posts that belong to the filtered post type.
 	 *
 	 * @return void
 	 */
@@ -637,8 +638,12 @@ class Tribe_Filters {
 		$filter_id = absint( $_POST['tribe-saved-filter-active'] );
 		$filter    = get_post( $filter_id );
 
-		// Only saved-filter posts may be touched, and only by users allowed to manage them.
-		if ( ! $filter || self::FILTER_POST_TYPE !== $filter->post_type ) {
+		// Only saved-filter posts of this post type may be touched, and only by users allowed to manage them.
+		if (
+			! $filter
+			|| self::FILTER_POST_TYPE !== $filter->post_type
+			|| get_post_meta( $filter->ID, self::FILTER_META, true ) !== $this->filtered_post_type
+		) {
 			return;
 		}
 

@@ -262,6 +262,27 @@ class Tribe_FiltersTest extends WPTestCase {
 	}
 
 	/**
+	 * Verifies a filter set that belongs to another post type cannot be updated or deleted
+	 * through this post type's screen, even by a user with full capabilities.
+	 */
+	public function test_saved_filter_of_another_post_type_is_untouchable(): void {
+		$admin     = static::factory()->user->create( [ 'role' => 'administrator' ] );
+		$filter_id = $this->create_filter_set( $admin );
+		update_post_meta( $filter_id, Tribe_Filters::FILTER_META, 'page' );
+		$original = get_post( $filter_id )->post_content;
+
+		$filters = $this->submit_saved_filter_action( 'tribe-update-saved-filter', $filter_id, $admin, [ 'a' => [ 'value' => 'b' ] ] );
+		$filters->update_or_delete_saved_filters();
+
+		$this->assertSame( $original, get_post( $filter_id )->post_content );
+
+		$filters = $this->submit_saved_filter_action( 'tribe-delete-saved-filter', $filter_id, $admin );
+		$filters->update_or_delete_saved_filters();
+
+		$this->assertNotNull( get_post( $filter_id ) );
+	}
+
+	/**
 	 * Verifies a nonce issued for another post type's filter screen is rejected.
 	 */
 	public function test_filter_nonce_is_scoped_to_the_filtered_post_type(): void {

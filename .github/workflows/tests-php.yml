@@ -135,9 +135,9 @@ jobs:
           ${SLIC_BIN} composer install
       - name: Init the WordPress container
         run: ${SLIC_BIN} up wordpress
-      - name: Update WordPress to version 6.8
+      - name: Update WordPress to version 6.9
         run: |
-          ${SLIC_BIN} wp core update --version=6.8 --force
+          ${SLIC_BIN} wp core update --version=6.9 --force
           ${SLIC_BIN} wp core update-db
       - name: Ensure Twenty-Twenty is installed
         run: |
