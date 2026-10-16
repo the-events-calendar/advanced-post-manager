@@ -287,51 +287,53 @@ class Tribe_Meta_Box {
 	/**
 	 * Ajax callback for reordering images.
 	 *
+	 * @since 4.5.7 Requires edit access to the parent post and to every attachment moved, and ignores non-attachments.
+	 *
 	 * @return void
 	 */
 	public function reorder_images() {
 		if ( ! isset( $_POST['data'] ) ) {
-			die();
+			wp_die();
 		}
 
 		list( $item_list, $post_id, $key, $nonce ) = explode( '|', $_POST['data'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- all sanitized befor euse below.
 
 		if ( ! wp_verify_nonce( $nonce, 'tribe_ajax_reorder' ) ) {
-			die( '1' );
+			wp_die( '1' );
 		}
 
 		$post_id = intval( $post_id );
-		$key     = intval( $key );
 
 		$post = get_post( $post_id );
 		if ( ! $post instanceof WP_Post ) {
-			die( '1' );
+			wp_die( '1' );
 		}
 
-		$cap = get_post_type_object( $post->post_type )->cap->edit_posts;
-
-		// Check if the user can edit the post by ID.
-		if ( ! current_user_can( $cap ) ) {
-			die( '1' );
+		// Check if the user can edit the parent post by ID.
+		if ( ! current_user_can( 'edit_post', $post->ID ) ) {
+			wp_die( '1' );
 		}
 
 		parse_str( $item_list, $items );
-		$items = $items['item'];
 		$order = 1;
 
-		foreach ( $items as $item ) {
-			wp_update_post(
-				[
-					'ID'          => $item,
-					'post_parent' => $post_id,
-					'menu_order'  => $order,
-				]
-			);
+		foreach ( (array) ( $items['item'] ?? [] ) as $item ) {
+			$item = absint( $item );
+
+			if ( 'attachment' === get_post_type( $item ) && current_user_can( 'edit_post', $item ) ) {
+				wp_update_post(
+					[
+						'ID'          => $item,
+						'post_parent' => $post_id,
+						'menu_order'  => $order,
+					]
+				);
+			}
 
 			++$order;
 		}
 
-		die( '0' );
+		wp_die( '0' );
 	}
 
 	/** END UPLOAD */
