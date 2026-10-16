@@ -93,6 +93,8 @@ class Tribe_FiltersTest extends WPTestCase {
 		$_POST                = [];
 
 		$filters = new Tribe_Filters( 'post', [] );
+		// Migrating the filter set runs a WP_Query, and parse_query assumes an admin list-table screen.
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
 		$filters->init_active();
 
 		unset( $_GET['saved_filter'] );
@@ -154,6 +156,8 @@ class Tribe_FiltersTest extends WPTestCase {
 		$_POST                = [];
 
 		$filters = new Tribe_Filters( 'post', [] );
+		// Migrating the filter set runs a WP_Query, and parse_query assumes an admin list-table screen.
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
 		$filters->init_active();
 
 		unset( $_GET['saved_filter'] );
