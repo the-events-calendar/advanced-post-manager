@@ -75,7 +75,7 @@ Our Premium Plugins and Services:
 
 == Changelog ==
 
-= [TBD] =
+= [4.5.8] 2026-11-04 =
 
 * Security - Hardened the rendering of saved and active filter values on the admin list screen.
 
