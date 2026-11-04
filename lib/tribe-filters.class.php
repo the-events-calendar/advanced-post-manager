@@ -525,7 +525,7 @@ class Tribe_Filters {
 	 * @since 4.5.6 Skips the saved_filter post when it is not a filter-set post or the current
 	 *            user cannot read it, and unserializes legacy content with object
 	 *            instantiation disabled.
-	 * @since TBD Re-encodes a legacy serialized filter set only when the current user can edit it.
+	 * @since 4.5.8 Re-encodes a legacy serialized filter set only when the current user can edit it.
 	 *
 	 * @return void
 	 */
@@ -998,7 +998,7 @@ class Tribe_Filters {
 	/**
 	 * Meta row.
 	 *
-	 * @since TBD Escapes the search input's name, value and class attributes.
+	 * @since 4.5.8 Escapes the search input's name, value and class attributes.
 	 *
 	 * @param string $key    The key.
 	 * @param string $value  The value.
@@ -1042,7 +1042,7 @@ class Tribe_Filters {
 	/**
 	 * Select field.
 	 *
-	 * @since TBD Escapes option labels.
+	 * @since 4.5.8 Escapes option labels.
 	 *
 	 * @param string $name The name.
 	 * @param array  $options The options.
