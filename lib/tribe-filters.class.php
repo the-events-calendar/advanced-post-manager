@@ -525,6 +525,7 @@ class Tribe_Filters {
 	 * @since 4.5.6 Skips the saved_filter post when it is not a filter-set post or the current
 	 *            user cannot read it, and unserializes legacy content with object
 	 *            instantiation disabled.
+	 * @since 4.5.8 Re-encodes a legacy serialized filter set only when the current user can edit it.
 	 *
 	 * @return void
 	 */
@@ -543,7 +544,7 @@ class Tribe_Filters {
 				// Unserializes with object instantiation disabled; only scalars and arrays are returned.
 				$active = unserialize( $filterset->post_content, [ 'allowed_classes' => false ] ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
 
-				if ( $active ) {
+				if ( $active && current_user_can( 'edit_post', $filterset->ID ) ) {
 					wp_update_post(
 						[
 							'ID'           => $filterset->ID,
@@ -997,6 +998,8 @@ class Tribe_Filters {
 	/**
 	 * Meta row.
 	 *
+	 * @since 4.5.8 Escapes the search input's name, value and class attributes.
+	 *
 	 * @param string $key    The key.
 	 * @param string $value  The value.
 	 * @param array  $filter The filter.
@@ -1025,7 +1028,12 @@ class Tribe_Filters {
 			$query_options = apply_filters( 'tribe_query_options', $this->query_search_options, $key, $filter );
 			$input_class   = apply_filters( 'tribe_filter_input_class', 'text', $filter, $key, $value );
 			$ret          .= self::select_field( $is_key, $query_options, $value['query_option'] );
-			$ret          .= "<input type='text' name='{$val_key}' value='{$value['value']}' class='{$input_class}' >";
+			$ret          .= sprintf(
+				"<input type='text' name='%s' value='%s' class='%s' >",
+				esc_attr( $val_key ),
+				esc_attr( is_scalar( $value['value'] ) ? "{$value['value']}" : '' ),
+				esc_attr( $input_class )
+			);
 		}
 
 		return $ret;
@@ -1033,6 +1041,8 @@ class Tribe_Filters {
 
 	/**
 	 * Select field.
+	 *
+	 * @since 4.5.8 Escapes option labels.
 	 *
 	 * @param string $name The name.
 	 * @param array  $options The options.
@@ -1062,7 +1072,7 @@ class Tribe_Filters {
 
 			foreach ( $options as $k => $v ) {
 				$selected = selected( in_array( $k, $active ), true, false );
-				$sel     .= '<option value="' . esc_attr( $k ) . '"' . $selected . '>' . $v . '</option>';
+				$sel     .= '<option value="' . esc_attr( $k ) . '"' . $selected . '>' . esc_html( $v ) . '</option>';
 			}
 			$sel .= '</select>';
 		}

@@ -163,6 +163,40 @@ class Tribe_FiltersTest extends WPTestCase {
 		unset( $_GET['saved_filter'] );
 
 		$this->assertEquals( $legacy_active, $filters->get_active() );
+		$this->assertSame( wp_json_encode( $legacy_active ), get_post_field( 'post_content', $post_id ) );
+	}
+
+	/**
+	 * Reading a shared legacy filter set must not let a reader write to it.
+	 */
+	public function test_reader_of_legacy_filter_set_does_not_rewrite_it(): void {
+		$owner         = static::factory()->user->create( [ 'role' => 'administrator' ] );
+		$legacy_active = [ 'some_key' => [ 'value' => 'legacy-value' ] ];
+		$serialized    = serialize( $legacy_active ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+
+		$post_id = static::factory()->post->create(
+			[
+				'post_author'  => $owner,
+				'post_type'    => Tribe_Filters::FILTER_POST_TYPE,
+				'post_content' => $serialized,
+			]
+		);
+		update_post_meta( $post_id, Tribe_Filters::FILTER_META, 'post' );
+
+		set_current_user( static::factory()->user->create( [ 'role' => 'contributor' ] ) );
+		$_GET['saved_filter'] = $post_id;
+		$_POST                = [];
+
+		$filters = new Tribe_Filters( 'post', [] );
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
+		// read_post on an unregistered post type falls back to edit_others_posts.
+		$filters->register_post_type();
+		$filters->init_active();
+
+		unset( $_GET['saved_filter'] );
+
+		$this->assertEquals( $legacy_active, $filters->get_active(), 'A reader still gets the shared filter set applied.' );
+		$this->assertSame( $serialized, get_post_field( 'post_content', $post_id ), 'A reader without edit_post must not rewrite the filter set.' );
 	}
 
 	/**
@@ -413,6 +447,67 @@ class Tribe_FiltersTest extends WPTestCase {
 		];
 	}
 
+	/**
+	 * A meta filter value saved by a contributor must not break out of the
+	 * search input's value attribute when an administrator loads the filter set.
+	 */
+	public function test_saved_meta_filter_value_is_escaped_when_rendered_for_another_user(): void {
+		$value    = "x' autofocus onfocus='document.title=1";
+		$filter   = [ 'apm_demo' => [ 'name' => 'APM Demo', 'meta' => '_apm_demo' ] ];
+		$saved_id = $this->save_filter_as_contributor( $filter, $value );
+
+		set_current_user( static::factory()->user->create( [ 'role' => 'administrator' ] ) );
+		$_GET['saved_filter'] = $saved_id;
+		$_POST                = [];
+
+		$filters = new Tribe_Filters( 'post', $filter );
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
+		$filters->init_active();
+
+		unset( $_GET['saved_filter'] );
+
+		$this->assert_search_input_holds_value( $this->render_active_filters( $filters ), 'tribe_filters_val_apm_demo', $value );
+	}
+
+	/**
+	 * The value is cached in the viewer's last_used_filters_* meta; the next
+	 * plain visit to the list re-renders it and must stay escaped too.
+	 */
+	public function test_last_used_meta_filter_value_is_escaped_when_rendered(): void {
+		$value   = "x' autofocus onfocus='document.title=1";
+		$filter  = [ 'apm_demo' => [ 'name' => 'APM Demo', 'meta' => '_apm_demo' ] ];
+		$admin   = static::factory()->user->create( [ 'role' => 'administrator' ] );
+		set_current_user( $admin );
+		update_user_meta( $admin, 'last_used_filters_post', wp_json_encode( [ 'apm_demo' => [ 'value' => $value, 'query_option' => 'is' ] ] ) );
+
+		unset( $_GET['saved_filter'] );
+		$_POST = [];
+
+		$filters = new Tribe_Filters( 'post', $filter );
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
+		$filters->init_active();
+
+		$this->assert_search_input_holds_value( $this->render_active_filters( $filters ), 'tribe_filters_val_apm_demo', $value );
+	}
+
+	/**
+	 * Option labels come from term names and filter config; markup in them
+	 * must render as text, not as elements.
+	 */
+	public function test_select_field_escapes_option_labels(): void {
+		$label = '</option></select><img src=x onerror=alert(1)>';
+
+		$html = Tribe_Filters::select_field( 'tribe_filters_demo', [ 'a' => $label ] );
+
+		$doc = new DOMDocument();
+		libxml_use_internal_errors( true );
+		$doc->loadHTML( '<html><body>' . $html . '</body></html>' );
+		libxml_clear_errors();
+
+		$this->assertSame( 0, $doc->getElementsByTagName( 'img' )->length, 'An option label must not inject elements.' );
+		$this->assertSame( $label, $doc->getElementsByTagName( 'option' )->item( 0 )->textContent );
+	}
+
 	private function create_filter_set( int $author ): int {
 		$filter_id = static::factory()->post->create(
 			[
@@ -450,6 +545,76 @@ class Tribe_FiltersTest extends WPTestCase {
 		$filters->set_active( $active );
 
 		return $filters;
+	}
+
+	/**
+	 * Submits the filter form as a new contributor with "Save" checked and returns
+	 * the created filter-set post ID.
+	 *
+	 * @param array<string,array{name:string,meta:string}> $filter The APM filter configuration.
+	 * @param string                                       $value  The search value to submit.
+	 */
+	private function save_filter_as_contributor( array $filter, string $value ): int {
+		set_current_user( static::factory()->user->create( [ 'role' => 'contributor' ] ) );
+		$key = array_key_first( $filter );
+
+		$_GET  = [];
+		$_POST = [
+			'_tribe_filters'          => wp_create_nonce( '_tribe_filters_post' ),
+			'tribe_filters_is_' . $key  => 'is',
+			'tribe_filters_val_' . $key => wp_slash( $value ),
+			'tribe-save'              => '1',
+			'filter_name'             => 'Shared filter',
+		];
+
+		$filters = new Tribe_Filters( 'post', $filter );
+		remove_action( 'pre_get_posts', [ $filters, 'parse_query' ] );
+		$filters->register_post_type();
+		$filters->save_active();
+
+		$_POST = [];
+
+		$saved = get_posts(
+			[
+				'post_type'   => Tribe_Filters::FILTER_POST_TYPE,
+				'post_status' => 'any',
+				'numberposts' => 1,
+				'fields'      => 'ids',
+			]
+		);
+		$this->assertCount( 1, $saved, 'The contributor request must create the filter-set post.' );
+
+		return $saved[0];
+	}
+
+	private function render_active_filters( Tribe_Filters $filters ): string {
+		ob_start();
+		$filters->active_filters_table();
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Parses the rendered HTML and asserts the named text input carries $expected
+	 * as its literal value and gained no event-handler or autofocus attribute.
+	 */
+	private function assert_search_input_holds_value( string $html, string $name, string $expected ): void {
+		$doc = new DOMDocument();
+		libxml_use_internal_errors( true );
+		$doc->loadHTML( '<html><body>' . $html . '</body></html>' );
+		libxml_clear_errors();
+
+		$input = null;
+		foreach ( $doc->getElementsByTagName( 'input' ) as $candidate ) {
+			if ( $name === $candidate->getAttribute( 'name' ) ) {
+				$input = $candidate;
+			}
+		}
+
+		$this->assertNotNull( $input, "The {$name} input must be rendered." );
+		$this->assertFalse( $input->hasAttribute( 'onfocus' ), 'The value must not inject an onfocus handler.' );
+		$this->assertFalse( $input->hasAttribute( 'autofocus' ), 'The value must not inject autofocus.' );
+		$this->assertSame( $expected, $input->getAttribute( 'value' ) );
 	}
 }
 

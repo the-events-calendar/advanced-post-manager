@@ -24,10 +24,38 @@
     "npm": "8.19.0"
   },
   "devDependencies": {
+    "@stellarwp/changelogger": "^0.10.0",
+    "@the-events-calendar/product-taskmaster": "^3.0.0",
     "archiver": "^0.10.1",
     "glob": "~4.0.5",
     "gulp": "^4.0.2",
-    "@the-events-calendar/product-taskmaster": "^3.0.0",
     "require-dir": "^0.3.0"
+  },
+  "scripts": {
+    "changelog": "npx @stellarwp/changelogger add"
+  },
+  "changelogger": {
+    "changelogFile": "changelog.md",
+    "changesDir": "changelog",
+    "ordering": [
+      "type",
+      "content"
+    ],
+    "types": {
+      "version": "Version",
+      "performance": "Performance",
+      "accessibility": "Accessibility"
+    },
+    "versioning": "./bin/tec-changelog-versioning.js",
+    "files": [
+      {
+        "path": "changelog.md",
+        "strategy": "stellarwp-changelog"
+      },
+      {
+        "path": "readme.txt",
+        "strategy": "stellarwp-readme"
+      }
+    ]
   }
 }
